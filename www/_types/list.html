@@ -1,0 +1,40 @@
+
+
+<div ng-repeat="element in config.elements" class="service" ng-class="{fail: curChart.onError}">
+    <div>
+        <h1>{{element.name}}</h1>
+    </div>
+    <div style="height:150px;width:300px;float:left;">
+        <chart-basic config="{{ element | json }}"></chart-basic>
+    </div>
+
+    <div style="clear: both"></div>
+
+</div>
+
+
+
+
+
+<style type="text/css">
+
+    .service {
+        width: 300px;
+        height: 250px;
+        float: left;
+        margin: 20px;
+    }
+
+    .service h1 {
+        margin: 0;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .service h2 {
+        margin: 0;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+</style>

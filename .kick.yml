@@ -1,0 +1,9 @@
+version: 1
+from: "infracamp/kickstart-flavor-gaia:testing"
+
+command:
+  build:
+    - "sudo scripts/install.sh"
+    - "composer update"
+
+

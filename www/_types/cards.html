@@ -1,0 +1,17 @@
+
+
+<div ng-repeat="element in config.elements" ng-class="{fail: curChart.onError}">
+    <div>
+        <h1>a{{element.name}}</h1>
+    </div>
+    <div style="height:150px;width:300px;float:left;margin-left:20px;">
+        <!--chart-basic config="{}"></chart-basic-->
+    </div>
+    <div style="height:150px;width:600px;float:left;margin-left:50px;overflow: hidden">
+        <b>{{curChart.lastErrorDate}}</b><br>
+        {{curChart.lastErrorMsg}}
+
+    </div>
+    <div style="clear: both"></div>
+
+</div>

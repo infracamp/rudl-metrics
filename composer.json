@@ -1,0 +1,11 @@
+{
+  "minimum-stability": "dev",
+  "require": {
+    "phore/cloudtool": "dev-master",
+    "phore/micro-app": "dev-master",
+    "influxdb/influxdb-php": "dev-master",
+    "phpunit/phpunit": "^8.5@dev",
+    "phore/http-client": "dev-master"
+
+  }
+}

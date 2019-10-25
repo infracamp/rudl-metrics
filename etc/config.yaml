@@ -1,0 +1,17 @@
+dashboards:
+  main:
+    - name: List
+      type: list
+      elements:
+        - name: web1.xyz
+          source: /api/data/stats.json
+          query: none
+
+        - name: wurst
+
+    - name: Cards
+      type: cards
+      elements:
+
+
+

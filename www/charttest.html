@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css">
+     <script src="app/ChartBasic.js"></script>
+</head>
+<body>
+
+<chart-basic config="{}"></chart-basic>
+
+
+<canvas id="wurst"></canvas>
+<script>
+
+    var elem = document.getElementById("wurst");
+    var config = {
+        type: "line",
+        data: {
+            labels: ["a", "b", "c"],
+            datasets: [
+                {
+                    label: 'My First dataset'
+                },
+            ]
+        }
+    }
+    //var chart = new Chart(elem.getContext("2d"), config);
+
+
+</script>
+</body>
+</html>
