@@ -32,32 +32,39 @@ class ChartBasic extends HTMLElement {
     connectedCallback() {
         var self = this;
         var shadow = this.attachShadow({mode: "open"});
-        shadow.innerHTML = '<div><canvas id="chart"></canvas></div>';
+        shadow.innerHTML = '<style>.failed { background-color: lightcoral }</style><div><canvas id="chart"></canvas></div>';
         var element = shadow.getElementById("chart");
 
-        var config = {
-            type: "line",
-            data: {
-                labels: ["a", "b", "c"],
-                datasets: [
-                    {
-                        label: 'My First dataset'
-                    },
-                ]
-            }
-        }
+        var chartData = {};
 
         window.setTimeout(function () {
             console.log("connected");
-            self.chart = new Chart(element.getContext("2d"), config);
+            chartData = self.config.template;
+            self.config.template = null;
+
+            self.chart = new Chart(element.getContext("2d"), chartData);
+            if (typeof self.config.yAxisMax !== "undefined")
+                chartData.options.scales.yAxes[0].ticks.suggestedMax = self.config.yAxisMax;
 
             if (typeof self.config.source != "undefined") {
                 self.interval = window.setInterval(function () {
                     console.log("query", self.config.source);
-                    kasimir_http(self.config.source).json = (data) => {
-                        console.log("new data", data);
-                        config.data.labels = new Array(data.a.length);
-                        config.data.datasets[0].data = data.a;
+                    console.log(self.config);
+                    kasimir_http(self.config.source).withBody(self.config).json = (response) => {
+                        let datasets = [];
+                        for(var i = 0; i < self.config.select.length; i++) {
+                            var serie = response.data[self.config.select[i]];
+                            datasets.push({data: serie});
+                        }
+                        chartData.data.datasets = datasets;
+
+                        if (response.status == "ok") {
+                            element.classList.remove("failed")
+                        } else {
+                            element.classList.add("failed")
+                        }
+
+                        chartData.data.labels = new Array(serie.length);
                         self.chart.update();
                     };
 

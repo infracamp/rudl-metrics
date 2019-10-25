@@ -6,4 +6,8 @@ command:
     - "sudo scripts/install.sh"
     - "composer update"
 
+  init:
+    - "sudo service influxdb start"
 
+  test:
+    - "vendor/bin/phpunit"

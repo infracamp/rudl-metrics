@@ -9,7 +9,8 @@
 namespace Phore\Tests;
 
 
-use SebastianBergmann\CodeCoverage\TestCase;
+
+use PHPUnit\Framework\TestCase;
 
 class NodeDataInTest extends TestCase
 {
@@ -18,16 +19,17 @@ class NodeDataInTest extends TestCase
     public function testNodeStatusIn ()
     {
         $data = [
-            "hostname" => "someName",
+            "host" => "someName",
             "cluster" => "cluster1",
             "system" => [
-                "avg_disk_io"  => 1234
+                "avg_disk_io"  => 1234,
+                "avg_free" => 45,
             ]
         ];
 
 
-        phore_http_request("http://localhost/v1/input/node")->withPostBody($data)->send();
-
+        $ret = phore_http_request("http://localhost/v1/push/node")->withPostBody($data)->send()->getBodyJson();
+        $this->assertEquals(true, $ret["success"]);
     }
 
 }
