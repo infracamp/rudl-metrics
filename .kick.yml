@@ -11,3 +11,7 @@ command:
 
   test:
     - "vendor/bin/phpunit"
+
+  init:
+    - "sudo service influxdb start"
+
