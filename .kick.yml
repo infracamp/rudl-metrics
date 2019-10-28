@@ -7,3 +7,5 @@ command:
     - "composer update"
 
 
+  init:
+    - "sudo service influxdb start"
