@@ -9,7 +9,7 @@
 namespace Phore\Tests;
 
 
-use SebastianBergmann\CodeCoverage\TestCase;
+use PHPUnit\Framework\TestCase;
 
 class NodeDataInTest extends TestCase
 {
@@ -25,9 +25,7 @@ class NodeDataInTest extends TestCase
             ]
         ];
 
-
         phore_http_request("http://localhost/v1/input/node")->withPostBody($data)->send();
-
     }
 
 }
