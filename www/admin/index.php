@@ -46,7 +46,7 @@ $app->define("database", function () : Database {
 });
 
 
-$app->allowUser("admin", "talpa4711");
+$app->allowUser("admin", "pass123");
 
 
 

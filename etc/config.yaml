@@ -3,11 +3,77 @@ dashboards:
     - name: List
       type: list
       elements:
-        - name: web1.xyz
+        - name: lavg arnold
+          template: chart/default.yaml
           source: /api/data/stats.json
-          query: none
+          query: SELECT * FROM node_stat ORDER BY time DESC LIMIT 30
+          select:
+            - loadavg
 
-        - name: wurst
+        - name: fs arnold
+          template: chart/default.yaml
+          source: /api/data/stats.json
+          query: SELECT * FROM node_stat ORDER BY time DESC LIMIT 30
+          select:
+            - fs_use_prct
+            - fs_iuse_prct
+          yAxisMax: 100
+
+        - name: mem arnold
+          template: chart/default.yaml
+          source: /api/data/stats.json
+          query: SELECT (mem_avail_kb / mem_total_kb) * 100 as mem_usage FROM node_stat ORDER BY time DESC LIMIT 30
+          select:
+            - mem_usage
+          yAxisMax: 100
+
+        - name: lavg arnold
+          template: chart/default.yaml
+          source: /api/data/stats.json
+          query: SELECT * FROM node_stat ORDER BY time DESC LIMIT 30
+          select:
+            - loadavg
+
+        - name: fs arnold
+          template: chart/default.yaml
+          source: /api/data/stats.json
+          query: SELECT * FROM node_stat ORDER BY time DESC LIMIT 30
+          select:
+            - fs_use_prct
+            - fs_iuse_prct
+          yAxisMax: 100
+
+        - name: mem arnold
+          template: chart/default.yaml
+          source: /api/data/stats.json
+          query: SELECT (mem_avail_kb / mem_total_kb) * 100 as mem_usage FROM node_stat ORDER BY time DESC LIMIT 30
+          select:
+            - mem_usage
+          yAxisMax: 100
+
+        - name: lavg arnold
+          template: chart/default.yaml
+          source: /api/data/stats.json
+          query: SELECT * FROM node_stat ORDER BY time DESC LIMIT 30
+          select:
+            - loadavg
+
+        - name: fs arnold
+          template: chart/default.yaml
+          source: /api/data/stats.json
+          query: SELECT * FROM node_stat ORDER BY time DESC LIMIT 30
+          select:
+            - fs_use_prct
+            - fs_iuse_prct
+          yAxisMax: 100
+
+        - name: mem arnold
+          template: chart/default.yaml
+          source: /api/data/stats.json
+          query: SELECT (mem_avail_kb / mem_total_kb) * 100 as mem_usage FROM node_stat ORDER BY time DESC LIMIT 30
+          select:
+            - mem_usage
+          yAxisMax: 100
 
     - name: Cards
       type: cards

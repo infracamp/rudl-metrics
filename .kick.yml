@@ -10,6 +10,6 @@ command:
   init:
     - "sudo service influxdb start"
 
-
   test:
     - "phpunit"
+

@@ -2,9 +2,9 @@
 
 <div ng-repeat="element in config.elements" class="service" ng-class="{fail: curChart.onError}">
     <div>
-        <h1>{{element.name}}</h1>
+        <h3 style="padding: 10px">{{element.name}}</h3>
     </div>
-    <div style="height:150px;width:300px;float:left;">
+    <div style="height:150px;width:350px;padding:0px;float:left;">
         <chart-basic config="{{ element | json }}"></chart-basic>
     </div>
 
@@ -19,10 +19,10 @@
 <style type="text/css">
 
     .service {
-        width: 300px;
+        width: 350px;
         height: 250px;
         float: left;
-        margin: 20px;
+        margin: 10px;
     }
 
     .service h1 {

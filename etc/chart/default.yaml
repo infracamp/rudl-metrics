@@ -1,0 +1,17 @@
+type: "line"
+data:
+  datasets:
+
+options:
+  animation:
+    duration: 0
+
+  legend:
+    display: false
+    position: "bottom"
+
+  scales:
+    yAxes:
+      - ticks:
+          beginAtZero: true
+          suggestedMax: 8
