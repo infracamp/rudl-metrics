@@ -80,7 +80,7 @@ $app->router->onGet("/api/config.json", function () {
 
 $app->router->onGet("/", function () {
     return [
-        "success" => "true",
+        "success" => true,
         "msg" => "rudl-metrics ready"
     ];
 });

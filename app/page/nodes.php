@@ -29,7 +29,7 @@ function parseDate(string $in) : \DateTime {
 
 
 function limit($value, $warn, $err, $opt="") : FHtml {
-    $style = "";
+    $style = "color: green";
     if ($value > $warn)
         $style = "color: gold";
     if ($value > $err)
