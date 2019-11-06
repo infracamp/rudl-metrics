@@ -2,7 +2,7 @@ FROM infracamp/kickstart-flavor-gaia:testing
 
 ENV DEV_CONTAINER_NAME="rudl-metrics"
 
-
+ENV DEBUG_MODE="0"
 
 ADD / /opt
 RUN ["bash", "-c",  "chown -R user /opt"]

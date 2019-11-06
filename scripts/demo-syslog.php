@@ -3,7 +3,7 @@
 # Demo Syslog generator RFC3164 (nginx default) for logstash
 
 
-define ("SYSLOG_IP", "127.0.0.1");
+define ("SYSLOG_IP", "metrics.jupp.talpa-services.de");
 define("SYSLOG_PORT", 4200);
 
 

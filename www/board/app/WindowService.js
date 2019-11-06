@@ -41,7 +41,7 @@ module.service("WindowService", function ($interval, $http) {
         self.curTab++;
         if (self.curTab > self.config.tabs.length-1)
             self.curTab = 0;
-    }, 10000);
+    }, 8000);
 
 
 });

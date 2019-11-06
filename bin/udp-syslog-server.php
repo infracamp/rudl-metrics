@@ -22,7 +22,13 @@ require __DIR__ . "/../config.php";
 
 
 phore_log()->setDriver(new PhoreEchoLoggerDriver());
+
+
 phore_log()->setLogLevel(LogLevel::WARNING);
+
+if (DEBUG_MODE) {
+    phore_log()->setLogLevel(LogLevel::DEBUG);
+}
 
 
 class SyslogProcessor extends AbstractSyslogProcessor {
