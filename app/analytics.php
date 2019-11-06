@@ -51,9 +51,9 @@ $app->router->onPost("/api/data/service.json", function (Request $request) {
         return [
             "status" => "ok",
             "data" => [
-                "time" => [$curlInfo["total_time"]],
-                "connect" => [$curlInfo["connect_time"]],
-                "lookup" => [$curlInfo["namelookup_time"]]
+                "time" => [$curlInfo["total_time"]*100],
+                "connect" => [$curlInfo["connect_time"]*100],
+                "lookup" => [$curlInfo["namelookup_time"]*100]
             ]
         ];
 

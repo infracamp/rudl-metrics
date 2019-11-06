@@ -40,13 +40,15 @@ function limit($value, $warn, $err, $opt="") : FHtml {
 }
 
 
-
+$lastClusterName = "";
 foreach ($nodeData as $cur) {
+
     $hostName = $cur["host"];
     $nodeInfo = [
-        $cur["cluster"],
+        $cur["cluster"] != $lastClusterName ? $cur["cluster"] : "",
         $hostName,
     ];
+    $lastClusterName = $cur["cluster"];
 
     $hData = $database->query("SELECT * FROM node_stat WHERE host='$hostName' ORDER BY time DESC LIMIT 1")->getPoints()[0];
 

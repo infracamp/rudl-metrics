@@ -14,7 +14,9 @@ options:
     yAxes:
       - ticks:
           beginAtZero: true
-          suggestedMax: 0.3
+          suggestedMax: 80
+
+
     xAxes:
       - ticks:
           display: false
