@@ -58,7 +58,7 @@ class ChartBasic extends HTMLElement {
 
 
                         if (self.config.append === true) {
-                            var keep = self.config.keep || 60;
+                            var keep = self.config.keep || 30;
 
                             for(var i = 0; i < self.config.select.length; i++) {
                                 var point = response.data[self.config.select[i]];

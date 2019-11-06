@@ -14,6 +14,10 @@ command:
   init:
     - "sudo service influxdb start"
 
+
+  run:
+    - "php -f bin/udp-syslog-server.php"
+
   test:
     - "phpunit"
 
