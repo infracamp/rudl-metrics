@@ -53,10 +53,10 @@ foreach ($nodeData as $cur) {
 
     $date = parseDate($hData["time"]);
 
-    $nodeInfo[] = limit(time() - $date->getTimestamp(), 3, 60, "sec");
-    $nodeInfo[] = limit($hData["loadavg"], 1, 8);
-    $nodeInfo[] = limit($hData["loadavg_5m"], 1, 8);
-    $nodeInfo[] = limit($hData["loadavg_15m"], 1, 8);
+    $nodeInfo[] = limit(time() - $date->getTimestamp(), 6, 60, "sec");
+    $nodeInfo[] = limit($hData["loadavg"], 2, 8);
+    $nodeInfo[] = limit($hData["loadavg_5m"], 2, 8);
+    $nodeInfo[] = limit($hData["loadavg_15m"], 2, 8);
     $nodeInfo[] = limit($hData["fs_use_prct"], 70, 90, "%");
     $nodeInfo[] = limit($hData["fs_iuse_prct"], 70, 90, "%");
 
