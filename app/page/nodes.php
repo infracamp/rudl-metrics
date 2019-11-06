@@ -55,6 +55,8 @@ foreach ($nodeData as $cur) {
 
     $nodeInfo[] = limit(time() - $date->getTimestamp(), 3, 60, "sec");
     $nodeInfo[] = limit($hData["loadavg"], 1, 8);
+    $nodeInfo[] = limit($hData["loadavg_5m"], 1, 8);
+    $nodeInfo[] = limit($hData["loadavg_15m"], 1, 8);
     $nodeInfo[] = limit($hData["fs_use_prct"], 70, 90, "%");
     $nodeInfo[] = limit($hData["fs_iuse_prct"], 70, 90, "%");
 
@@ -69,6 +71,6 @@ echo "<link rel=\"stylesheet\" href=\"//cdn.fuman.de/bootstrapcdn/bootstrap/3.3.
 
 
 echo pt("table-striped table-hover")->basic_table(
-    ["Cluster", "Node", "Last seen", "loadavg", "fs", "inode", "mem_free", "hdd_free"],
+    ["Cluster", "Node", "Last seen", "loadavg", "loadavg5m", "loadavg15m", "fs", "inode", "mem_free", "hdd_free"],
     $nodes
 );

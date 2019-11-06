@@ -719,12 +719,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phore/phore-http-client.git",
-                "reference": "ec5becb5706e67b19e3079f4d7a3cc33b6db574c"
+                "reference": "af6897993ffaee2fceb9f2e712c6d4cc52921401"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phore/phore-http-client/zipball/ec5becb5706e67b19e3079f4d7a3cc33b6db574c",
-                "reference": "ec5becb5706e67b19e3079f4d7a3cc33b6db574c",
+                "url": "https://api.github.com/repos/phore/phore-http-client/zipball/af6897993ffaee2fceb9f2e712c6d4cc52921401",
+                "reference": "af6897993ffaee2fceb9f2e712c6d4cc52921401",
                 "shasum": ""
             },
             "require": {
@@ -767,7 +767,7 @@
                 "Keyword1",
                 "Keyword2"
             ],
-            "time": "2019-10-22T10:26:29+00:00"
+            "time": "2019-11-06T21:39:50+00:00"
         },
         {
             "name": "phore/log",
