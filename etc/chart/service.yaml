@@ -6,7 +6,6 @@ options:
   animation:
     duration: 0
 
-
   legend:
     display: false
     position: "bottom"
@@ -15,8 +14,7 @@ options:
     yAxes:
       - ticks:
           beginAtZero: true
-          suggestedMax: 8
-
+          suggestedMax: 0.3
     xAxes:
-    - ticks:
-        display: false
+      - ticks:
+          display: false

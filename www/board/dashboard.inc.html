@@ -18,11 +18,13 @@
     <script src="//cdn.fuman.de/cloudflare/ajax/libs/angular-ui-bootstrap/0.12.1/ui-bootstrap-tpls.js"></script>
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
-    <script src="lib/kasimirjs.js"></script>
-    <script src="app/MainCtrl.js"></script>
-    <script src="app/WindowService.js"></script>
-    <script src="app/ChartBasic.js"></script>
+    <script src="/board/lib/chartjs.js"></script>
+    <script src="/board/lib/kasimirjs.js"></script>
+    <script src="/board/app/MainCtrl.js"></script>
+    <script src="/board/app/WindowService.js"></script>
+    <script src="/board/app/ChartBasic.js"></script>
+    <script src="/board/app/HtmlFrame.js"></script>
+
 
     <link rel="stylesheet" href="//cdn.fuman.de/bootstrapcdn/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css">
@@ -33,7 +35,7 @@
 
     <div class="header">
         <div style="float: left;">
-            NOC: {{mainCtrl.windowService.config.tabs[mainCtrl.windowService.curTab].name}}
+            {{mainCtrl.windowService.config.tabs[mainCtrl.windowService.curTab].name}}
         </div>
         <div style="float:right">
             {{mainCtrl.curDateTime}}
@@ -43,8 +45,8 @@
 
     <!-- Ping graphing -->
 
-    <div ng-repeat="($index, config) in mainCtrl.windowService.config.tabs" ng-show="mainCtrl.windowService.curTab == $index" class="tabPane">
-        <ng-include src="'_types/' + config.type + '.html'"></ng-include>
+    <div ng-repeat="($index, config) in mainCtrl.windowService.config.tabs" ng-show="mainCtrl.windowService.curTab == $index" class="tabPane" style="width:100%">
+        <ng-include src="'/board/_types/' + config.type + '.html'"></ng-include>
     </div>
 
 

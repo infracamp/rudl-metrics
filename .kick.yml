@@ -1,6 +1,10 @@
 version: 1
 from: "infracamp/kickstart-flavor-gaia:testing"
 
+config_file:
+  template: "config.php.dist"
+  target: "config.php"
+
 command:
   build:
     - "sudo scripts/install.sh"

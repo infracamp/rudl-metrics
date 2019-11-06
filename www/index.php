@@ -34,7 +34,7 @@ $app->acl->addRule(\aclRule()->route("/*")->ALLOW());
 $app->define("database", function () {
     $client = new Client("localhost");
     $db = $client->selectDB("rudl");
-    $db->create();
+    $db->create(new Database\RetentionPolicy("removeafter2days", "2d", 1, true));
     return $db;
 });
 
@@ -54,24 +54,7 @@ $app->router->onPost("/v1/push/node", function (Request $request, Database $data
 
 
 
-$app->router->onPost("/api/data/stats.json", function (Request $request, Database $database) {
-    $ret = ["status"=>"ok", "data" => []];
-
-    $body = $request->getJsonBody();
-
-    $result = $database->query($body["query"]);
-
-    $points = $result->getPoints();
-
-    foreach ($points as $point) {
-        foreach ($body["select"] as $select) {
-            if ( ! isset ($ret["data"][$select]))
-                $ret["data"][$select] = [];
-            $ret["data"][$select][] = $point[$select];
-        }
-    }
-    return $ret;
-});
+require __DIR__ . "/../app/analytics.php";
 
 
 $app->router->onGet("/api/config.json", function () {
@@ -91,22 +74,22 @@ $app->router->onGet("/api/config.json", function () {
     return $data;
 });
 
-
-
-$app->router->onGet("/", function() {
-    echo phore_file(__DIR__ . "/dashboard.inc.html")->get_contents();
-    return true; // Continue with next controllers.
-});
-
-
 /**
  ** Define Routes
  **/
 
+$app->router->onGet("/", function () {
+    return [
+        "success" => "true",
+        "msg" => "rudl-metrics ready"
+    ];
+});
 
 
-
-
+$app->router->onGet("/dash", function() {
+    echo phore_file(__DIR__ . "/board/dashboard.inc.html")->get_contents();
+    return true; // Continue with next controllers.
+});
 
 
 

@@ -6,7 +6,8 @@
     "influxdb/influxdb-php": "dev-master",
     "phpunit/phpunit": "^8.5@dev",
     "phore/http-client": "dev-master",
-    "phore/status-page": "dev-master"
+    "phore/status-page": "dev-master",
+    "phore/sock-server": "dev-master"
 
   }
 }

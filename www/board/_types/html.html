@@ -1,0 +1,7 @@
+
+
+<div ng-repeat="element in config.elements" ng-class="{fail: curChart.onError}">
+    <div style="width:100%;padding:0px;float:left;">
+        <html-frame config="{{ element | json }}"></html-frame>
+    </div>
+</div>

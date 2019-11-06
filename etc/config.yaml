@@ -1,6 +1,8 @@
 dashboards:
   main:
-    - name: List
+
+
+    - name: Cluster status
       type: list
       elements:
         - name: lavg arnold
@@ -27,57 +29,47 @@ dashboards:
             - mem_usage
           yAxisMax: 100
 
-        - name: lavg arnold
-          template: chart/default.yaml
-          source: /api/data/stats.json
-          query: SELECT * FROM node_stat ORDER BY time DESC LIMIT 30
-          select:
-            - loadavg
-
-        - name: fs arnold
-          template: chart/default.yaml
-          source: /api/data/stats.json
-          query: SELECT * FROM node_stat ORDER BY time DESC LIMIT 30
-          select:
-            - fs_use_prct
-            - fs_iuse_prct
-          yAxisMax: 100
-
-        - name: mem arnold
-          template: chart/default.yaml
-          source: /api/data/stats.json
-          query: SELECT (mem_avail_kb / mem_total_kb) * 100 as mem_usage FROM node_stat ORDER BY time DESC LIMIT 30
-          select:
-            - mem_usage
-          yAxisMax: 100
-
-        - name: lavg arnold
-          template: chart/default.yaml
-          source: /api/data/stats.json
-          query: SELECT * FROM node_stat ORDER BY time DESC LIMIT 30
-          select:
-            - loadavg
-
-        - name: fs arnold
-          template: chart/default.yaml
-          source: /api/data/stats.json
-          query: SELECT * FROM node_stat ORDER BY time DESC LIMIT 30
-          select:
-            - fs_use_prct
-            - fs_iuse_prct
-          yAxisMax: 100
-
-        - name: mem arnold
-          template: chart/default.yaml
-          source: /api/data/stats.json
-          query: SELECT (mem_avail_kb / mem_total_kb) * 100 as mem_usage FROM node_stat ORDER BY time DESC LIMIT 30
-          select:
-            - mem_usage
-          yAxisMax: 100
-
-    - name: Cards
-      type: cards
+    - name: Nodes
+      type: html
       elements:
+      - name: wurst
+        source: /api/data/html/nodes
 
+
+    - name: Services
+      type: list
+      elements:
+      - name: infracamp
+        template: chart/service.yaml
+        source: /api/data/service.json
+        query: https://infracamp.org
+        select:
+        - time
+        - connect
+        - lookup
+        append: true
+
+
+      - name: ulan
+        template: chart/service.yaml
+        source: /api/data/service.json
+        query: http://ulan.talpa-services.de
+        select:
+        - time
+        - connect
+        - lookup
+        append: true
+        interval: 5
+
+      - name: tadis
+        template: chart/service.yaml
+        source: /api/data/service.json
+        query: http://tadis.talpa-services.de
+        select:
+        - time
+        - connect
+        - lookup
+        append: true
+        interval: 5
 
 

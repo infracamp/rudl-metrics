@@ -31,7 +31,7 @@ require __DIR__ . "/../../vendor/autoload.php";
 
 set_time_limit(600);
 
-$app = new BasicAuthStatusPageApp("flesto", "/admin");
+$app = new BasicAuthStatusPageApp("rudl-metrics", "/admin");
 $app->theme->frameworks["highlightjs"] = true;
 
 
@@ -40,7 +40,7 @@ $app->theme->frameworks["highlightjs"] = true;
  **/
 $app->define("database", function () : Database {
     $client = new Client("localhost");
-    $db = $client->selectDB("node");
+    $db = $client->selectDB("rudl");
     $db->create();
     return $db;
 });
@@ -59,10 +59,7 @@ $app->addPage("/admin/", function () {
     $e[] = pt()->card(
         "Execute query in database '''",
         [
-            "form @action=/admin//query @method=get" => [
-                "textarea @name=q" => "",
-                "button @type=submit" => "senden"
-            ]
+            "Hello woalrd."
         ]
     );
 

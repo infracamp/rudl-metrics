@@ -4,7 +4,7 @@
 
 
 define ("SYSLOG_IP", "127.0.0.1");
-define("SYSLOG_PORT", 6514);
+define("SYSLOG_PORT", 4200);
 
 
 
@@ -13,6 +13,9 @@ function genLog ($status=200)
     $time_iso8601 = (new DateTime())->format(DateTime::ATOM);
 
     $nginxLog = [
+
+        "cluster" => "unnamed",
+        "service" => "cloudfront",
 
         "time_iso8601" => "$time_iso8601",
         "status" => "$status",
