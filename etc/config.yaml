@@ -1,7 +1,9 @@
+
+# You should use argon2 crypted passwords here:
 admin_users:
   - user: admin
     pass: test
 
-
+# You should use argon2 crypted passwords here:
 dash_tokens:
   - "test"
