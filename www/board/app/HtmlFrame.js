@@ -46,10 +46,10 @@ class HtmlFrame extends HTMLElement {
                 kasimir_http(self.config.source).plain = (response) => {
                     element.innerHTML = response;
                 };
-            }, (self.config.interval || 15) * 1000);
+            }, (self.config.interval || 10) * 1000);
 
 
-        }, (Math.random() * 1000) + 100);
+        }, (Math.random() * 10000) + 100);
         console.log("connect html-frame", this);
     }
 

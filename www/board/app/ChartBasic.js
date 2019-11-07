@@ -99,7 +99,7 @@ class ChartBasic extends HTMLElement {
                 }, (self.config.interval || 15) * 1000);
             }
 
-        }, (Math.random() * 1000) + 100);
+        }, (Math.random() * 10000) + 100);
         console.log("connect basic-chart", this);
     }
 
