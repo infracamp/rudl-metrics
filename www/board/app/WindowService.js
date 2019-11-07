@@ -3,7 +3,7 @@
  */
 
 
-module.service("WindowService", function ($interval, $http) {
+module.service("WindowService", function ($interval) {
     "use strict";
     var self = this;
 

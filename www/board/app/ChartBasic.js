@@ -2,11 +2,9 @@
 
 class ChartBasic extends HTMLElement {
 
-
     constructor() {
         super();
         this.config = false;
-
         this.interval = null;
         this.chart = null;
     }
