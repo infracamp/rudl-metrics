@@ -1,5 +1,8 @@
 # Query the influx db
 
+## Tags
+
+To aggregate by something, it must be specified as tag.
 
 ## 
 
