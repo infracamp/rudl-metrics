@@ -47,7 +47,7 @@ class HtmlFrame extends HTMLElement {
                 kasimir_http(self.config.source).withBearerToken(urlParams.get("token") || "none").plain = (response) => {
                     element.innerHTML = response;
                 };
-            }, (self.config.interval || 5) * 1000);
+            }, (self.config.interval || 30) * 1000);
 
 
         }, (Math.random() * 10000) + 100);

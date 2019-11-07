@@ -203,13 +203,14 @@ dashboards:
     elements:
     - name: wurst
       source: /api/data/html/nodes
+    interval: 5
 
-  - name: Gitlab Deploy
+  - name: Gitlab
     type: html
     elements:
     - name: wurst
       source: /api/data/html/gitlab-pipeline
-    interval: 45
+    interval: 30
 
 
 
