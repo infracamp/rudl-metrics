@@ -10,20 +10,9 @@ namespace Tadis;
 
 use InfluxDB\Client;
 use InfluxDB\Database;
-use Phore\FileSystem\PhoreTempFile;
-use Phore\Html\Fhtml\FHtml;
-use Phore\Html\Helper\Highlighter;
-use Phore\HttpClient\Ex\PhoreHttpRequestException;
-use Phore\HttpClient\Handler\PhoreHttpFileStream;
-use Phore\HttpClient\PhoreHttpAsyncQueue;
-use Phore\HttpClient\PhoreHttpRequest;
-use Phore\HttpClient\PhoreHttpResponse;
 use Phore\MicroApp\Type\Request;
-use Phore\MicroApp\Type\RouteParams;
 use Phore\StatusPage\BasicAuthStatusPageApp;
-use Phore\StatusPage\Mod\ModInterMicroServiceNavigaion;
 use Phore\StatusPage\PageHandler\NaviButton;
-use Phore\StatusPage\PageHandler\NaviButtonWithIcon;
 use Talpa\Flesto\FlestoStoreInflux;
 
 
@@ -32,6 +21,7 @@ require __DIR__ . "/../../vendor/autoload.php";
 set_time_limit(600);
 
 $app = new BasicAuthStatusPageApp("rudl-metrics", "/admin");
+$app->activateExceptionErrorHandlers();
 $app->theme->frameworks["highlightjs"] = true;
 
 
