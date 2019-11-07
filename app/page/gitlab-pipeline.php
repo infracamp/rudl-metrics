@@ -21,13 +21,16 @@ if ($gitlabToken == "") {
     return;
 }
 
+try {
+    $result = phore_http_request("https://gitlab.com/api/v4/projects?membership=1&simple=1")
+        ->withHeaders(["PRIVATE-TOKEN" => $gitlabToken])
+        ->send()
+        ->getBodyJson();
 
-$result = phore_http_request("https://gitlab.com/api/v4/projects?membership=1&simple=1")
-    ->withHeaders(["PRIVATE-TOKEN" => $gitlabToken])
-    ->send()
-    ->getBodyJson();
-
-
+} catch (\Exception $e) {
+    echo "<h1>Gitlab token invalid or unable to pull gitlab service</h1>";
+    return;
+}
 
 function parseDate(string $in) : \DateTime {
     if (preg_match("/^([0-9\-]+)T([0-9\:]+)/", $in, $matches)) {
@@ -52,7 +55,7 @@ foreach ($result as $index => $cur) {
     $date = parseDate($cur["last_activity_at"]);
 
 
-    $nodeInfo[] = fhtml([$icon, "b @style=padding-left:10px;font-size:34px" => $cur["name"], "small" =>" :" . $cur["default_branch"]]);
+    $nodeInfo[] = fhtml([$icon, "b @style=padding-left:25px;font-size:34px" => $cur["name"], "small" =>" :" . $cur["default_branch"]]);
     $nodeInfo[] = fhtml(["b @style=font-size:34px" => phore_format()->dateInterval((time() - $date->getTimestamp()), true)]);
     //$nodeInfo[] = $cur[""]
 
@@ -88,6 +91,7 @@ foreach ($result as $index => $cur) {
 
 
 echo pt("table-striped table-hover")->basic_table(
-    [ "Repo", "Date", ""],
-    $nodes
+    [ "Repo", "Update", ""],
+    $nodes,
+    ["", "@style=text-align:right", "@style=float:right"]
 );
