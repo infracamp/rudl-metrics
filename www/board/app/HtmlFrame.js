@@ -43,7 +43,8 @@ class HtmlFrame extends HTMLElement {
 
             self.interval = window.setInterval(function () {
                 console.log("query", self.config);
-                kasimir_http(self.config.source).plain = (response) => {
+                var urlParams = new URLSearchParams(window.location.search);
+                kasimir_http(self.config.source).withBearerToken(urlParams.get("token") || "none").plain = (response) => {
                     element.innerHTML = response;
                 };
             }, (self.config.interval || 5) * 1000);

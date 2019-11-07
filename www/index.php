@@ -38,6 +38,22 @@ $app->define("database", function () {
     return $db;
 });
 
+$app->define("dashTokenValid", function (Request $request) : bool {
+    $config = phore_file("/mod/etc/config.yaml")->get_yaml();
+    if ($request->GET->has("token")) {
+        $token = $request->GET->get("token");
+        if (in_array($token, $config["dash_tokens"]))
+            return true;
+    }
+    if ($request->authorizationMethod === "bearer") {
+        if (in_array($request->getAuthBearerToken(), $config["dash_tokens"])) {
+            return true;
+        }
+    }
+    throw new \Exception("Token invalid. Access denied! Specify valid ?token=");
+
+});
+
 $app->router->onPost("/v1/push/node", function (Request $request, Database $database) {
     $points = [];
     $in = $request->getJsonBody();
@@ -58,7 +74,7 @@ require __DIR__ . "/../app/analytics.php";
 
 
 $app->router->onGet("/api/config.json", function () {
-    $data = phore_file(__DIR__ . "/../etc/config.yaml")->get_yaml();
+    $data = phore_file( "/mod/etc/dash.yaml")->get_yaml();
 
     foreach ($data["dashboards"] as $key => &$dashboard) {
         foreach ($dashboard as &$item) {
@@ -66,7 +82,7 @@ $app->router->onGet("/api/config.json", function () {
                 continue;
             foreach ($item["elements"] as &$element) {
                 if (isset ($element["template"]))
-                    $element["template"] = phore_file(__DIR__ . "/../etc/" . $element["template"])->get_yaml();
+                    $element["template"] = phore_file("/mod/etc/" . $element["template"])->get_yaml();
             }
 
         }
@@ -86,7 +102,7 @@ $app->router->onGet("/", function () {
 });
 
 
-$app->router->onGet("/dash", function() {
+$app->router->onGet("/dash", function($dashTokenValid) {
     echo phore_file(__DIR__ . "/board/dashboard.inc.html")->get_contents();
     return true; // Continue with next controllers.
 });

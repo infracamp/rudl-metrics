@@ -1,0 +1,197 @@
+
+dashboards:
+  main:
+
+  - name: Services
+    type: list
+    elements:
+    - name: infracamp
+      template: chart/service.yaml
+      source: /api/data/service.json
+      query: https://infracamp.org
+      select:
+      - time
+      - connect
+      - lookup
+      append: true
+
+
+    - name: ulan
+      template: chart/service.yaml
+      source: /api/data/service.json
+      query: http://ulan.talpa-services.de
+      select:
+      - time
+      - connect
+      - lookup
+      append: true
+      interval: 15
+
+    - name: tadis
+      template: chart/service.yaml
+      source: /api/data/service.json
+      query: http://tadis.talpa-services.de
+      select:
+      - time
+      - connect
+      - lookup
+      append: true
+      interval: 15
+
+    - name: rsync-ssh1
+      template: chart/service.yaml
+      source: /api/data/service.json
+      query: http://rsync-ssh1.talpa-services.de
+      select:
+      - time
+      - connect
+      - lookup
+      append: true
+      interval: 15
+
+    - name: t4s
+      template: chart/service.yaml
+      source: /api/data/service.json
+      query: http://login.talpa-services.de
+      select:
+      - time
+      - connect
+      - lookup
+      append: true
+      interval: 15
+
+    - name: ulan-new
+      template: chart/service.yaml
+      source: /api/data/service.json
+      query: https://ulan-new.talpa-services.de
+      select:
+      - time
+      - connect
+      - lookup
+      append: true
+      interval: 15
+
+    - name: tadis-new
+      template: chart/service.yaml
+      source: /api/data/service.json
+      query: https://tadis-new.talpa-services.de
+      select:
+      - time
+      - connect
+      - lookup
+      append: true
+      interval: 15
+
+    - name: flesto
+      template: chart/service.yaml
+      source: /api/data/service.json
+      query: http://flesto.talpa-services.de
+      select:
+      - time
+      - connect
+      - lookup
+      append: true
+      interval: 15
+
+    - name: cockpit talpa.io
+      template: chart/service.yaml
+      source: /api/data/service.json
+      query: http://cockpit.talpa.io
+      select:
+      - time
+      - connect
+      - lookup
+      append: true
+      interval: 15
+
+    - name: t4s-cockpit
+      template: chart/service.yaml
+      source: /api/data/service.json
+      query: https://settings.talpa-services.de
+      select:
+      - time
+      - connect
+      - lookup
+      append: true
+      interval: 15
+
+    - name: tmac
+      template: chart/service.yaml
+      source: /api/data/service.json
+      query: https://tmac.talpa-services.de
+      select:
+      - time
+      - connect
+      - lookup
+      append: true
+      interval: 15
+
+    - name: talpalytics
+      template: chart/service.yaml
+      source: /api/data/service.json
+      query: https://talpalytics.talpa-services.de
+      select:
+      - time
+      - connect
+      - lookup
+      append: true
+      interval: 15
+
+    - name: timeh
+      template: chart/service.yaml
+      source: /api/data/service.json
+      query: https://timeh-new.talpa-services.de
+      select:
+      - time
+      - connect
+      - lookup
+      append: true
+      interval: 15
+
+    - name: metrics
+      template: chart/service.yaml
+      source: /api/data/service.json
+      query: https://metrics.jupp.talpa-services.de
+      select:
+      - time
+      - connect
+      - lookup
+      append: true
+      interval: 15
+
+  - name: Cloudfront
+    type: list
+    elements:
+      - name: lavg arnold
+        template: chart/default.yaml
+        source: /api/data/stats.json
+        query: SELECT * FROM node_stat ORDER BY time DESC LIMIT 30
+        select:
+          - loadavg
+
+      - name: fs arnold
+        template: chart/default.yaml
+        source: /api/data/stats.json
+        query: SELECT * FROM node_stat ORDER BY time DESC LIMIT 30
+        select:
+          - fs_use_prct
+          - fs_iuse_prct
+        yAxisMax: 100
+
+      - name: mem arnold
+        template: chart/default.yaml
+        source: /api/data/stats.json
+        query: SELECT (mem_avail_kb / mem_total_kb) * 100 as mem_usage FROM node_stat ORDER BY time DESC LIMIT 30
+        select:
+          - mem_usage
+        yAxisMax: 100
+
+  - name: Nodes
+    type: html
+    elements:
+    - name: wurst
+      source: /api/data/html/nodes
+
+
+
+

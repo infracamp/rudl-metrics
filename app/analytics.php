@@ -17,7 +17,7 @@ use Phore\MicroApp\Type\Request;
 
 /* @var $app App */
 
-$app->router->onPost("/api/data/stats.json", function (Request $request, Database $database) {
+$app->router->onPost("/api/data/stats.json", function (Request $request, Database $database, $dashTokenValid) {
     $ret = ["status"=>"ok", "data" => []];
 
     $body = $request->getJsonBody();
@@ -37,7 +37,7 @@ $app->router->onPost("/api/data/stats.json", function (Request $request, Databas
 });
 
 
-$app->router->onPost("/api/data/service.json", function (Request $request) {
+$app->router->onPost("/api/data/service.json", function (Request $request, $dashTokenValid) {
 
     $body = $request->getJsonBody();
     $query = $body["query"];
@@ -65,7 +65,7 @@ $app->router->onPost("/api/data/service.json", function (Request $request) {
 });
 
 
-$app->router->onGet("/api/data/html/:page", function (Request $request, Database $database, string $page) {
+$app->router->onGet("/api/data/html/:page", function (Request $request, Database $database, string $page, $dashTokenValid) {
 
     require __DIR__ . "/page/" . $page . ".php";
 

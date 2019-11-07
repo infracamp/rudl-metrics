@@ -42,7 +42,8 @@ class ChartBasic extends HTMLElement {
         };
 
         var update = function() {
-            kasimir_http(self.config.source).withBody(self.config).json = (response) => {
+            var urlParams = new URLSearchParams(window.location.search);
+            kasimir_http(self.config.source).withBearerToken(urlParams.get("token") || "none").withBody(self.config).json = (response) => {
                 if (self.config.append === true) {
                     var keep = self.config.keep || 30;
 
