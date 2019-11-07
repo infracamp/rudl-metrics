@@ -51,7 +51,7 @@ $nodes = [];
 foreach ($result as $index => $cur) {
 
     $nodeInfo = [];
-    $icon = $cur["avatar_url"] != null ? fhtml("img @src=? @height=40 @widht=40", [$cur["avatar_url"]]) : \fhtml("div @style=display:inline-block;height:40px;width:40px;vertical-align:middle;");
+    $icon = $cur["avatar_url"] != null ? fhtml("img @src=? @height=40 @width=40", [$cur["avatar_url"]]) : \fhtml("div @style=display:inline-block;height:40px;width:40px;vertical-align:middle;");
     $date = parseDate($cur["last_activity_at"]);
 
 
