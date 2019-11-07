@@ -161,7 +161,7 @@ dashboards:
   - name: Cloudfront
     type: list
     elements:
-      - name: lavg arnold
+      - name: req_err_arnold
         template: chart/default.yaml
         source: /api/data/stats.json
         query: SELECT * FROM node_stat ORDER BY time DESC LIMIT 30
