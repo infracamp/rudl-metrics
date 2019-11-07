@@ -14,7 +14,6 @@ use Phore\Html\Fhtml\FHtml;
 
 $gitlabToken = CONF_GITLAB_TOKEN;
 
-echo "<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\" integrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\">";
 
 if ($gitlabToken == "") {
     echo "<h1>Gitlab support disabled. Please provide CONF_GITLAB_TOKEN to use this feature</h1>";
@@ -55,7 +54,7 @@ foreach ($result as $index => $cur) {
     $date = parseDate($cur["last_activity_at"]);
 
 
-    $nodeInfo[] = fhtml([$icon, "b @style=padding-left:25px;font-size:34px" => $cur["name"], "small" =>" :" . $cur["default_branch"]]);
+    $nodeInfo[] = fhtml(["b @style=padding-left:25px;font-size:34px" => $cur["name"], "small" =>" :" . $cur["default_branch"]]);
     $nodeInfo[] = fhtml(["b @style=font-size:34px" => phore_format()->dateInterval((time() - $date->getTimestamp()), true)]);
     //$nodeInfo[] = $cur[""]
 

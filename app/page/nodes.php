@@ -69,8 +69,6 @@ foreach ($nodeData as $cur) {
 
 }
 
-echo "<link rel=\"stylesheet\" href=\"//cdn.fuman.de/bootstrapcdn/bootstrap/3.3.4/css/bootstrap.min.css\">";
-
 
 echo pt("table-striped table-hover")->basic_table(
     ["Cluster", "Node", "Last seen", "loadavg", "loadavg5m", "loadavg15m", "fs", "inode", "mem_free", "hdd_free"],
