@@ -1,11 +1,12 @@
 type: "line"
 data:
   datasets:
+    - data: []
+      borderColor: 'rgb(76, 145, 218)'
 
 options:
   animation:
     duration: 0
-
 
   legend:
     display: false
@@ -15,8 +16,9 @@ options:
     yAxes:
       - ticks:
           beginAtZero: true
-          suggestedMax: 8
+          suggestedMax: 80
+
 
     xAxes:
-    - ticks:
-        display: false
+      - ticks:
+          display: false

@@ -2,11 +2,9 @@
 
 class ChartBasic extends HTMLElement {
 
-
     constructor() {
         super();
         this.config = false;
-
         this.interval = null;
         this.chart = null;
     }
@@ -32,7 +30,7 @@ class ChartBasic extends HTMLElement {
     connectedCallback() {
         var self = this;
         var shadow = this.attachShadow({mode: "open"});
-        shadow.innerHTML = '<style>.failed { background-color: lightcoral }</style><div><canvas id="chart"></canvas><p style="float: left;color: red; font-size: 18px" id="msg"></p></div>';
+        shadow.innerHTML = '<style>.failed { background-color: lightcoral }</style><div><p style="padding-left: 35px; position: absolute;color: black; width: 300px; font-size: 18px" id="msg"></p><canvas id="chart"></canvas></div>';
         var element = shadow.getElementById("chart");
         var msgElem = shadow.getElementById("msg");
         var chartData = {
@@ -40,6 +38,47 @@ class ChartBasic extends HTMLElement {
                 datasets: []
             }
         };
+
+        var update = function() {
+            var urlParams = new URLSearchParams(window.location.search);
+            kasimir_http(self.config.source).withBearerToken(urlParams.get("token") || "none").withBody(self.config).json = (response) => {
+                if (self.config.append === true) {
+                    var keep = self.config.keep || 30;
+
+                    for(var i = 0; i < self.config.select.length; i++) {
+                        var point = response.data[self.config.select[i]];
+                        if (typeof chartData.data.datasets[i] === "undefined") {
+                            chartData.data.datasets.push({
+                                data: []
+                            });
+                        }
+                        chartData.data.datasets[i].data.push(point);
+                        if (chartData.data.datasets[i].data.length > keep)
+                            chartData.data.datasets[i].data.shift();
+                    }
+                    chartData.data.labels = new Array(keep);
+                } else {
+                    let datasets = [];
+                    for(var i = 0; i < self.config.select.length; i++) {
+                        var serie = response.data[self.config.select[i]];
+                        datasets.push({data: serie});
+                    }
+                    chartData.data.datasets = datasets;
+                    chartData.data.labels = new Array(serie.length);
+                }
+
+                if (response.status == "ok") {
+                    element.classList.remove("failed");
+                    msgElem.innerText = "";
+                } else {
+                    element.classList.add("failed");
+                    msgElem.innerText = response.status;
+
+                }
+
+                self.chart.update();
+            };
+        }
 
         window.setTimeout(function () {
             console.log("connected");
@@ -51,55 +90,11 @@ class ChartBasic extends HTMLElement {
                 chartData.options.scales.yAxes[0].ticks.suggestedMax = self.config.yAxisMax;
 
             if (typeof self.config.source != "undefined") {
-                self.interval = window.setInterval(function () {
-                    // console.log("query", self.config.source);
-                    // console.log(self.config);
-                    kasimir_http(self.config.source).withBody(self.config).json = (response) => {
-
-
-                        if (self.config.append === true) {
-                            var keep = self.config.keep || 30;
-
-                            for(var i = 0; i < self.config.select.length; i++) {
-                                var point = response.data[self.config.select[i]];
-                                if (typeof chartData.data.datasets[i] === "undefined") {
-                                    chartData.data.datasets.push({
-                                        data: []
-                                    });
-                                }
-                                chartData.data.datasets[i].data.push(point);
-                                if (chartData.data.datasets[i].data.length > keep)
-                                    chartData.data.datasets[i].data.shift();
-                            }
-                            chartData.data.labels = new Array(keep);
-                        } else {
-                            let datasets = [];
-                            for(var i = 0; i < self.config.select.length; i++) {
-                                var serie = response.data[self.config.select[i]];
-                                datasets.push({data: serie});
-                            }
-                            chartData.data.datasets = datasets;
-                            chartData.data.labels = new Array(serie.length);
-                        }
-
-                        if (response.status == "ok") {
-                            element.classList.remove("failed");
-                            msgElem.innerText = "";
-                        } else {
-                            element.classList.add("failed");
-                            msgElem.innerText = response.status;
-
-                        }
-
-                        self.chart.update();
-                    };
-
-
-
-                }, (self.config.interval || 15) * 1000);
+                self.interval = window.setInterval(update, (self.config.interval || 10) * 1000);
+                update();
             }
 
-        }, (Math.random() * 1000) + 100);
+        }, (Math.random() * 10000) + 100);
         console.log("connect basic-chart", this);
     }
 

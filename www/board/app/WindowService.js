@@ -3,7 +3,7 @@
  */
 
 
-module.service("WindowService", function ($interval, $http) {
+module.service("WindowService", function ($interval) {
     "use strict";
     var self = this;
 
@@ -20,14 +20,11 @@ module.service("WindowService", function ($interval, $http) {
     this.config = {tabs: []};
 
     var update= function () {
-      $http({
-        url: "/api/config.json",
-        timeout: 2000
-      }).then(function (data) {
-        console.log(data);
-        self.config.tabs = data.data.dashboards.main;
-        console.log("hello", self.config);
-      })
+        var urlParams = new URLSearchParams(window.location.search);
+        kasimir_http("/api/config.json").withBearerToken(urlParams.get("token") || "none").json = (response) => {
+            self.config.tabs = response.dashboards.main
+        };
+
     }
 
     update();
