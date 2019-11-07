@@ -39,7 +39,7 @@ $app->define("database", function () {
 });
 
 $app->define("dashTokenValid", function (Request $request) : bool {
-    $config = phore_file("/mod/etc/config.yaml")->get_yaml();
+    $config = phore_file("/mod/metrics/config.yaml")->get_yaml();
     if ($request->GET->has("token")) {
         $token = $request->GET->get("token");
         if (in_array($token, $config["dash_tokens"]))
@@ -73,8 +73,8 @@ $app->router->onPost("/v1/push/node", function (Request $request, Database $data
 require __DIR__ . "/../app/analytics.php";
 
 
-$app->router->onGet("/api/config.json", function () {
-    $data = phore_file( "/mod/etc/dash.yaml")->get_yaml();
+$app->router->onGet("/api/config.json", function ($dashTokenValid) {
+    $data = phore_file( "/mod/metrics/dash.yaml")->get_yaml();
 
     foreach ($data["dashboards"] as $key => &$dashboard) {
         foreach ($dashboard as &$item) {
@@ -82,7 +82,7 @@ $app->router->onGet("/api/config.json", function () {
                 continue;
             foreach ($item["elements"] as &$element) {
                 if (isset ($element["template"]))
-                    $element["template"] = phore_file("/mod/etc/" . $element["template"])->get_yaml();
+                    $element["template"] = phore_file("/mod/metrics/" . $element["template"])->get_yaml();
             }
 
         }

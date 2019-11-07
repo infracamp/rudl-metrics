@@ -5,7 +5,7 @@ ENV DEV_CONTAINER_NAME="rudl-metrics"
 ENV DEBUG_MODE="0"
 
 ADD / /opt
-ADD /etc /mnt/etc
+ADD /metrics /mnt/etc
 
 RUN ["bash", "-c",  "chown -R user /opt"]
 RUN ["/kickstart/flavorkit/scripts/start.sh", "build"]
