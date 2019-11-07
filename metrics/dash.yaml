@@ -162,29 +162,35 @@ dashboards:
   - name: Cloudfront
     type: list
     elements:
-      - name: req_err_arnold
+      - name: req_total (12h)
         template: chart/default.yaml
         source: /api/data/stats.json
-        query: SELECT * FROM node_stat ORDER BY time DESC LIMIT 30
+        query: SELECT count(status) as num FROM syslog WHERE time > now() - 12h GROUP BY time(15m)
         select:
-          - loadavg
+          - num
 
-      - name: fs arnold
+      - name: req_total_500 (12h)
         template: chart/default.yaml
         source: /api/data/stats.json
-        query: SELECT * FROM node_stat ORDER BY time DESC LIMIT 30
+        query: SELECT count(status) as num FROM syslog WHERE time > now() - 12h AND status='500' GROUP BY time(15m)
         select:
-          - fs_use_prct
-          - fs_iuse_prct
-        yAxisMax: 100
+          - num
 
-      - name: mem arnold
+
+      - name: req_total_404 (12h)
         template: chart/default.yaml
         source: /api/data/stats.json
-        query: SELECT (mem_avail_kb / mem_total_kb) * 100 as mem_usage FROM node_stat ORDER BY time DESC LIMIT 30
+        query: SELECT count(status) as num FROM syslog WHERE time > now() - 12h AND status='500' GROUP BY time(15m)
         select:
-          - mem_usage
-        yAxisMax: 100
+          - num
+
+      - name: total_kb_in (12h)
+        template: chart/default.yaml
+        source: /api/data/stats.json
+        query: SELECT count(status) as num FROM syslog WHERE time > now() - 12h AND status='500' GROUP BY time(15m)
+        select:
+        - num
+
 
   - name: Nodes
     type: html
