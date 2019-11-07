@@ -97,7 +97,8 @@ $app->router->onGet("/api/config.json", function ($dashTokenValid) {
 $app->router->onGet("/", function () {
     return [
         "success" => true,
-        "msg" => "rudl-metrics ready"
+        "msg" => "rudl-metrics ready " . VERSION_INFO,
+
     ];
 });
 

@@ -1,4 +1,21 @@
 {
+  "name": "infracamp/rudl-metrics",
+  "type": "project",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Matthias Leuffen",
+      "email": "m@tth.es"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Rudl\\": "src/"
+    },
+    "files": [
+      "config.php"
+    ]
+  },
   "minimum-stability": "dev",
   "require": {
     "phore/cloudtool": "dev-master",
