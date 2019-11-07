@@ -71,6 +71,7 @@ foreach ($result as $index => $cur) {
         "running" => "badge-primary",
         "success" => "badge-success",
         "failed" => "badge-danger",
+        "pending" => "badge-info",
         "polling error" => "badge-warning",
         "undefined" => "badge-light"
     ];
