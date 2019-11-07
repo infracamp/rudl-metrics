@@ -70,9 +70,17 @@ class SyslogProcessor extends AbstractSyslogProcessor {
                 "system" => $curMessage["system"],
                 "facility" => $curMessage["facility"],
                 "severity" => $curMessage["severity"],
-                "clientIp" => $curMessage["clientIp"]
+                "clientIp" => $curMessage["clientIp"],
+
+                "http_host" => $curMessage["http_host"],
+                "request_method" => $curMessage["request_method"],
+                "request_uri" => $curMessage["request_uri"],
+                "server_protocol" => $curMessage["server_protocol"],
+                "status" => $curMessage["status"],
+                "remote_addr" => $curMessage["remote_addr"]
             ];
-            unset ($msg["cluster"], $msg["service"]);
+            unset ($msg["cluster"], $msg["service"], $msg["http_host"], $msg["request_method"],$msg["request_uri"],$msg["server_protocol"]);
+            unset ($msg["status"], $msg["remote_addr"], $msg["http_host"]);
 
             $points[] = new Point("syslog",null,$tags, $msg, (int)($curMessage["timestamp"] * 1000));
         }
