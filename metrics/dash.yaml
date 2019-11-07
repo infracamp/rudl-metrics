@@ -162,41 +162,54 @@ dashboards:
   - name: Cloudfront
     type: list
     elements:
-      - name: req_total (12h)
+      - name: req_total (12h/15m)
         template: chart/default.yaml
         source: /api/data/stats.json
         query: SELECT count(status) as num FROM syslog WHERE time > now() - 12h GROUP BY time(15m)
         select:
           - num
 
-      - name: req_total_500 (12h)
+      - name: req_total_500 (12h/15m)
         template: chart/default.yaml
         source: /api/data/stats.json
-        query: SELECT count(status) as num FROM syslog WHERE time > now() - 12h AND status='500' GROUP BY time(15m)
+        query: SELECT count(status) as num FROM syslog WHERE time > now() - 12h AND status=500 GROUP BY time(15m)
         select:
           - num
 
 
-      - name: req_total_404 (12h)
+      - name: req_total_404 (12h/15m)
         template: chart/default.yaml
         source: /api/data/stats.json
-        query: SELECT count(status) as num FROM syslog WHERE time > now() - 12h AND status='500' GROUP BY time(15m)
+        query: SELECT count(status) as num FROM syslog WHERE time > now() - 12h AND status=404 GROUP BY time(15m)
         select:
           - num
 
-      - name: total_kb_in (12h)
+      - name: total_mb_in (12h/15m)
         template: chart/default.yaml
         source: /api/data/stats.json
-        query: SELECT count(status) as num FROM syslog WHERE time > now() - 12h AND status='500' GROUP BY time(15m)
+        query: SELECT sum(request_length) / 1024 / 1024 as num FROM syslog WHERE time > now() - 12h GROUP BY time(15m)
         select:
         - num
 
+      - name: total_mb_in (12h/15m)
+        template: chart/default.yaml
+        source: /api/data/stats.json
+        query: SELECT sum(bytes_sent) / 1024 / 1024 as num FROM syslog WHERE time > now() - 12h GROUP BY time(15m)
+        select:
+        - num
 
   - name: Nodes
     type: html
     elements:
     - name: wurst
       source: /api/data/html/nodes
+
+  - name: Gitlab Deploy
+    type: html
+    elements:
+    - name: wurst
+      source: /api/data/html/gitlab-pipeline
+    interval: 45
 
 
 

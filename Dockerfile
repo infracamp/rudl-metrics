@@ -3,6 +3,7 @@ FROM infracamp/kickstart-flavor-gaia:testing
 ENV DEV_CONTAINER_NAME="rudl-metrics"
 
 ENV DEBUG_MODE="0"
+ENV CONF_GITLAB_TOKEN=""
 
 ADD / /opt
 ADD /metrics /mod/metrics
