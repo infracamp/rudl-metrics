@@ -3,7 +3,6 @@
  */
 
 var module = angular.module("module.Main", [
-    "ui.bootstrap"
 ]);
 
 module.controller("MainCtrl", function (WindowService, $interval, $http) {

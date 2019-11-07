@@ -30,7 +30,7 @@ class ChartBasic extends HTMLElement {
     connectedCallback() {
         var self = this;
         var shadow = this.attachShadow({mode: "open"});
-        shadow.innerHTML = '<style>.failed { background-color: lightcoral }</style><div><canvas id="chart"></canvas><p style="float: left;color: red; font-size: 18px" id="msg"></p></div>';
+        shadow.innerHTML = '<style>.failed { background-color: lightcoral }</style><div><p style="padding-left: 35px; position: absolute;color: black; width: 300px; font-size: 18px" id="msg"></p><canvas id="chart"></canvas></div>';
         var element = shadow.getElementById("chart");
         var msgElem = shadow.getElementById("msg");
         var chartData = {
