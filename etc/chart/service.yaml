@@ -1,6 +1,8 @@
 type: "line"
 data:
   datasets:
+    - data: []
+      borderColor: 'rgb(76, 145, 218)'
 
 options:
   animation:

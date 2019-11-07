@@ -46,7 +46,7 @@ class HtmlFrame extends HTMLElement {
                 kasimir_http(self.config.source).plain = (response) => {
                     element.innerHTML = response;
                 };
-            }, (self.config.interval || 10) * 1000);
+            }, (self.config.interval || 5) * 1000);
 
 
         }, (Math.random() * 10000) + 100);
