@@ -212,16 +212,12 @@ dashboards:
       source: /api/data/html/gitlab-pipeline
       interval: 30
 
-
-
   - name: Error/15m
     type: html
     elements:
     - name: wurst
       source: /api/data/html/top-service-error
       interval: 30
-
-
 
   - name: OK/15m
     type: html
