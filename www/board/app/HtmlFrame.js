@@ -33,8 +33,8 @@ class HtmlFrame extends HTMLElement {
     connectedCallback() {
         var self = this;
         var shadow = this.attachShadow({mode: "open"});
-        shadow.innerHTML = '<div id="main"></div>';
-        var element = shadow.getElementById("main");
+        shadow.innerHTML = '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"><div id="ctnt"></div>';
+        var element = shadow.getElementById("ctnt");
 
         window.setTimeout(function () {
             console.log("connected");

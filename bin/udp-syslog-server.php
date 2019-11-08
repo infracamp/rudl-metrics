@@ -18,7 +18,6 @@ use Phore\SockServer\SocketServer;
 use Psr\Log\LogLevel;
 
 require __DIR__ . "/../vendor/autoload.php";
-require __DIR__ . "/../config.php";
 
 
 phore_log()->setDriver(new PhoreEchoLoggerDriver());
@@ -70,9 +69,17 @@ class SyslogProcessor extends AbstractSyslogProcessor {
                 "system" => $curMessage["system"],
                 "facility" => $curMessage["facility"],
                 "severity" => $curMessage["severity"],
-                "clientIp" => $curMessage["clientIp"]
+                "clientIp" => $curMessage["clientIp"],
+
+                "http_host" => $msg["http_host"],
+                "request_method" => $msg["request_method"],
+                "request_uri" => $msg["request_uri"],
+                "server_protocol" => $msg["server_protocol"],
+                "status" => $msg["status"],
+                "remote_addr" => $msg["remote_addr"]
             ];
-            unset ($msg["cluster"], $msg["service"]);
+            unset ($msg["cluster"], $msg["service"], $msg["http_host"], $msg["request_method"],$msg["request_uri"],$msg["server_protocol"]);
+            unset ($msg["status"], $msg["remote_addr"]);
 
             $points[] = new Point("syslog",null,$tags, $msg, (int)($curMessage["timestamp"] * 1000));
         }
@@ -80,7 +87,8 @@ class SyslogProcessor extends AbstractSyslogProcessor {
 
         $client = new Client("localhost");
         $db = $client->selectDB("rudl");
-        $db->create(new Database\RetentionPolicy("removeafter2days", "2d"));
+        if ( ! $db->exists())
+            $db->create(new Database\RetentionPolicy("removeafter2days", "2d", 1, true));
 
         $db->writePoints($points, Database::PRECISION_MILLISECONDS);
 
