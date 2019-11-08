@@ -18,6 +18,7 @@ command:
     # Bug with influxdb - starts anyway.
 
   run:
+    - "curl http://localhost/v1/hooks/repo || true"
     - "php -f bin/udp-syslog-server.php"
 
   test:
