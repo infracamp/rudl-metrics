@@ -34,7 +34,8 @@ $app->acl->addRule(\aclRule()->route("/*")->ALLOW());
 $app->define("database", function () {
     $client = new Client("localhost");
     $db = $client->selectDB("rudl");
-    $db->create(new Database\RetentionPolicy("removeafter2days", "2d", 1, true));
+    if ( ! $db->exists())
+        $db->create(new Database\RetentionPolicy("removeafter2days", "2d", 1, true));
     return $db;
 });
 

@@ -12,8 +12,9 @@ command:
 
 
   init:
-    - "sudo service influxdb start"
-
+  - "sudo mkdir -p /data && sudo chown -R influxdb /data"
+  - "sudo service influxdb start || true"
+    # Bug with influxdb - starts anyway.
 
   run:
     - "php -f bin/udp-syslog-server.php"

@@ -15,4 +15,11 @@ SELECT count(*) as num FROM syslog WHERE time > now() - 1d AND status='200' GROU
 
 ## Select TOP Services 
 
-SELECT COUNT(status) as count, http_host FROM syslog GROUP BY http_host WHERE time > now() - 1h
+
+```sql
+SELECT count(bytes_sent) as count FROM syslog WHERE time > now() - 15m group by http_host, status
+```
+
+```
+SELECT top(cnt,cnts,5) FROM (SELECT count(bytes_sent) as cnt FROM syslog WHERE time > now() - 15m group by http_host, status)
+```
