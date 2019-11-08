@@ -7,6 +7,7 @@ class ChartBasic extends HTMLElement {
         this.config = false;
         this.interval = null;
         this.chart = null;
+        this.blockId = "" + (Math.random() * 10) + 1;
     }
 
     static get observedAttributes() { return ["config"]; }
@@ -27,6 +28,8 @@ class ChartBasic extends HTMLElement {
         }
     }
 
+
+
     connectedCallback() {
         var self = this;
         var shadow = this.attachShadow({mode: "open"});
@@ -41,7 +44,7 @@ class ChartBasic extends HTMLElement {
 
         var update = function() {
             var urlParams = new URLSearchParams(window.location.search);
-            kasimir_http(self.config.source).withBearerToken(urlParams.get("token") || "none").withBody(self.config).json = (response) => {
+            kasimir_http(self.config.source).withBearerToken(urlParams.get("token") || "none").withBlocker(self.blockId).withBody(self.config).json = (response) => {
                 if (self.config.append === true) {
                     var keep = self.config.keep || 30;
 
@@ -59,8 +62,9 @@ class ChartBasic extends HTMLElement {
                     chartData.data.labels = new Array(keep);
                 } else {
                     let datasets = [];
+                    let serie = [];
                     for(var i = 0; i < self.config.select.length; i++) {
-                        var serie = response.data[self.config.select[i]];
+                        serie = response.data[self.config.select[i]];
                         datasets.push({data: serie});
                     }
                     chartData.data.datasets = datasets;

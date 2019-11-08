@@ -49,11 +49,9 @@ usort($result, function ($a, $b) {
 
 $nodes = [];
 foreach ($result as $index => $cur) {
-
     $nodeInfo = [];
     $icon = $cur["avatar_url"] != null ? fhtml("img @src=? @height=40 @width=40", [$cur["avatar_url"]]) : \fhtml("div @style=display:inline-block;height:40px;width:40px;vertical-align:middle;");
     $date = parseDate($cur["last_activity_at"]);
-
 
     $nodeInfo[] = fhtml([$icon, "b @style=padding-left:25px;font-size:34px" => $cur["name"], "small" =>" :" . $cur["default_branch"]]);
     $nodeInfo[] = fhtml(["b @style=font-size:34px" => phore_format()->dateInterval((time() - $date->getTimestamp()), true)]);

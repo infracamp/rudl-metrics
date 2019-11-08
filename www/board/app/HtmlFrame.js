@@ -9,6 +9,7 @@ class HtmlFrame extends HTMLElement {
 
         this.interval = null;
         this.chart = null;
+        this.blockId = "" + (Math.random() * 10) + 1;
     }
 
     static get observedAttributes() { return ["config"]; }
@@ -44,7 +45,7 @@ class HtmlFrame extends HTMLElement {
             self.interval = window.setInterval(function () {
                 console.log("query", self.config);
                 var urlParams = new URLSearchParams(window.location.search);
-                kasimir_http(self.config.source).withBearerToken(urlParams.get("token") || "none").plain = (response) => {
+                kasimir_http(self.config.source).withBlocker(self.blockId).withBearerToken(urlParams.get("token") || "none").plain = (response) => {
                     element.innerHTML = response;
                 };
             }, (self.config.interval || 30) * 1000);
