@@ -65,9 +65,16 @@ $app->router->onPost("/api/data/service.json", function (Request $request, $dash
 });
 
 
-$app->router->onGet("/api/data/html/:page", function (Request $request, Database $database, string $page, $dashTokenValid) {
+$app->router->onGet("/api/pages/:page", function (Request $request, Database $database, string $page, $dashTokenValid) {
+    $page = phore_assert($page)->safeString(["_", "-"]);
 
-    require __DIR__ . "/page/" . $page . ".php";
+    $file = phore_file(CONFIG_PATH . "/pages/$page.php");
+    if ($file->exists())
+        require $file;
+
+    $file = phore_file(__DIR__ . "/pages/" . $page . ".php");
+    if ($file->exists())
+        require $file;
 
     return true;
 

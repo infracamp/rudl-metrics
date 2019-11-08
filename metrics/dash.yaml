@@ -72,28 +72,28 @@ dashboards:
     type: html
     elements:
     - name: wurst
-      source: /api/data/html/nodes
+      source: /api/pages/nodes
       interval: 5
 
   - name: Gitlab
     type: html
     elements:
     - name: wurst
-      source: /api/data/html/gitlab-pipeline
+      source: /api/pages/gitlab-pipeline
       interval: 30
 
   - name: Error/15m
     type: html
     elements:
     - name: wurst
-      source: /api/data/html/top-service-error
+      source: /api/pages/top-service-error
       interval: 30
 
   - name: OK/15m
     type: html
     elements:
     - name: wurst
-      source: /api/data/html/top-service-ok
+      source: /api/pages/top-service-ok
       interval: 30
 
 
