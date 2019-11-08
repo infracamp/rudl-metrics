@@ -7,3 +7,7 @@ sudo apt-get update
 sudo apt-get install -y influxdb
 
 cp /opt/scripts/influxdb.conf /etc/influxdb/influxdb.conf
+
+
+mkdir /repo
+chown www-data:www-data /repo

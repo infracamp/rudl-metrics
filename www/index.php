@@ -11,6 +11,7 @@ use Phore\MicroApp\App;
 use Phore\MicroApp\Handler\JsonExceptionHandler;
 use Phore\MicroApp\Handler\JsonResponseHandler;
 use Phore\MicroApp\Type\Request;
+use Phore\VCS\VcsFactory;
 
 require __DIR__ . "/../vendor/autoload.php";
 
@@ -40,7 +41,7 @@ $app->define("database", function () {
 });
 
 $app->define("dashTokenValid", function (Request $request) : bool {
-    $config = phore_file("/mod/metrics/config.yaml")->get_yaml();
+    $config = phore_file(CONFIG_PATH . "/config.yaml")->get_yaml();
     if ($request->GET->has("token")) {
         $token = $request->GET->get("token");
         if (in_array($token, $config["dash_tokens"]))
@@ -75,7 +76,7 @@ require __DIR__ . "/../app/analytics.php";
 
 
 $app->router->onGet("/api/config.json", function ($dashTokenValid) {
-    $data = phore_file( "/mod/metrics/dash.yaml")->get_yaml();
+    $data = phore_file( CONFIG_PATH . "/dash.yaml")->get_yaml();
 
     foreach ($data["dashboards"] as $key => &$dashboard) {
         foreach ($dashboard as &$item) {
@@ -83,7 +84,7 @@ $app->router->onGet("/api/config.json", function ($dashTokenValid) {
                 continue;
             foreach ($item["elements"] as &$element) {
                 if (isset ($element["template"]))
-                    $element["template"] = phore_file("/mod/metrics/" . $element["template"])->get_yaml();
+                    $element["template"] = phore_file(CONFIG_PATH . "/" . $element["template"])->get_yaml();
             }
 
         }
@@ -110,7 +111,19 @@ $app->router->onGet("/dash", function($dashTokenValid) {
 });
 
 
+$app->router->on("/v1/hooks/repo", ["POST", "GET"], function () {
+    if (CONF_REPO_URL == "")
+        throw new \InvalidArgumentException("CONF_REPO_URL is not configured.");
 
+    $factory = new VcsFactory();
+    $factory->setCommitUser("rudl-metrics", "rudl-metrics@infracamp.org");
+    $factory->setAuthSshPrivateKey(phore_file(CONF_SSH_PRIV_KEY_FILE)->get_contents());
+    $repo = $factory->repository(REPO_PATH, CONF_REPO_URL);
+
+    ignore_user_abort(true);
+    $repo->pull();
+    return ["success" => true];
+});
 
 
 

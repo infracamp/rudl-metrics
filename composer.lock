@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8a43741ce08efe5696b6ff057b0be56b",
+    "content-hash": "68f71ef568896ec672e63df95d9e89e6",
     "packages": [
         {
             "name": "doctrine/instantiator",
@@ -868,6 +868,55 @@
             "time": "2019-10-02T09:46:56+00:00"
         },
         {
+            "name": "phore/objectstore",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phore/phore-objectstore.git",
+                "reference": "047e5d2f5778d53d9063c6a13824f10d193e428f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phore/phore-objectstore/zipball/047e5d2f5778d53d9063c6a13824f10d193e428f",
+                "reference": "047e5d2f5778d53d9063c6a13824f10d193e428f",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-yaml": "*",
+                "phore/core": "dev-master",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "google/cloud-storage": "dev-master",
+                "nette/tester": "^2.1@dev",
+                "phore/filesystem": "dev-master"
+            },
+            "suggest": {
+                "google/cloud-storage": "If using Google Cloud services",
+                "phore/filesystem": "If using filesystem driver"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Phore\\ObjectStore\\": "src/"
+                },
+                "files": []
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matthias Leuffen",
+                    "email": "m@tth.es"
+                }
+            ],
+            "description": "Object store for local files, google, aws",
+            "time": "2019-05-08T14:41:10+00:00"
+        },
+        {
             "name": "phore/sock-server",
             "version": "dev-master",
             "source": {
@@ -1086,6 +1135,51 @@
             "description": "CoreUI theme",
             "homepage": "https://infracamp.org/phore/",
             "time": "2019-05-24T20:42:58+00:00"
+        },
+        {
+            "name": "phore/vcs",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phore/phore-vcs.git",
+                "reference": "40bb91c974527ee1ffb0123aaf5fa7b96d01dd0b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phore/phore-vcs/zipball/40bb91c974527ee1ffb0123aaf5fa7b96d01dd0b",
+                "reference": "40bb91c974527ee1ffb0123aaf5fa7b96d01dd0b",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-yaml": "*",
+                "phore/filesystem": "dev-master",
+                "phore/objectstore": "dev-master",
+                "phore/system": "dev-master",
+                "php": ">7.1"
+            },
+            "require-dev": {
+                "phore/theme-coreui": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Phore\\VCS\\": "src/"
+                },
+                "files": []
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matthias Leuffen",
+                    "email": "leuffen@continue.de"
+                }
+            ],
+            "description": "Wrapper for git",
+            "time": "2019-07-09T11:14:34+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -2645,7 +2739,8 @@
         "phpunit/phpunit": 20,
         "phore/http-client": 20,
         "phore/status-page": 20,
-        "phore/sock-server": 20
+        "phore/sock-server": 20,
+        "phore/vcs": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

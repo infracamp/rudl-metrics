@@ -4,6 +4,7 @@ ENV DEV_CONTAINER_NAME="rudl-metrics"
 
 ENV DEBUG_MODE="0"
 ENV CONF_GITLAB_TOKEN=""
+ENV CONF_REPO_URL=""
 
 ADD / /opt
 ADD /metrics /mod/metrics

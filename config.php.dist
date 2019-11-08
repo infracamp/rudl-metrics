@@ -11,5 +11,20 @@
 define("DEV_MODE", (bool)"%DEV_MODE%");
 define("VERSION_INFO", "v0.1.%VERSION_NUMBER% (%VERSION_DATE_COMPACT%)");
 
+
+
+
+define("CONF_SSH_PRIV_KEY_FILE", "/run/secrets/rudl_ssh_private_key");
+define("CONF_REPO_URL", "%CONF_REPO_URL%");
+
+if (CONF_REPO_URL != "") {
+
+    define("REPO_PATH", "/repo");
+    define("CONFIG_PATH", REPO_PATH . "/metrics");
+} else {
+    define("CONFIG_PATH", "/mod/metrics");
+}
+
+
 define("CONF_GITLAB_TOKEN", "%CONF_GITLAB_TOKEN%");
 define("DEBUG_MODE", (bool)"%DEBUG_MODE%");
