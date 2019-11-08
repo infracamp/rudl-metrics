@@ -172,7 +172,7 @@ dashboards:
       - name: req_total_500 (12h/15m)
         template: chart/default.yaml
         source: /api/data/stats.json
-        query: SELECT count(request) as num FROM syslog WHERE time > now() - 12h AND status=500 GROUP BY time(15m)
+        query: SELECT count(request) as num FROM syslog WHERE time > now() - 12h AND status='500' GROUP BY time(15m)
         select:
           - num
 
@@ -180,7 +180,7 @@ dashboards:
       - name: req_total_404 (12h/15m)
         template: chart/default.yaml
         source: /api/data/stats.json
-        query: SELECT count(request) as num FROM syslog WHERE time > now() - 12h AND status=404 GROUP BY time(15m)
+        query: SELECT count(request) as num FROM syslog WHERE time > now() - 12h AND status='404' GROUP BY time(15m)
         select:
           - num
 
