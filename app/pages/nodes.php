@@ -72,5 +72,17 @@ foreach ($nodeData as $cur) {
 
 echo pt("table-striped table-hover")->basic_table(
     ["Cluster", "Node", "Last seen", "loadavg", "loadavg5m", "loadavg15m", "fs", "inode", "mem_free", "hdd_free"],
-    $nodes
+    $nodes,
+    [
+        "@style=font-size:34px;padding:0px",
+        "@style=font-size:34px;padding:0px",
+        "@style=font-size:34px;padding:0px",
+        "@style=font-size:34px;padding:0px",
+        "@style=font-size:34px;padding:0px",
+        "@style=font-size:34px;padding:0px",
+        "@style=font-size:34px;padding:0px",
+        "@style=font-size:34px;padding:0px",
+        "@style=font-size:34px;padding:0px",
+        "@style=font-size:34px;padding:0px"
+    ]
 );
