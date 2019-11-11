@@ -13,7 +13,7 @@ use Phore\Html\Fhtml\FHtml;
 /* @var $database \InfluxDB\Database */
 
 
-$sql = "SELECT top(cnt,http_host,request_uri,status,13) as cnt FROM (SELECT count(bytes_sent) as cnt FROM syslog WHERE time > now() - 30m AND (status='500' OR status='404') group by http_host, request_uri,status)";
+$sql = "SELECT top(cnt,http_host,request_uri,status,20) as cnt FROM (SELECT count(bytes_sent) as cnt FROM syslog WHERE time > now() - 30m AND (status='500' OR status='404') group by http_host, request_uri,status)";
 
 
 $nodeData = $database->query($sql)->getPoints();
