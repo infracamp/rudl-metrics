@@ -86,7 +86,7 @@ foreach ($result as $index => $cur) {
     $nodeInfo[] = fhtml(["h1 @style=padding:0px;margin:0px" => ["span @class=badge @{$style}" => $status]]);
 
     $nodes[] = $nodeInfo;
-    if ($index > 6)
+    if ($index > 7)
         break;
 
 }

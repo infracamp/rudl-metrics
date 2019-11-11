@@ -22,10 +22,10 @@ foreach ($nodeData as $cur) {
 
 
     $nodeInfo = [
-        fhtml(["span @style=font-size:24px" => ["code" => $cur["http_host"]]]),
-        fhtml(["span @style=font-size:24px" => ["code" => $cur["request_uri"]]]),
-        fhtml(["code @style=font-size:24px" => $cur["status"]]),
-        fhtml(["code @style=font-size:24px" => $cur["cnt"]]),
+        fhtml(["span @style=font-size:30px" => ["code" => $cur["http_host"]]]),
+        fhtml(["span @style=font-size:30px" => ["code" => $cur["request_uri"]]]),
+        fhtml(["code @style=font-size:30px" => $cur["status"]]),
+        fhtml(["code @style=font-size:30px" => $cur["cnt"]]),
     ];
 
 
@@ -38,10 +38,10 @@ echo pt("table-striped table-hover")->basic_table(
     ["Fail Host", "Fail Request", "Status", "Count"],
     $tbl,
     [
-        "@ellipsis @style=width:20%;",
-        "@ellipsis @style=width:60%;",
-        "@style=width:10%;",
-        "@style=width:10%"
+        "@ellipsis @style=width:20%;padding:0px",
+        "@ellipsis @style=width:60%;padding:0px",
+        "@style=width:10%;padding:0px",
+        "@style=width:10%;padding:0px"
     ]
 );
 echo <<<EOT
