@@ -21,7 +21,7 @@ if ($gitlabToken == "") {
 }
 
 try {
-    $result = phore_http_request("https://gitlab.com/api/v4/projects?membership=1&simple=1")
+    $result = phore_http_request("https://gitlab.com/api/v4/projects?membership=1&simple=1&order_by=last_activity_at")
         ->withHeaders(["PRIVATE-TOKEN" => $gitlabToken])
         ->send()
         ->getBodyJson();
