@@ -26,10 +26,10 @@ foreach ($nodeData as $cur) {
 
 
     $nodeInfo = [
-        fhtml(["span" => ["code" => $cur["http_host"]]]),
-        fhtml(["span" => ["code" => $cur["request_uri"]]]),
-        fhtml(["code" => $cur["status"]]),
-        fhtml(["code" => $cur["cnt"]]),
+        fhtml(["span" => ["code @style=color:green" => $cur["http_host"]]]),
+        fhtml(["span" => ["code @style=color:green" => $cur["request_uri"]]]),
+        fhtml(["code @style=color:green" => $cur["status"]]),
+        fhtml(["code @style=color:green" => $cur["cnt"]]),
     ];
 
 
