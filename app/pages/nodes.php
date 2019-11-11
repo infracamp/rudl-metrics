@@ -13,7 +13,7 @@ use Phore\Html\Fhtml\FHtml;
 /* @var $database \InfluxDB\Database */
 
 
-$nodeData = $database->query("SELECT DISTINCT(host) as host FROM node_stat GROUP BY cluster, host")->getPoints();
+$nodeData = $database->query("SELECT DISTINCT(host) as host FROM node_stat WHERE time > now() - 1h GROUP BY cluster, host")->getPoints();
 
 
 $nodes = [];
@@ -50,7 +50,13 @@ foreach ($nodeData as $cur) {
     ];
     $lastClusterName = $cur["cluster"];
 
-    $hData = $database->query("SELECT * FROM node_stat WHERE host='$hostName' ORDER BY time DESC LIMIT 1")->getPoints()[0];
+    $hData = $database->query("SELECT * FROM node_stat WHERE host='$hostName' AND time > now() - 1h ORDER BY time DESC LIMIT 1")->getPoints();
+
+    if (count ($hData) == 0) {
+        continue;
+
+    }
+    $hData = $hData[0];
 
 
     $date = parseDate($hData["time"]);
