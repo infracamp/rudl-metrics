@@ -88,7 +88,7 @@ class SyslogProcessor extends AbstractSyslogProcessor {
         $client = new Client("localhost");
         $db = $client->selectDB("rudl");
         if ( ! $db->exists())
-            $db->create(new Database\RetentionPolicy("removeafter2days", "2d", 1, true));
+            $db->create(new Database\RetentionPolicy("removeafter12h", "12h", 1, true));
 
         $db->writePoints($points, Database::PRECISION_MILLISECONDS);
 
