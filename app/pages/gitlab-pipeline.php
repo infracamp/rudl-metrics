@@ -78,8 +78,12 @@ foreach ($result as $index => $cur) {
         "undefined" => "badge-light"
     ];
 
+    $style = "badge-light";
+    if (isset ($msg2badge[$status])) {
+        $style = $msg2badge[$status];
+    }
 
-    $nodeInfo[] = fhtml(["h1 @style=padding:0px;margin:0px" => ["span @class=badge @{$msg2badge[$status]}" => $status]]);
+    $nodeInfo[] = fhtml(["h1 @style=padding:0px;margin:0px" => ["span @class=badge @{$style}" => $status]]);
 
     $nodes[] = $nodeInfo;
     if ($index > 6)
