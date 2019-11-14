@@ -27,14 +27,12 @@ dashboards:
       append: true
       interval: 15
 
-
   - name: Syslog
     type: html
     elements:
     - name: wurst
       source: /api/pages/syslog-errors
       interval: 15
-
 
   - name: Cloudfront
     type: list
