@@ -114,4 +114,58 @@ $app->addPage("/admin/query", function (Database $database, Request $request) {
 }, new NaviButton("Query"));
 
 
+$app->addPage("/admin/syslog", function (Database $database, Request $request) {
+    $q_system = $request->GET->get("system", "");
+    $q_severity = $request->GET->get("severity", "");
+
+    $whereStmts = ["1=1"];
+    if ($q_system != "")
+        $whereStmts[] = "system='" . addslashes($q_system) . "'";
+    if ($q_severity != "")
+        $whereStmts[] = "severity<" . addslashes((int)$q_severity) . "";
+
+    $query = "SELECT * FROM syslog WHERE " . implode (" AND ", $whereStmts) . " ORDER BY time DESC LIMIT 1000";
+    $queryResults = $database->query($query)->getPoints();
+
+    $rowdata = [];
+    foreach ($queryResults as $queryResult) {
+        $color = "darkslategrey";
+        if ($queryResult["severity"] < 5) {
+            $color = "darkgoldenrod";
+        }
+        if ($queryResult["severity"] < 1) {
+            $color = "darkred";
+        }
+        $rowdata[] = fhtml(["code @style=display:block;color:$color;" => "{$queryResult["time"]} {$queryResult["system"]} {$queryResult["facility"]} {$queryResult["severity"]}: {$queryResult["msg"]}"]);
+    }
+
+
+
+    $e = \fhtml();
+    $r = $e["div @row"];
+    $c1 = $r["div @col-12"];
+    $c1[] = pt()->card(
+        "See syslog values",
+        [
+            "form @action=/admin/syslog @method=get" => [
+                fhtml("input @type=text @class=col-2 @name=system @value=? @placeholder=system", [(string)$q_system]),
+                fhtml("input @type=text @class=col-1 @name=severity @value=? @placeholder=severity", [(string)$q_severity]),
+                "button @type=submit" => "senden"
+            ]
+        ]
+    );
+
+
+    $c1[] = pt()->card(
+        "Result of query: $query",
+        [
+            "div @style=overflow-y:scroll;white-space:nowrap;" => $rowdata
+        ]
+    );
+
+    return $e;
+
+}, new NaviButton("Syslog"));
+
+
 $app->serve();

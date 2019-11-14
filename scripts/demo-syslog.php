@@ -32,7 +32,10 @@ function send_remote_syslog($message, $component = "web", $program = "next_big_t
 
 
 while (true) {
-    send_remote_syslog(genLog(200));
+    send_remote_syslog(genLog(200), "web", "prog", 2, 0);
+    send_remote_syslog(genLog(200), "web", "prog", 2, 3);
+    send_remote_syslog(genLog(200), "web", "prog", 2, 5);
+    send_remote_syslog(genLog(200), "web", "prog", 2, 7);
     sleep (1);
 }
 
