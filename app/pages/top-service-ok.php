@@ -17,7 +17,7 @@ use Phore\Html\Fhtml\FHtml;
 
 
 
-$sql = "SELECT top(cnt,http_host,request_uri,status,20) as cnt FROM (SELECT count(bytes_sent) as cnt FROM syslog WHERE time > now() - 30m AND status='200' AND request_uri!='/' group by http_host, request_uri,status)";
+$sql = "SELECT top(cnt,http_host,request_uri,status,20) as cnt FROM (SELECT count(bytes_sent) as cnt FROM cloudfront WHERE time > now() - 30m AND status='200' AND request_uri!='/' group by http_host, request_uri,status)";
 
 
 $nodeData = $database->query($sql)->getPoints();

@@ -12,7 +12,42 @@ function genLog ($status=200)
 {
     $time_iso8601 = (new DateTime())->format(DateTime::ATOM);
 
-   return "Something failed here";
+    $nginxLog = [
+
+        "cluster" => "unnamed",
+        "service" => "cloudfront",
+
+        "time_iso8601" => "$time_iso8601",
+        "status" => "$status",
+        "bytes_sent" => "1034945",
+        "body_bytes_sent" => "784092",
+
+        "remote_addr" => "192.168.24.234",
+
+        "remote_user" => "",
+        "request" => "http://xyz.de",
+        "request_time" => "329",
+
+        "request_id" => "op2kjlödfj",
+        "request_length" => "02348",
+        "request_method" => "GET",
+        "request_uri" => "https://20kdfj.wr/slkd/sdfa",
+
+        "server_addr" => "127.0.0.2",
+        "server_port" => "80",
+        "server_protocol" => "https",
+        "ssl_protocol" => "tls",
+
+        "http_host" => "198.28.217.23",
+        "http_referrer" => "",
+        "http_user_agent" => "linux",
+
+        "upstream_addr" => "182.22.28.82",
+        "upstream_response_time" => "123",
+        "upstream_connect_time" => "24"
+
+    ];
+    return json_encode($nginxLog);
 }
 
 
