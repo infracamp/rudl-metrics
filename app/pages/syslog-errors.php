@@ -35,11 +35,7 @@ foreach ($queryResults as $queryResult) {
 }
 
 
-
-
 echo \fhtml($rowdata);
-
-
 
 
 
