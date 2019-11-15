@@ -75,8 +75,8 @@ $app->router->onPost("/v1/push/node", function (Request $request, Database $data
 require __DIR__ . "/../app/analytics.php";
 
 
-$app->router->onGet("/api/config.json", function ($dashTokenValid) {
-    $data = phore_file( CONFIG_PATH . "/dash.yaml")->get_yaml();
+$app->router->onGet("/api/dash.config/:name", function ($dashTokenValid, string $name) {
+    $data = phore_file( CONFIG_PATH . "/$name.dash.yaml")->get_yaml();
 
     foreach ($data["dashboards"] as $key => &$dashboard) {
         foreach ($dashboard as &$item) {
@@ -105,8 +105,10 @@ $app->router->onGet("/", function () {
 });
 
 
-$app->router->onGet("/dash", function($dashTokenValid) {
-    echo phore_file(__DIR__ . "/board/dashboard.inc.html")->get_contents();
+$app->router->onGet("/dash/:name?", function($dashTokenValid, string $name="default") {
+    $content = phore_file(__DIR__ . "/board/dashboard.inc.html")->get_contents();
+    $content = str_replace("%%CONF_CONFIG_URL%%", "/api/dash.config/$name", $content);
+    echo $content;
     return true; // Continue with next controllers.
 });
 

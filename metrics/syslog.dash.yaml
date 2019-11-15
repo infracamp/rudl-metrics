@@ -1,0 +1,21 @@
+
+dashboards:
+  main:
+  - name: Syslog
+    type: html
+    elements:
+    - name: wurst
+      source: /api/pages/syslog-errors
+      interval: 15
+
+
+  - name: Nodes
+    type: html
+    elements:
+    - name: wurst
+      source: /api/pages/nodes
+      interval: 5
+
+
+
+

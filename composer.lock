@@ -521,12 +521,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phore/phore-core.git",
-                "reference": "6c0a97b1fac53d9c4fe12dae72aba6aabedd7807"
+                "reference": "087394cb31ba20c3d3647f68d3a28fc720302de5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phore/phore-core/zipball/6c0a97b1fac53d9c4fe12dae72aba6aabedd7807",
-                "reference": "6c0a97b1fac53d9c4fe12dae72aba6aabedd7807",
+                "url": "https://api.github.com/repos/phore/phore-core/zipball/087394cb31ba20c3d3647f68d3a28fc720302de5",
+                "reference": "087394cb31ba20c3d3647f68d3a28fc720302de5",
                 "shasum": ""
             },
             "require": {
@@ -564,7 +564,7 @@
             ],
             "description": "Phore core library",
             "homepage": "https://infracamp.org/project/phore",
-            "time": "2019-11-08T19:16:33+00:00"
+            "time": "2019-11-14T16:34:17+00:00"
         },
         {
             "name": "phore/di-base",
@@ -922,12 +922,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phore/phore-sock-server.git",
-                "reference": "bfd26d199e0b8fc39b23af2dec649d2cce19c36c"
+                "reference": "d6efb9b0256ba6c6df9ac0dd2882e89fbc80c73d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phore/phore-sock-server/zipball/bfd26d199e0b8fc39b23af2dec649d2cce19c36c",
-                "reference": "bfd26d199e0b8fc39b23af2dec649d2cce19c36c",
+                "url": "https://api.github.com/repos/phore/phore-sock-server/zipball/d6efb9b0256ba6c6df9ac0dd2882e89fbc80c73d",
+                "reference": "d6efb9b0256ba6c6df9ac0dd2882e89fbc80c73d",
                 "shasum": ""
             },
             "require": {
@@ -958,7 +958,7 @@
             "keywords": [
                 "Phore"
             ],
-            "time": "2019-11-06T15:23:34+00:00"
+            "time": "2019-11-14T15:36:42+00:00"
         },
         {
             "name": "phore/status-page",
@@ -1647,12 +1647,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "e2389334f8a98e418fabacf9376b3a637ac73d85"
+                "reference": "462f85e1bb16412ecf04e5bc728222568a854330"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/e2389334f8a98e418fabacf9376b3a637ac73d85",
-                "reference": "e2389334f8a98e418fabacf9376b3a637ac73d85",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/462f85e1bb16412ecf04e5bc728222568a854330",
+                "reference": "462f85e1bb16412ecf04e5bc728222568a854330",
                 "shasum": ""
             },
             "require": {
@@ -1722,7 +1722,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2019-11-13T20:09:40+00:00"
+            "time": "2019-11-15T08:22:48+00:00"
         },
         {
             "name": "psr/container",

@@ -21,7 +21,7 @@ module.service("WindowService", function ($interval) {
 
     var update= function () {
         var urlParams = new URLSearchParams(window.location.search);
-        kasimir_http("/api/config.json").withBearerToken(urlParams.get("token") || "none").json = (response) => {
+        kasimir_http(CONF_CONFIG_URL).withBearerToken(urlParams.get("token") || "none").json = (response) => {
             self.config.tabs = response.dashboards.main
         };
 
