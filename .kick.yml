@@ -10,7 +10,6 @@ command:
     - "sudo scripts/install.sh"
     - "composer update"
 
-
   init:
   - "sudo mkdir -p /data && sudo chown -R influxdb /data"
   - "sudo service influxdb start || true"
