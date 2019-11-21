@@ -20,8 +20,10 @@ class CloudFrontSyslogProcessor extends AbstractSyslogProcessor {
     public function filterMessage(string $message)
     {
         try {
-            if (substr($message, 0, 1) !== "{")
+            if (substr($message, 0, 1) !== "{") {
+                phore_log()->notice("Rejected $message in CloudFrontProcessor");
                 return null; // Not a json string!
+            }
 
             $data = phore_json_decode($message);
         } catch(\Exception $e) {

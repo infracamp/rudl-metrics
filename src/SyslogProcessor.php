@@ -19,6 +19,7 @@ class SyslogProcessor extends AbstractSyslogProcessor {
 
     public function filterMessage(string $message)
     {
+        phore_log()->notice("Message in on SyslogProcessor $message");
         return $message;
     }
 
