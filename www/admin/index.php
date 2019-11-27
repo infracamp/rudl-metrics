@@ -136,7 +136,7 @@ $app->addPage("/admin/syslog", function (Database $database, Request $request) {
         if ($queryResult["severity"] < 1) {
             $color = "darkred";
         }
-        $rowdata[] = fhtml(["code @style=display:block;color:$color;" => "{$queryResult["time"]} {$queryResult["system"]} {$queryResult["facility"]} {$queryResult["severity"]}: {$queryResult["msg"]}"]);
+        $rowdata[] = fhtml(["code @style=display:block;color:$color;" => "{$queryResult["time"]} {$queryResult["hostname"]} {$queryResult["system"]} {$queryResult["facility"]} {$queryResult["severity"]}: {$queryResult["msg"]}"]);
     }
 
 
