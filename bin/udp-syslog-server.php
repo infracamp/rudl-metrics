@@ -20,7 +20,7 @@ use Psr\Log\LogLevel;
 require __DIR__ . "/../vendor/autoload.php";
 
 
-phore_log()->setDriver(new PhoreEchoLoggerDriver());
+phore_log()->addDriver(new PhoreEchoLoggerDriver());
 
 
 phore_log()->setLogLevel(LogLevel::WARNING);
