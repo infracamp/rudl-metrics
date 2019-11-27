@@ -13,15 +13,14 @@ use InfluxDB\Client;
 use InfluxDB\Database;
 use InfluxDB\Point;
 use Phore\Log\Logger\PhoreEchoLoggerDriver;
+use Phore\Log\PhoreLogger;
 use Phore\SockServer\Processor\AbstractSyslogProcessor;
 use Phore\SockServer\SocketServer;
 use Psr\Log\LogLevel;
 
 require __DIR__ . "/../vendor/autoload.php";
 
-
-phore_log()->addDriver(new PhoreEchoLoggerDriver());
-
+PhoreLogger::Init(new PhoreEchoLoggerDriver());
 
 phore_log()->setLogLevel(LogLevel::WARNING);
 
