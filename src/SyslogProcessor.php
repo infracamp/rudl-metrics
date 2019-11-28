@@ -48,7 +48,7 @@ class SyslogProcessor extends AbstractSyslogProcessor {
                 "severity" => (int)$curMessage["severity"],
                 "clientIp" => (string)$curMessage["clientIp"],
             ];
-            $points[] = new Point("syslog",null,$tags, ["msg" => (string)$msg], (int)($curMessage["timestamp"] * 1000));
+            $points[] = new Point("syslog",null,$tags, ["msg" => (string)$msg], (int)($curMessage["timestamp"] * 1000000));
         }
         phore_log()->notice("Sending " . count ($points) . " Points to syslog measurement.");
 
@@ -57,7 +57,7 @@ class SyslogProcessor extends AbstractSyslogProcessor {
         if ( ! $db->exists())
             $db->create(new RetentionPolicy("removeafter12h", "12h", 1, true));
 
-        $db->writePoints($points, Database::PRECISION_MILLISECONDS);
+        $db->writePoints($points, Database::PRECISION_MICROSECONDS);
 
     }
 }
