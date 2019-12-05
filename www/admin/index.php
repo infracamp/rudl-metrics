@@ -119,6 +119,7 @@ $app->addPage("/admin/syslog", function (Database $database, Request $request) {
     $q_system = $request->GET->get("system", "");
     $q_severity = $request->GET->get("severity", "");
     $q_hostname = $request->GET->get("hostname", "");
+    $q_msg = $request->GET->get("msg", "");
 
     $whereStmts = ["1=1"];
     if ($q_system != "")
@@ -127,6 +128,8 @@ $app->addPage("/admin/syslog", function (Database $database, Request $request) {
         $whereStmts[] = "hostname='" . addslashes($q_hostname) . "'";
     if ($q_severity != "")
         $whereStmts[] = "severity<" . addslashes((int)$q_severity) . "";
+    if ($q_msg != "")
+        $whereStmts[] = "msg =~ /" . addcslashes($q_msg, "/'") . "/";
 
     $query = "SELECT * FROM syslog WHERE " . implode (" AND ", $whereStmts) . " ORDER BY time DESC LIMIT 1000";
     $queryResults = $database->query($query)->getPoints();
@@ -170,16 +173,18 @@ $app->addPage("/admin/syslog", function (Database $database, Request $request) {
     $r = $e["div @row"];
     $c1 = $r["div @col-12"];
     $c1[] = pt()->card(
-        "See syslog values",
+        "Syslog browser",
         [
             "form @action=/admin/syslog @method=get @class=form-inline" => [
                 "div @class=form-group" => [
                     ["label @class=mr-1" => "System"],
-                    fhtml("input @type=text @class=col-2 form-control @name=system @value=? @placeholder=system", [(string)$q_system]),
+                    fhtml("input @type=text @class=col-1 form-control @name=system @value=? @placeholder=system", [(string)$q_system]),
                     ["label @class=mr-1 ml-2" => "Hostname"],
-                    fhtml("input @type=text @class=col-2 form-control @name=hostname @value=? @placeholder=hostname", [(string)$q_hostname]),
+                    fhtml("input @type=text @class=col-1 form-control @name=hostname @value=? @placeholder=hostname", [(string)$q_hostname]),
                     ["label @class=mr-1 ml-2" => "Severity"],
-                    fhtml("input @type=text @class=col-2 form-control @name=severity @value=? @placeholder=severity", [(string)$q_severity]),
+                    fhtml("input @type=text @class=col-1 form-control @name=severity @value=? @placeholder=severity", [(string)$q_severity]),
+                    ["label @class=mr-1 ml-2" => "Filter"],
+                    fhtml("input @type=text @class=col-2 form-control @name=msg @value=? @placeholder=regex", [(string)$q_msg]),
                     "button @class=ml-2 btn btn-primary @type=submit" => "Apply filter"
                 ]
             ]
