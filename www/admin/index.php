@@ -131,7 +131,7 @@ $app->addPage("/admin/syslog", function (Database $database, Request $request) {
     if ($q_msg != "")
         $whereStmts[] = "msg =~ /" . addcslashes($q_msg, "/'") . "/";
 
-    $query = "SELECT * FROM syslog WHERE " . implode (" AND ", $whereStmts) . " ORDER BY time DESC LIMIT 1000";
+    $query = "SELECT * FROM syslog WHERE " . implode (" AND ", $whereStmts) . " ORDER BY time DESC LIMIT 5000";
     $queryResults = $database->query($query)->getPoints();
 
     $rowdata = [];
