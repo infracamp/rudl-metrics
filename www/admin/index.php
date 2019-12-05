@@ -13,6 +13,7 @@ use InfluxDB\Database;
 use Phore\MicroApp\Type\Request;
 use Phore\StatusPage\BasicAuthStatusPageApp;
 use Phore\StatusPage\PageHandler\NaviButton;
+use Phore\StatusPage\PageHandler\NaviButtonWithIcon;
 use Talpa\Flesto\FlestoStoreInflux;
 
 
@@ -20,7 +21,7 @@ require __DIR__ . "/../../vendor/autoload.php";
 
 set_time_limit(600);
 
-$app = new BasicAuthStatusPageApp("rudl-metrics", "/admin");
+$app = new BasicAuthStatusPageApp("Rudl Metrics", "/admin");
 $app->activateExceptionErrorHandlers();
 $app->theme->frameworks["highlightjs"] = true;
 
@@ -57,7 +58,7 @@ $app->addPage("/admin/", function () {
 
     return $e;
 
-});
+}, new NaviButtonWithIcon("Dashboard", "fas fa-home nav-icon"));
 
 
 
@@ -111,16 +112,19 @@ $app->addPage("/admin/query", function (Database $database, Request $request) {
 
     return $e;
 
-}, new NaviButton("Query"));
+}, new NaviButtonWithIcon("Query", "fas fa-database nav-icon"));
 
 
 $app->addPage("/admin/syslog", function (Database $database, Request $request) {
     $q_system = $request->GET->get("system", "");
     $q_severity = $request->GET->get("severity", "");
+    $q_hostname = $request->GET->get("hostname", "");
 
     $whereStmts = ["1=1"];
     if ($q_system != "")
         $whereStmts[] = "system='" . addslashes($q_system) . "'";
+    if ($q_hostname != "")
+        $whereStmts[] = "hostname='" . addslashes($q_hostname) . "'";
     if ($q_severity != "")
         $whereStmts[] = "severity<" . addslashes((int)$q_severity) . "";
 
@@ -128,7 +132,7 @@ $app->addPage("/admin/syslog", function (Database $database, Request $request) {
     $queryResults = $database->query($query)->getPoints();
 
     $rowdata = [];
-    foreach ($queryResults as $queryResult) {
+    foreach ($queryResults as $i => $queryResult) {
         $color = "darkslategrey";
         if ($queryResult["severity"] < 5) {
             $color = "darkgoldenrod";
@@ -136,7 +140,28 @@ $app->addPage("/admin/syslog", function (Database $database, Request $request) {
         if ($queryResult["severity"] < 1) {
             $color = "darkred";
         }
-        $rowdata[] = fhtml(["code @style=display:block;color:$color;" => "{$queryResult["time"]} {$queryResult["hostname"]} {$queryResult["system"]} {$queryResult["facility"]} {$queryResult["severity"]}: {$queryResult["msg"]}"]);
+
+        $date = strtotime($queryResult["time"]);
+        $date = date("Y-m-d H:i:s", $date);
+        $bg = "";
+        if ($i % 10 < 5)
+            $bg = "WhiteSmoke";
+
+        $rowdata[] = fhtml(
+            ["code @style=display:block;color:$color;background-color:$bg @title=:title" =>
+                [
+                    "{$date} ",
+                    ["a @href=:hostLink" => "{$queryResult["hostname"]}"], " ",
+                    ["a @href=:systemLink" => "{$queryResult["system"]}"], " ",
+                    "{$queryResult["facility"]} {$queryResult["severity"]}: {$queryResult["msg"]}"
+                ],
+            ],
+            [
+                "title" => $queryResult["time"] . ": " . $queryResult["msg"],
+                "systemLink" => "?system=" . urlencode($queryResult["system"]),
+                "hostLink" => "?hostname=" . urlencode($queryResult["hostname"])
+            ]
+        );
     }
 
 
@@ -147,10 +172,16 @@ $app->addPage("/admin/syslog", function (Database $database, Request $request) {
     $c1[] = pt()->card(
         "See syslog values",
         [
-            "form @action=/admin/syslog @method=get" => [
-                fhtml("input @type=text @class=col-2 @name=system @value=? @placeholder=system", [(string)$q_system]),
-                fhtml("input @type=text @class=col-1 @name=severity @value=? @placeholder=severity", [(string)$q_severity]),
-                "button @type=submit" => "senden"
+            "form @action=/admin/syslog @method=get @class=form-inline" => [
+                "div @class=form-group" => [
+                    ["label @class=mr-1" => "System"],
+                    fhtml("input @type=text @class=col-2 form-control @name=system @value=? @placeholder=system", [(string)$q_system]),
+                    ["label @class=mr-1 ml-2" => "Hostname"],
+                    fhtml("input @type=text @class=col-2 form-control @name=hostname @value=? @placeholder=hostname", [(string)$q_hostname]),
+                    ["label @class=mr-1 ml-2" => "Severity"],
+                    fhtml("input @type=text @class=col-2 form-control @name=severity @value=? @placeholder=severity", [(string)$q_severity]),
+                    "button @class=ml-2 btn btn-primary @type=submit" => "Apply filter"
+                ]
             ]
         ]
     );
@@ -165,7 +196,7 @@ $app->addPage("/admin/syslog", function (Database $database, Request $request) {
 
     return $e;
 
-}, new NaviButton("Syslog"));
+}, new NaviButtonWithIcon("Syslog", "fas fa-list nav-icon"));
 
 
 $app->serve();

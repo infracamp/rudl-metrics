@@ -68,12 +68,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "df36d8dae3979cf927d5bbbed6f0427f39aadfec"
+                "reference": "dd23412b4a6d45f11f0ea116a2108920f1a97ac8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/df36d8dae3979cf927d5bbbed6f0427f39aadfec",
-                "reference": "df36d8dae3979cf927d5bbbed6f0427f39aadfec",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/dd23412b4a6d45f11f0ea116a2108920f1a97ac8",
+                "reference": "dd23412b4a6d45f11f0ea116a2108920f1a97ac8",
                 "shasum": ""
             },
             "require": {
@@ -126,7 +126,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2019-10-30T11:22:04+00:00"
+            "time": "2019-12-03T09:24:32+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -521,12 +521,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phore/phore-core.git",
-                "reference": "95cfcc67fd03df866acc3fa5662a5ffe76dc3f24"
+                "reference": "2ea82eded02db9aff3009227da829066aaad485f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phore/phore-core/zipball/95cfcc67fd03df866acc3fa5662a5ffe76dc3f24",
-                "reference": "95cfcc67fd03df866acc3fa5662a5ffe76dc3f24",
+                "url": "https://api.github.com/repos/phore/phore-core/zipball/2ea82eded02db9aff3009227da829066aaad485f",
+                "reference": "2ea82eded02db9aff3009227da829066aaad485f",
                 "shasum": ""
             },
             "require": {
@@ -564,7 +564,7 @@
             ],
             "description": "Phore core library",
             "homepage": "https://infracamp.org/project/phore",
-            "time": "2019-11-27T18:41:28+00:00"
+            "time": "2019-11-27T20:59:11+00:00"
         },
         {
             "name": "phore/di-base",
@@ -623,12 +623,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phore/phore-filesystem.git",
-                "reference": "c13329d04e213dc2bc2a596f6ae22bd7754b5f6c"
+                "reference": "9d26b0599c580577c453888a5fde9e0b4bf62bf7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phore/phore-filesystem/zipball/c13329d04e213dc2bc2a596f6ae22bd7754b5f6c",
-                "reference": "c13329d04e213dc2bc2a596f6ae22bd7754b5f6c",
+                "url": "https://api.github.com/repos/phore/phore-filesystem/zipball/9d26b0599c580577c453888a5fde9e0b4bf62bf7",
+                "reference": "9d26b0599c580577c453888a5fde9e0b4bf62bf7",
                 "shasum": ""
             },
             "require": {
@@ -662,7 +662,7 @@
             ],
             "description": "Acces files layer",
             "homepage": "http://infracamp.org/project/phore",
-            "time": "2019-11-26T18:08:00+00:00"
+            "time": "2019-11-29T11:23:50+00:00"
         },
         {
             "name": "phore/html",
@@ -719,23 +719,24 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phore/phore-http-client.git",
-                "reference": "1d22127afcb391deaca3e8d0136d15881237238e"
+                "reference": "48ea3c950950522b5343d7320f3d7555658fa51c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phore/phore-http-client/zipball/1d22127afcb391deaca3e8d0136d15881237238e",
-                "reference": "1d22127afcb391deaca3e8d0136d15881237238e",
+                "url": "https://api.github.com/repos/phore/phore-http-client/zipball/48ea3c950950522b5343d7320f3d7555658fa51c",
+                "reference": "48ea3c950950522b5343d7320f3d7555658fa51c",
                 "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
                 "ext-http": "*",
                 "ext-json": "*",
-                "phore/core": "dev-master",
+                "phore/core": "*",
                 "php": ">=7.1"
             },
             "require-dev": {
                 "phore/cache": "*",
+                "phore/filesystem": "*",
                 "phore/objectstore": "*",
                 "phpunit/phpunit": "*"
             },
@@ -767,7 +768,7 @@
                 "Keyword1",
                 "Keyword2"
             ],
-            "time": "2019-11-26T15:34:49+00:00"
+            "time": "2019-12-05T14:05:48+00:00"
         },
         {
             "name": "phore/log",
@@ -775,16 +776,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phore/phore-log.git",
-                "reference": "f328ba37bb98310d39080cfccefec5a79d7c57bc"
+                "reference": "2933a0852ace6195a0a348c4c873e5deb221d76f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phore/phore-log/zipball/f328ba37bb98310d39080cfccefec5a79d7c57bc",
-                "reference": "f328ba37bb98310d39080cfccefec5a79d7c57bc",
+                "url": "https://api.github.com/repos/phore/phore-log/zipball/2933a0852ace6195a0a348c4c873e5deb221d76f",
+                "reference": "2933a0852ace6195a0a348c4c873e5deb221d76f",
                 "shasum": ""
             },
             "require": {
-                "phore/core": "dev-master",
+                "phore/core": "*",
                 "php": ">=7.1",
                 "psr/log": "^1.1"
             },
@@ -816,7 +817,7 @@
                 "Keyword1",
                 "Keyword2"
             ],
-            "time": "2019-11-27T19:49:46+00:00"
+            "time": "2019-12-04T11:38:18+00:00"
         },
         {
             "name": "phore/micro-app",
@@ -824,25 +825,25 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phore/phore-micro-app.git",
-                "reference": "9c3529ba050c0d70e92ef38cb21ebba1eff41955"
+                "reference": "476113bccd72de888d20b9666c7ce13361940770"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phore/phore-micro-app/zipball/9c3529ba050c0d70e92ef38cb21ebba1eff41955",
-                "reference": "9c3529ba050c0d70e92ef38cb21ebba1eff41955",
+                "url": "https://api.github.com/repos/phore/phore-micro-app/zipball/476113bccd72de888d20b9666c7ce13361940770",
+                "reference": "476113bccd72de888d20b9666c7ce13361940770",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "ext-yaml": "*",
-                "phore/core": "dev-master",
+                "phore/core": "*",
                 "phore/di-base": "2.1.1",
                 "php": ">7.1",
                 "psr/log": "^1.1"
             },
             "require-dev": {
                 "phore/http-client": "*",
-                "phore/theme-coreui": "dev-master",
+                "phore/theme-coreui": "*",
                 "phpunit/phpunit": "*"
             },
             "type": "library",
@@ -866,7 +867,7 @@
             ],
             "description": "Micro framework for rest api webservices",
             "homepage": "https://infracamp.org/phore/",
-            "time": "2019-11-27T20:06:24+00:00"
+            "time": "2019-12-04T11:38:52+00:00"
         },
         {
             "name": "phore/objectstore",
@@ -874,24 +875,26 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phore/phore-objectstore.git",
-                "reference": "047e5d2f5778d53d9063c6a13824f10d193e428f"
+                "reference": "5adfbae45eb7958318f4bb3ac01e1a92189073ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phore/phore-objectstore/zipball/047e5d2f5778d53d9063c6a13824f10d193e428f",
-                "reference": "047e5d2f5778d53d9063c6a13824f10d193e428f",
+                "url": "https://api.github.com/repos/phore/phore-objectstore/zipball/5adfbae45eb7958318f4bb3ac01e1a92189073ff",
+                "reference": "5adfbae45eb7958318f4bb3ac01e1a92189073ff",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
+                "ext-openssl": "*",
                 "ext-yaml": "*",
-                "phore/core": "dev-master",
+                "phore/core": "*",
+                "phore/http-client": "*",
                 "php": ">=7.1"
             },
             "require-dev": {
-                "google/cloud-storage": "dev-master",
-                "nette/tester": "^2.1@dev",
-                "phore/filesystem": "dev-master"
+                "google/cloud-storage": "*",
+                "phore/filesystem": "*",
+                "phpunit/phpunit": "8.5.x-dev"
             },
             "suggest": {
                 "google/cloud-storage": "If using Google Cloud services",
@@ -915,7 +918,7 @@
                 }
             ],
             "description": "Object store for local files, google, aws",
-            "time": "2019-05-08T14:41:10+00:00"
+            "time": "2019-12-05T14:44:48+00:00"
         },
         {
             "name": "phore/sock-server",
@@ -1014,12 +1017,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phore/phore-system.git",
-                "reference": "d19cabbbeacfe451c8b486e619df07b572cb5a9b"
+                "reference": "d1679b9f772c40e7a6d3e65e30c9f4e079a06b52"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phore/phore-system/zipball/d19cabbbeacfe451c8b486e619df07b572cb5a9b",
-                "reference": "d19cabbbeacfe451c8b486e619df07b572cb5a9b",
+                "url": "https://api.github.com/repos/phore/phore-system/zipball/d1679b9f772c40e7a6d3e65e30c9f4e079a06b52",
+                "reference": "d1679b9f772c40e7a6d3e65e30c9f4e079a06b52",
                 "shasum": ""
             },
             "require": {
@@ -1050,7 +1053,7 @@
             ],
             "description": "Execute shell commands",
             "homepage": "https://infracamp.org/project/phore",
-            "time": "2019-10-15T23:48:59+00:00"
+            "time": "2019-12-03T13:48:32+00:00"
         },
         {
             "name": "phore/theme-bootstrap",
@@ -1641,89 +1644,6 @@
                 "tokenizer"
             ],
             "time": "2019-10-23T09:04:36+00:00"
-        },
-        {
-            "name": "phpunit/phpunit",
-            "version": "8.5.x-dev",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "354301b2880de24466a89b6fe8cefd21bee6adaa"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/354301b2880de24466a89b6fe8cefd21bee6adaa",
-                "reference": "354301b2880de24466a89b6fe8cefd21bee6adaa",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/instantiator": "^1.2.0",
-                "ext-dom": "*",
-                "ext-json": "*",
-                "ext-libxml": "*",
-                "ext-mbstring": "*",
-                "ext-xml": "*",
-                "ext-xmlwriter": "*",
-                "myclabs/deep-copy": "^1.9.1",
-                "phar-io/manifest": "^1.0.3",
-                "phar-io/version": "^2.0.1",
-                "php": "^7.2",
-                "phpspec/prophecy": "^1.8.1",
-                "phpunit/php-code-coverage": "^7.0.7",
-                "phpunit/php-file-iterator": "^2.0.2",
-                "phpunit/php-text-template": "^1.2.1",
-                "phpunit/php-timer": "^2.1.2",
-                "sebastian/comparator": "^3.0.2",
-                "sebastian/diff": "^3.0.2",
-                "sebastian/environment": "^4.2.2",
-                "sebastian/exporter": "^3.1.1",
-                "sebastian/global-state": "^3.0.0",
-                "sebastian/object-enumerator": "^3.0.3",
-                "sebastian/resource-operations": "^2.0.1",
-                "sebastian/type": "^1.1.3",
-                "sebastian/version": "^2.0.1"
-            },
-            "require-dev": {
-                "ext-pdo": "*"
-            },
-            "suggest": {
-                "ext-soap": "*",
-                "ext-xdebug": "*",
-                "phpunit/php-invoker": "^2.0.0"
-            },
-            "bin": [
-                "phpunit"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "8.5-dev"
-                }
-            },
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
-                }
-            ],
-            "description": "The PHP Unit Testing framework.",
-            "homepage": "https://phpunit.de/",
-            "keywords": [
-                "phpunit",
-                "testing",
-                "xunit"
-            ],
-            "time": "2019-11-27T10:02:10+00:00"
         },
         {
             "name": "psr/container",
