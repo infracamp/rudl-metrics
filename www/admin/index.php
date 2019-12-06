@@ -154,10 +154,13 @@ $app->addPage("/admin/syslog", function (Database $database, Request $request) {
         $rowdata[] = fhtml(
             ["code @style=display:block;color:$color;background-color:$bg @title=:title" =>
                 [
-                    "{$date} ",
-                    ["a @href=:hostLink" => "{$queryResult["hostname"]}"], " ",
-                    ["a @href=:systemLink" => "{$queryResult["system"]}"], " ",
-                    "{$queryResult["facility"]} [" . PhoreLogger::LOG_LEVEL_MAP[$queryResult["severity"]] . "]: {$queryResult["msg"]}"
+                    "b" => [
+                        "{$date} ",
+                        ["a @href=:hostLink" => "{$queryResult["hostname"]}"], " ",
+                        ["a @href=:systemLink" => "{$queryResult["system"]}"], " ",
+                        "{$queryResult["facility"]} [" . PhoreLogger::LOG_LEVEL_MAP[$queryResult["severity"]] . "]: "
+                    ],
+                    "{$queryResult["msg"]}"
                 ],
             ],
             [
