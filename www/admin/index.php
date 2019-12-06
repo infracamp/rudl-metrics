@@ -132,7 +132,7 @@ $app->addPage("/admin/syslog", function (Database $database, Request $request) {
     if ($q_msg != "")
         $whereStmts[] = "msg =~ /" . addcslashes($q_msg, "/'") . "/";
 
-    $query = "SELECT * FROM syslog WHERE " . implode (" AND ", $whereStmts) . " ORDER BY time DESC LIMIT 5000";
+    $query = "SELECT * FROM syslog WHERE " . implode (" AND ", $whereStmts) . " ORDER BY time DESC LIMIT 2500";
     $queryResults = $database->query($query)->getPoints();
 
     $rowdata = [];
@@ -179,13 +179,13 @@ $app->addPage("/admin/syslog", function (Database $database, Request $request) {
             "form @action=/admin/syslog @method=get @class=form-inline" => [
                 "div @class=form-group" => [
                     ["label @class=mr-1" => "System"],
-                    fhtml("input @type=text @class=col-1 form-control @name=system @value=? @placeholder=system", [(string)$q_system]),
+                    fhtml("input @type=text @class=col-1 form-control @name=system @value=?", [(string)$q_system]),
                     ["label @class=mr-1 ml-2" => "Hostname"],
-                    fhtml("input @type=text @class=col-1 form-control @name=hostname @value=? @placeholder=hostname", [(string)$q_hostname]),
+                    fhtml("input @type=text @class=col-1 form-control @name=hostname @value=?", [(string)$q_hostname]),
                     ["label @class=mr-1 ml-2" => "Severity"],
-                    fhtml("input @type=text @class=col-1 form-control @name=severity @value=? @placeholder=severity", [(string)$q_severity]),
+                    fhtml("input @type=text @class=col-1 form-control @name=severity @value=?", [(string)$q_severity]),
                     ["label @class=mr-1 ml-2" => "Filter"],
-                    fhtml("input @type=text @class=col-2 form-control @name=msg @value=? @placeholder=regex", [(string)$q_msg]),
+                    fhtml("input @type=text @class=col-2 form-control @name=msg @value=?", [(string)$q_msg]),
                     "button @class=ml-2 btn btn-primary @type=submit" => "Apply filter"
                 ]
             ]
