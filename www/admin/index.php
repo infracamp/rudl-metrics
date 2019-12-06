@@ -146,7 +146,7 @@ $app->addPage("/admin/syslog", function (Database $database, Request $request) {
         }
 
         $date = strtotime($queryResult["time"]);
-        $date = date("Y-m-d H:i:s", $date);
+        $date = date("M d H:i:s", $date);
         $bg = "";
         if ($i % 10 < 5)
             $bg = "WhiteSmoke";
