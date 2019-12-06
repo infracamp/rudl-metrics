@@ -25,7 +25,8 @@
     "phore/http-client": "dev-master",
     "phore/status-page": "dev-master",
     "phore/sock-server": "dev-master",
-    "phore/vcs": "dev-master"
+    "phore/vcs": "dev-master",
+    "phore/log": "dev-master"
 
   }
 }

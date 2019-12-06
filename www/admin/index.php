@@ -10,6 +10,7 @@ namespace Tadis;
 
 use InfluxDB\Client;
 use InfluxDB\Database;
+use Phore\Log\PhoreLogger;
 use Phore\MicroApp\Type\Request;
 use Phore\StatusPage\BasicAuthStatusPageApp;
 use Phore\StatusPage\PageHandler\NaviButton;
@@ -156,7 +157,7 @@ $app->addPage("/admin/syslog", function (Database $database, Request $request) {
                     "{$date} ",
                     ["a @href=:hostLink" => "{$queryResult["hostname"]}"], " ",
                     ["a @href=:systemLink" => "{$queryResult["system"]}"], " ",
-                    "{$queryResult["facility"]} {$queryResult["severity"]}: {$queryResult["msg"]}"
+                    "{$queryResult["facility"]} [" . PhoreLogger::LOG_LEVEL_MAP[$queryResult["severity"]] . "]: {$queryResult["msg"]}"
                 ],
             ],
             [
