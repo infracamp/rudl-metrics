@@ -62,12 +62,12 @@ class CloudFrontSyslogProcessor extends AbstractSyslogProcessor {
 
                 "http_host" => $msg["http_host"],
                 "request_method" => $msg["request_method"],
-                "request_uri" => $msg["request_uri"],
+                //"request_uri" => $msg["request_uri"],
                 "server_protocol" => $msg["server_protocol"],
                 "status" => $msg["status"],
                 "remote_addr" => $msg["remote_addr"]
             ];
-            unset ($msg["cluster"], $msg["service"], $msg["http_host"], $msg["request_method"],$msg["request_uri"],$msg["server_protocol"]);
+            unset ($msg["cluster"], $msg["service"], $msg["http_host"], $msg["request_method"],$msg["server_protocol"]);
             unset ($msg["status"], $msg["remote_addr"]);
 
             $points[] = new Point("cloudfront",null,$tags, $msg, (int)($curMessage["timestamp"] * 1000));
