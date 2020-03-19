@@ -124,7 +124,7 @@ $app->router->on("/v1/hooks/repo", ["POST", "GET"], function () {
 
     ignore_user_abort(true);
     $repo->pull();
-    return ["success" => true];
+    return ["success" => true, "repo" => CONF_REPO_URL, "path" => REPO_PATH];
 });
 
 
