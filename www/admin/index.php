@@ -37,7 +37,7 @@ $app->define("database", function () : Database {
     return $db;
 });
 
-$config = phore_file("/mod/metrics/config.yaml")->get_yaml();
+$config = phore_file(CONFIG_PATH . "/config.yaml")->get_yaml();
 foreach ($config["admin_users"] as $curUser) {
     $app->allowUser($curUser["user"], $curUser["pass"]);
 }
