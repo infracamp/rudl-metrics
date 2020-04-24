@@ -1,7 +1,20 @@
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <div class="card-header">Nodes</div>
+            <div class="card-header">Nodes
+
+                <template is="ka-tpl" auto>
+                    <script>
+                        ((self) => {
+                            self.$scope = {"autoupdate": localStorage.autoupdate };
+                        })(KASELF);
+                    </script>
+                    <label style="float:right" class="c-switch c-switch-label c-switch-opposite-primary">
+                        <input class="c-switch-input" type="checkbox" [checked]="autoupdate !== 'false'" onchange="localStorage.autoupdate = this.checked">
+                        <span class="c-switch-slider" data-checked="On" data-unchecked="Off"></span>
+                    </label>
+                </template>
+            </div>
             <div class="card-body log-container" style="">
                 <template is="ka-tpl" auto>
                     <script>
@@ -16,11 +29,19 @@
                         }
                         ((self) => {
                             self.$scope = {"response": {"result": []} };
-                            ka_http_req("/admin/api/nodeinfo").json = (r) => {
-                                console.log(r);
-                                self.$scope.response = r;
+                            self.$scope.update = () => {
+                                ka_http_req("/admin/api/nodeinfo").json = (r) => {
+                                    console.log(r);
+                                    self.$scope.response = r;
 
+                                };
                             };
+                            self.$scope.update();
+                            window.setInterval(() => {
+                                if (localStorage.autoupdate !== 'false')
+                                    self.$scope.update();
+                            }, 15000);
+
 
                             self.$scope.parse = (row) => {
                                 let ret = {
@@ -68,13 +89,7 @@
                                 <td style="text-align: right" [classlist.alert-warning]="row.fs_use_prct > 80">{{ rowdata.fsAvailGB }}GB ({{ row.fs_use_prct }}%)</td>
                                 <td style="text-align: right" [classlist.alert-warning]="row.memAvailGB < 1">{{ rowdata.memAvailGB }}GB</td>
                                 <td style="text-align: right" [classlist.alert-warning]="row.fs_iuse_prct > 80">{{ row.fs_iuse_prct}}%</td>
-
-
-
-
                             </tr>
-
-
                         </tbody>
 
                     </table>

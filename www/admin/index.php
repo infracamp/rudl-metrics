@@ -31,6 +31,7 @@ $app->activateExceptionErrorHandlers();
 $app->theme->frameworks["highlightjs"] = true;
 $app->theme->jsUrls[] = "/admin/assets/kasimir-http-request.js";
 $app->theme->jsUrls[] = "/admin/assets/kasimir-tpl.js";
+$app->theme->jsUrls[] = "/admin/assets/kasimir-form.js";
 $app->theme->cssUrls[] = "/admin/assets/logstyle.css";
 
 /**
