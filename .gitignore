@@ -7,3 +7,4 @@
 
 # Ignore developer specific environment
 /.env
+.env
