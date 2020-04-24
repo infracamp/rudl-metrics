@@ -33,10 +33,10 @@ $app->acl->addRule(\aclRule()->route("/*")->ALLOW());
  **/
 
 $app->define("database", function () {
-    $client = new Client("localhost");
+    $client = new Client(CONF_INFLUX_HOST, CONF_INFLUX_PORT, CONF_INFLUX_USER, CONF_INFLUX_PASS);
     $db = $client->selectDB("rudl");
     if ( ! $db->exists())
-        $db->create(new Database\RetentionPolicy("removeafter12h", "12h", 1, true));
+        $db->create(new Database\RetentionPolicy("removeafter48h", "12h", 1, true));
     return $db;
 });
 

@@ -81,7 +81,8 @@
                 "guzzlehttp/promises": "^1.0",
                 "guzzlehttp/psr7": "^1.6.1",
                 "php": "^7.2.5",
-                "psr/http-client": "^1.0"
+                "psr/http-client": "^1.0",
+                "symfony/polyfill-intl-idn": "^1.11"
             },
             "provide": {
                 "psr/http-client-implementation": "1.0"
@@ -613,12 +614,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phore/phore-core.git",
-                "reference": "45041fc047945fb557f52bda44fd6dcf8817e6bd"
+                "reference": "2a1f73db204064036f4fa7e13d22759e16065634"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phore/phore-core/zipball/45041fc047945fb557f52bda44fd6dcf8817e6bd",
-                "reference": "45041fc047945fb557f52bda44fd6dcf8817e6bd",
+                "url": "https://api.github.com/repos/phore/phore-core/zipball/2a1f73db204064036f4fa7e13d22759e16065634",
+                "reference": "2a1f73db204064036f4fa7e13d22759e16065634",
                 "shasum": ""
             },
             "require": {
@@ -656,7 +657,7 @@
             ],
             "description": "Phore core library",
             "homepage": "https://infracamp.org/project/phore",
-            "time": "2020-03-12T16:40:09+00:00"
+            "time": "2020-04-16T08:36:20+00:00"
         },
         {
             "name": "phore/di-base",
@@ -715,12 +716,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phore/phore-filesystem.git",
-                "reference": "c343e2ce9697ed03436d81feeeebbd8e9b9cd795"
+                "reference": "6c8f0cf1c3a26944f996b50a707cedbb73c16c30"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phore/phore-filesystem/zipball/c343e2ce9697ed03436d81feeeebbd8e9b9cd795",
-                "reference": "c343e2ce9697ed03436d81feeeebbd8e9b9cd795",
+                "url": "https://api.github.com/repos/phore/phore-filesystem/zipball/6c8f0cf1c3a26944f996b50a707cedbb73c16c30",
+                "reference": "6c8f0cf1c3a26944f996b50a707cedbb73c16c30",
                 "shasum": ""
             },
             "require": {
@@ -754,7 +755,7 @@
             ],
             "description": "Acces files layer",
             "homepage": "http://infracamp.org/project/phore",
-            "time": "2020-03-12T22:47:17+00:00"
+            "time": "2020-04-14T08:27:09+00:00"
         },
         {
             "name": "phore/html",
@@ -917,12 +918,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phore/phore-micro-app.git",
-                "reference": "18af5c75d5e2dfa34c6f28f91a20993373ae4b21"
+                "reference": "5b15041300f2156a674fb6311a5883db11131688"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phore/phore-micro-app/zipball/18af5c75d5e2dfa34c6f28f91a20993373ae4b21",
-                "reference": "18af5c75d5e2dfa34c6f28f91a20993373ae4b21",
+                "url": "https://api.github.com/repos/phore/phore-micro-app/zipball/5b15041300f2156a674fb6311a5883db11131688",
+                "reference": "5b15041300f2156a674fb6311a5883db11131688",
                 "shasum": ""
             },
             "require": {
@@ -959,7 +960,7 @@
             ],
             "description": "Micro framework for rest api webservices",
             "homepage": "https://infracamp.org/phore/",
-            "time": "2020-03-11T08:29:58+00:00"
+            "time": "2020-04-22T20:13:59+00:00"
         },
         {
             "name": "phore/objectstore",
@@ -967,12 +968,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phore/phore-objectstore.git",
-                "reference": "258cf897e1d1197708bb50646b7ec5cff6c2d1a7"
+                "reference": "b874c1064ef713799894e3c0e5d8d79ffa0b8c67"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phore/phore-objectstore/zipball/258cf897e1d1197708bb50646b7ec5cff6c2d1a7",
-                "reference": "258cf897e1d1197708bb50646b7ec5cff6c2d1a7",
+                "url": "https://api.github.com/repos/phore/phore-objectstore/zipball/b874c1064ef713799894e3c0e5d8d79ffa0b8c67",
+                "reference": "b874c1064ef713799894e3c0e5d8d79ffa0b8c67",
                 "shasum": ""
             },
             "require": {
@@ -1011,7 +1012,7 @@
                 }
             ],
             "description": "Object store for local files, google, aws",
-            "time": "2020-02-14T10:38:25+00:00"
+            "time": "2020-04-22T11:18:27+00:00"
         },
         {
             "name": "phore/sock-server",
@@ -1063,18 +1064,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phore/phore-status-page.git",
-                "reference": "cb0656556b9e7a480a9c9511f8d8b45f1bbbe2ff"
+                "reference": "507f0dc6f6d836fa4b30f510e0d1fe60b96069e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phore/phore-status-page/zipball/cb0656556b9e7a480a9c9511f8d8b45f1bbbe2ff",
-                "reference": "cb0656556b9e7a480a9c9511f8d8b45f1bbbe2ff",
+                "url": "https://api.github.com/repos/phore/phore-status-page/zipball/507f0dc6f6d836fa4b30f510e0d1fe60b96069e8",
+                "reference": "507f0dc6f6d836fa4b30f510e0d1fe60b96069e8",
                 "shasum": ""
             },
             "require": {
                 "phore/core": "*",
                 "phore/html": ">=0.2",
-                "phore/micro-app": ">=0.2",
+                "phore/micro-app": "*",
                 "phore/theme-coreui": ">=0.2",
                 "php": ">=7.1"
             },
@@ -1102,7 +1103,7 @@
                 "Keyword1",
                 "Keyword2"
             ],
-            "time": "2020-03-05T21:25:18+00:00"
+            "time": "2020-04-23T10:29:24+00:00"
         },
         {
             "name": "phore/system",
@@ -1110,12 +1111,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phore/phore-system.git",
-                "reference": "d1679b9f772c40e7a6d3e65e30c9f4e079a06b52"
+                "reference": "755d5951ff5e9b1a5e84b96d83baad99e8cb5fe4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phore/phore-system/zipball/d1679b9f772c40e7a6d3e65e30c9f4e079a06b52",
-                "reference": "d1679b9f772c40e7a6d3e65e30c9f4e079a06b52",
+                "url": "https://api.github.com/repos/phore/phore-system/zipball/755d5951ff5e9b1a5e84b96d83baad99e8cb5fe4",
+                "reference": "755d5951ff5e9b1a5e84b96d83baad99e8cb5fe4",
                 "shasum": ""
             },
             "require": {
@@ -1146,7 +1147,7 @@
             ],
             "description": "Execute shell commands",
             "homepage": "https://infracamp.org/project/phore",
-            "time": "2019-12-03T13:48:32+00:00"
+            "time": "2020-04-07T09:38:08+00:00"
         },
         {
             "name": "phore/theme-bootstrap",
@@ -1284,12 +1285,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionCommon.git",
-                "reference": "b0843c8cbcc2dc5eda5158e583c7199a5e44c86d"
+                "reference": "74a67151cce1fe4aa5960636ae510ddf1faefdb3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionCommon/zipball/b0843c8cbcc2dc5eda5158e583c7199a5e44c86d",
-                "reference": "b0843c8cbcc2dc5eda5158e583c7199a5e44c86d",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionCommon/zipball/74a67151cce1fe4aa5960636ae510ddf1faefdb3",
+                "reference": "74a67151cce1fe4aa5960636ae510ddf1faefdb3",
                 "shasum": ""
             },
             "require": {
@@ -1328,7 +1329,7 @@
                 "reflection",
                 "static analysis"
             ],
-            "time": "2019-12-20T12:45:35+00:00"
+            "time": "2020-04-10T20:41:10+00:00"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -1750,12 +1751,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "35b4c697008ca08168c2e91b975e1fc40879690e"
+                "reference": "ac702d70957611fc03763608ee620ec1d0f0fb59"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/35b4c697008ca08168c2e91b975e1fc40879690e",
-                "reference": "35b4c697008ca08168c2e91b975e1fc40879690e",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/ac702d70957611fc03763608ee620ec1d0f0fb59",
+                "reference": "ac702d70957611fc03763608ee620ec1d0f0fb59",
                 "shasum": ""
             },
             "require": {
@@ -1825,7 +1826,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2020-03-20T06:58:40+00:00"
+            "time": "2020-04-24T05:02:47+00:00"
         },
         {
             "name": "psr/container",
@@ -1981,12 +1982,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "e1cb6eca27ccfd46567a2837eeba62bc5fecdee2"
+                "reference": "0f73288fd15629204f9d42b7055f72dacbe811fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/e1cb6eca27ccfd46567a2837eeba62bc5fecdee2",
-                "reference": "e1cb6eca27ccfd46567a2837eeba62bc5fecdee2",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/0f73288fd15629204f9d42b7055f72dacbe811fc",
+                "reference": "0f73288fd15629204f9d42b7055f72dacbe811fc",
                 "shasum": ""
             },
             "require": {
@@ -2020,7 +2021,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2020-02-28T08:38:25+00:00"
+            "time": "2020-03-23T09:12:05+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -2736,6 +2737,182 @@
             "time": "2020-02-27T09:26:54+00:00"
         },
         {
+            "name": "symfony/polyfill-intl-idn",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-intl-idn.git",
+                "reference": "47bd6aa45beb1cd7c6a16b7d1810133b728bdfcf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/47bd6aa45beb1cd7c6a16b7d1810133b728bdfcf",
+                "reference": "47bd6aa45beb1cd7c6a16b7d1810133b728bdfcf",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/polyfill-mbstring": "^1.3",
+                "symfony/polyfill-php72": "^1.10"
+            },
+            "suggest": {
+                "ext-intl": "For best performance"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.15-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Intl\\Idn\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Laurent Bassin",
+                    "email": "laurent@bassin.info"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill for intl's idn_to_ascii and idn_to_utf8 functions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "idn",
+                "intl",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "time": "2020-03-09T19:04:49+00:00"
+        },
+        {
+            "name": "symfony/polyfill-mbstring",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-mbstring.git",
+                "reference": "81ffd3a9c6d707be22e3012b827de1c9775fc5ac"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/81ffd3a9c6d707be22e3012b827de1c9775fc5ac",
+                "reference": "81ffd3a9c6d707be22e3012b827de1c9775fc5ac",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "suggest": {
+                "ext-mbstring": "For best performance"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.15-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Mbstring\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill for the Mbstring extension",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "mbstring",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "time": "2020-03-09T19:04:49+00:00"
+        },
+        {
+            "name": "symfony/polyfill-php72",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-php72.git",
+                "reference": "41d115ace412a5a006a92f29a51c7d863e28482b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/41d115ace412a5a006a92f29a51c7d863e28482b",
+                "reference": "41d115ace412a5a006a92f29a51c7d863e28482b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.15-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php72\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill backporting some PHP 7.2+ features to lower PHP versions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "time": "2020-04-13T15:22:19+00:00"
+        },
+        {
             "name": "text/template",
             "version": "dev-master",
             "source": {
@@ -2832,16 +3009,16 @@
         },
         {
             "name": "webmozart/assert",
-            "version": "1.7.0",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmozart/assert.git",
-                "reference": "aed98a490f9a8f78468232db345ab9cf606cf598"
+                "reference": "ab2cb0b3b559010b75981b1bdce728da3ee90ad6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/aed98a490f9a8f78468232db345ab9cf606cf598",
-                "reference": "aed98a490f9a8f78468232db345ab9cf606cf598",
+                "url": "https://api.github.com/repos/webmozart/assert/zipball/ab2cb0b3b559010b75981b1bdce728da3ee90ad6",
+                "reference": "ab2cb0b3b559010b75981b1bdce728da3ee90ad6",
                 "shasum": ""
             },
             "require": {
@@ -2849,7 +3026,7 @@
                 "symfony/polyfill-ctype": "^1.8"
             },
             "conflict": {
-                "vimeo/psalm": "<3.6.0"
+                "vimeo/psalm": "<3.9.1"
             },
             "require-dev": {
                 "phpunit/phpunit": "^4.8.36 || ^7.5.13"
@@ -2876,7 +3053,7 @@
                 "check",
                 "validate"
             ],
-            "time": "2020-02-14T12:15:55+00:00"
+            "time": "2020-04-18T12:12:48+00:00"
         }
     ],
     "packages-dev": [],

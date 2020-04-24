@@ -1,1 +1,1 @@
-C:37:"PHPUnit\Runner\DefaultTestResultCache":160:{a:2:{s:7:"defects";a:1:{s:44:"Phore\Tests\NodeDataInTest::testNodeStatusIn";i:5;}s:5:"times";a:1:{s:44:"Phore\Tests\NodeDataInTest::testNodeStatusIn";d:0.058;}}}
+C:37:"PHPUnit\Runner\DefaultTestResultCache":160:{a:2:{s:7:"defects";a:1:{s:44:"Phore\Tests\NodeDataInTest::testNodeStatusIn";i:4;}s:5:"times";a:1:{s:44:"Phore\Tests\NodeDataInTest::testNodeStatusIn";d:0.077;}}}

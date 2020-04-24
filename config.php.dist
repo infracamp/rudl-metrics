@@ -15,6 +15,11 @@ define("VERSION_INFO", "v0.1.%VERSION_NUMBER% (%VERSION_DATE_COMPACT%)");
 define("CONF_SSH_PRIV_KEY_FILE", "%CONF_SSH_PRIV_KEY_FILE%");
 define("CONF_REPO_URL", "%CONF_REPO_URL%");
 
+define("CONF_INFLUX_HOST", "%CONF_INFLUX_HOST?influxdb%");
+define("CONF_INFLUX_PORT", "%CONF_INFLUX_PORT?8086%");
+define("CONF_INFLUX_USER", "%CONF_INFLUX_USER?admin%");
+define("CONF_INFLUX_PASS", "%CONF_INFLUX_PASS?test123%");
+
 if (CONF_REPO_URL != "") {
 
     define("REPO_PATH", "/repo");

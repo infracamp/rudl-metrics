@@ -11,8 +11,8 @@ command:
     - "composer update"
 
   init:
-  - "sudo mkdir -p /data && sudo chown -R influxdb /data"
-  - "sudo service influxdb start || true"
+  #- "sudo mkdir -p /data && sudo chown -R influxdb /data"
+  #- "sudo service influxdb start || true"
   - "sudo chmod 755 /run/secrets/rudl_ssh_private_key || true"
     # Bug with influxdb - starts anyway.
 

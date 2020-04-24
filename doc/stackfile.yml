@@ -1,0 +1,35 @@
+version: "3.7"
+
+services:
+  rudl-metrics:
+    image: infracamp/rudl-metrics:testing
+    deploy:
+      mode: replicated
+    networks:
+      - rudl-cf-net
+    ports:
+      - "4200:4200/udp"
+    environment:
+      - "DEBUG_MODE=0"
+      - "CONF_GITLAB_TOKEN="
+      - "CONF_REPO_URL=git@gitlab.com:<projectPath>"
+    secrets:
+      - rudl_ssh_private_key
+
+  influxdb:
+    image: influxdb:1.8
+    networks:
+      - rudl-cf-net
+    environment:
+      - "INFLUXDB_DB=rudl"
+      - "INFLUXDB_HTTP_AUTH_ENABLED=true"
+      - "INFLUXDB_ADMIN_USER=admin"
+      - "INFLUXDB_ADMIN_PASSWORD=test123"
+
+secrets:
+  rudl_ssh_private_key:
+    external: true
+
+networks:
+  rudl-cf-net:
+    external: true
