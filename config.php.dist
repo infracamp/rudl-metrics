@@ -18,7 +18,7 @@ define("CONF_REPO_URL", "%CONF_REPO_URL%");
 define("CONF_INFLUX_HOST", "%CONF_INFLUX_HOST?influxdb%");
 define("CONF_INFLUX_PORT", "%CONF_INFLUX_PORT?8086%");
 define("CONF_INFLUX_USER", "%CONF_INFLUX_USER?admin%");
-define("CONF_INFLUX_PASS", "%CONF_INFLUX_PASS?test123%");
+define("CONF_INFLUX_PASS", "%CONF_INFLUX_PASS?rudl58271%");
 
 if (CONF_REPO_URL != "") {
 

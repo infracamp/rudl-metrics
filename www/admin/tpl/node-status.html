@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">Hello</div>
+            <div class="card-body log-container" style="">
+                <template is="ka-tpl" auto>
+                    <script>
+                        ((self) => {
+                            self.$scope = {"response": {"result": []} };
+                            ka_http_req("/admin/api/query?q=:query", {"query": "SELECT DISTINCT(host) as host FROM node_stat WHERE time > now() - 1h GROUP BY cluster, host ORDER BY time DESC"}).json = (r) => {
+                                console.log(r);
+                                self.$scope.response = r;
+
+                            };
+
+                            self.$scope.formatDate = function(indate) {
+
+                                let d = new Date(Date.parse(indate));
+                                return d.toUTCString();
+                            }
+
+                        })(KASELF);
+                    </script>
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr *for="let row of response.result indexby idx">
+                                <td>{{ row.cluster}}</td>
+                                <td>{{ row.host}}</td>
+                                <td>{{ (Date.parse($scope.response.qtime) - Date.parse(row.time)) / 1000 }}</td>
+                            </tr>
+
+
+                        </tbody>
+
+                    </table>
+                </template>
+
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">Hello</div>
+            <div class="card-body log-container" style="">
+                <template is="ka-tpl" auto>
+                    <script>
+                        ((self) => {
+                            self.$scope = {"response": {"result": []}};
+                            ka_http_req("/admin/api/query?q=:query", {"query": "select * from cloudfront order by time desc limit 1000"}).json = (r) => {
+                                self.$scope.response = r;
+                            };
+
+                            self.$scope.formatDate = function(indate) {
+
+                                let d = new Date(Date.parse(indate));
+                                return d.toUTCString();
+                            }
+
+                        })(KASELF);
+                    </script>
+
+                    <code
+                          *for="let row of response.result indexby idx"
+                          [classlist.warn]="row.status >= 400"
+                          [classlist.rowmark]="idx % 10 < 5"
+                          [title]="JSON.stringify(row)">
+                        <b>{{ $scope.formatDate(row.time) }}</b> [{{row.cluster}}] {{row.remote_addr}} {{row.remote_user}} {{row.status}}: <b>{{row.http_host}}</b> {{row.request}}
+                    </code>
+                </template>
+
+            </div>
+        </div>
+    </div>
+</div>
+

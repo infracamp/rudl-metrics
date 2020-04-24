@@ -10,11 +10,15 @@ namespace Tadis;
 
 use InfluxDB\Client;
 use InfluxDB\Database;
+use Phore\Html\Elements\RawHtmlNode;
 use Phore\Log\PhoreLogger;
+use Phore\MicroApp\Response\JsonResponse;
+use Phore\MicroApp\Type\QueryParams;
 use Phore\MicroApp\Type\Request;
 use Phore\StatusPage\BasicAuthStatusPageApp;
 use Phore\StatusPage\PageHandler\NaviButton;
 use Phore\StatusPage\PageHandler\NaviButtonWithIcon;
+use PHPUnit\Util\Json;
 use Talpa\Flesto\FlestoStoreInflux;
 
 
@@ -25,7 +29,9 @@ set_time_limit(600);
 $app = new BasicAuthStatusPageApp("Rudl Metrics", "/admin");
 $app->activateExceptionErrorHandlers();
 $app->theme->frameworks["highlightjs"] = true;
-
+$app->theme->jsUrls[] = "/admin/assets/kasimir-http-request.js";
+$app->theme->jsUrls[] = "/admin/assets/kasimir-tpl.js";
+$app->theme->cssUrls[] = "/admin/assets/logstyle.css";
 
 /**
  ** Configure Dependency Injection
@@ -43,11 +49,18 @@ foreach ($config["admin_users"] as $curUser) {
 }
 
 
+$app->router->onGet("/admin/api/query", function (Database $database, QueryParams $params) {
+    $q = $params->get("q", new \InvalidArgumentException("Missing q parameter"));
+    $resp = [
+        "qtime" => gmdate("Y-m-d\TH:i:s\.064332\Z"),
+        "result" => $database->query($q)->getPoints()
+    ];
+    return new JsonResponse($resp);
+});
+
+
 
 $app->addPage("/admin/", function () {
-
-
-
 
     $e = \fhtml();
     $e[] = pt()->card(
@@ -115,6 +128,19 @@ $app->addPage("/admin/query", function (Database $database, Request $request) {
 
 }, new NaviButtonWithIcon("Query", "fas fa-database nav-icon"));
 
+
+$app->addPage("/admin/cloudfront", function() {
+    $e = \fhtml();
+    $e->loadHtml(__DIR__ . "/tpl/cloudfront.html");
+    return $e;
+}, new NaviButtonWithIcon("Cloudfront", "fas fa-database nav-icon"));
+
+
+$app->addPage("/admin/nodes", function() {
+    $e = \fhtml();
+    $e->loadHtml(__DIR__ . "/tpl/node-status.html");
+    return $e;
+}, new NaviButtonWithIcon("Nodes", "fas fa-database nav-icon"));
 
 $app->addPage("/admin/syslog", function (Database $database, Request $request) {
     $q_system = $request->GET->get("system", "");

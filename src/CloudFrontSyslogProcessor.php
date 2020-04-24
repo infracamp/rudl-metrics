@@ -70,7 +70,7 @@ class CloudFrontSyslogProcessor extends AbstractSyslogProcessor {
             unset ($msg["cluster"], $msg["service"], $msg["http_host"], $msg["request_method"],$msg["server_protocol"]);
             unset ($msg["status"], $msg["remote_addr"]);
 
-            $points[] = new Point("cloudfront",null,$tags, $msg, (int)($curMessage["timestamp"] * 1000));
+            $points[] = new Point("cloudfront",null,$tags, $msg, (int)($curMessage["timestamp"] * 1000000));
         }
         phore_log()->notice("Sending " . count ($points) . " Points to syslog measurement.");
 
@@ -79,7 +79,7 @@ class CloudFrontSyslogProcessor extends AbstractSyslogProcessor {
         if ( ! $db->exists())
             $db->create(new RetentionPolicy("removeafter48h", "48h", 1, true));
 
-        $db->writePoints($points, Database::PRECISION_MILLISECONDS);
+        $db->writePoints($points, Database::PRECISION_MICROSECONDS);
 
     }
 }

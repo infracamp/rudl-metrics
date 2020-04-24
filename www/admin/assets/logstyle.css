@@ -1,0 +1,22 @@
+.log-container {
+    overflow-y:scroll;
+    white-space: nowrap;
+
+}
+
+.log-container code {
+    display:block;
+    color: darkslategray;
+}
+
+.log-container code.rowmark {
+    background-color: WhiteSmoke;
+}
+
+.log-container code.warn {
+    color: darkgoldenrod;
+}
+
+.log-container code.alert {
+    color: darkred;
+}
