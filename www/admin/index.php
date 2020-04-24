@@ -58,18 +58,40 @@ $app->router->onGet("/admin/api/query", function (Database $database, QueryParam
     return new JsonResponse($resp);
 });
 
+$app->router->onGet("/admin/api/ipinfo", function (Database $database, QueryParams $params) {
+    $ip = $params->get("ip", new \InvalidArgumentException("Missing query parameter ip"));
 
+    $ret = [
+        "ip" => $ip,
+        "requests" => $database->query("SELECT * FROM cloudfront WHERE remote_addr='$ip' AND time > now()-24h ORDER BY time DESC LIMIT 100 ")->getPoints(),
+        "host" => gethostbyaddr($ip),
+        "whois" => utf8_encode(phore_exec("whois :ip", ["ip" => $ip]))
+    ];
+    return new JsonResponse($ret);
+});
+
+$app->router->onGet("/admin/api/nodeinfo", function (Database $database) {
+    $nodeData = $database->query("SELECT DISTINCT(host) as host FROM node_stat WHERE time > now() - 30m GROUP BY cluster, host")->getPoints();
+    $ret = ["qtime" => gmdate("Y-m-d\TH:i:s\Z"), "result" => []];
+    foreach ($nodeData as $cur) {
+        $hostName = $cur["host"];
+        $hData = $database->query("SELECT * FROM node_stat WHERE host='$hostName' AND time > now() - 30m ORDER BY time DESC LIMIT 1")->getPoints();
+
+        if (count($hData) == 0) {
+            continue;
+        }
+        $hData = $hData[0];
+        $ret["result"][] = $hData;
+
+    }
+    $ret["qtime"] =  gmdate("Y-m-d\TH:i:s\.999\Z");
+    return new JsonResponse($ret);
+});
 
 $app->addPage("/admin/", function () {
 
     $e = \fhtml();
-    $e[] = pt()->card(
-        "Execute query in database '''",
-        [
-            "Hello woalrd."
-        ]
-    );
-
+    $e->loadHtml(__DIR__ . "/tpl/dashboard.html");
     return $e;
 
 }, new NaviButtonWithIcon("Dashboard", "fas fa-home nav-icon"));
@@ -136,9 +158,9 @@ $app->addPage("/admin/cloudfront", function() {
 }, new NaviButtonWithIcon("Cloudfront", "fas fa-database nav-icon"));
 
 
-$app->addPage("/admin/nodes", function() {
+$app->addPage("/admin/nodeinfo", function() {
     $e = \fhtml();
-    $e->loadHtml(__DIR__ . "/tpl/node-status.html");
+    $e->loadHtml(__DIR__ . "/tpl/nodeinfo.html");
     return $e;
 }, new NaviButtonWithIcon("Nodes", "fas fa-database nav-icon"));
 

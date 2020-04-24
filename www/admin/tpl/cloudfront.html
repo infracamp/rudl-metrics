@@ -1,21 +1,25 @@
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <div class="card-header">Hello</div>
+            <div class="card-header">Cloudfront</div>
             <div class="card-body log-container" style="">
                 <template is="ka-tpl" auto>
                     <script>
                         ((self) => {
                             self.$scope = {"response": {"result": []}};
-                            ka_http_req("/admin/api/query?q=:query", {"query": "select * from cloudfront order by time desc limit 1000"}).json = (r) => {
+                            ka_http_req("/admin/api/query?q=:query", {"query": "select * from cloudfront order by time desc limit 50"}).json = (r) => {
                                 self.$scope.response = r;
                             };
-
+                            ka_http_req("/admin/api/query?q=:query", {"query": "select * from cloudfront order by time desc limit 2500"}).json = (r) => {
+                                self.$scope.response = r;
+                            };
                             self.$scope.formatDate = function(indate) {
 
                                 let d = new Date(Date.parse(indate));
                                 return d.toUTCString();
                             }
+
+
 
                         })(KASELF);
                     </script>
@@ -25,7 +29,7 @@
                           [classlist.warn]="row.status >= 400"
                           [classlist.rowmark]="idx % 10 < 5"
                           [title]="JSON.stringify(row)">
-                        <b>{{ $scope.formatDate(row.time) }}</b> [{{row.cluster}}] {{row.remote_addr}} {{row.remote_user}} {{row.status}}: <b>{{row.http_host}}</b> {{row.request}}
+                        <b>{{ $scope.formatDate(row.time) }}</b> [{{row.cluster}}] <a href="" onclick="showIpInfo(this.getAttribute('dataip')); return false;" [dataip]="row.remote_addr">{{row.remote_addr}}</a> {{row.remote_user === "" ? "-" : row.remote_user}} {{row.status}}: <b>{{row.http_host}}</b> {{row.request}}
                     </code>
                 </template>
 
@@ -33,4 +37,48 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    function showIpInfo(ip) {
+
+        ka_http_req("/admin/api/ipinfo?ip=:query", {"query": ip}).json = (r) => {
+            ka_tpl("ipinfo").$scope = {
+                ipinfo: r
+
+            }
+            $("#exampleModal").modal({show: true});
+        };
+    }
+
+</script>
+
+<template is="ka-tpl" id="ipinfo">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="false">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">IP info <b>{{ ipinfo.ip }}</b> ({{ ipinfo.host }})</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3>Last Requests <small>(limit 100)</small></h3>
+                    <div class="log-container">
+                        <code *for="let info of ipinfo.requests">{{ info.time}}: {{ info.request }}</code>
+                    </div>
+
+                    <h3 class="mt-5">Whois info</h3>
+                    <div>
+                    {{ ipinfo.whois }}
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
 

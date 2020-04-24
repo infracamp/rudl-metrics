@@ -763,12 +763,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phore/phore-html.git",
-                "reference": "30d75eb49daa904733d1025693c81a2a780bae05"
+                "reference": "b6f9c07c62497fcb6c6256949a74728d4383e8fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phore/phore-html/zipball/30d75eb49daa904733d1025693c81a2a780bae05",
-                "reference": "30d75eb49daa904733d1025693c81a2a780bae05",
+                "url": "https://api.github.com/repos/phore/phore-html/zipball/b6f9c07c62497fcb6c6256949a74728d4383e8fd",
+                "reference": "b6f9c07c62497fcb6c6256949a74728d4383e8fd",
                 "shasum": ""
             },
             "require": {
@@ -804,7 +804,7 @@
             ],
             "description": "Fluent HTML Template api",
             "homepage": "https://infracamp.org/phore/",
-            "time": "2019-09-30T16:59:36+00:00"
+            "time": "2020-04-24T11:13:47+00:00"
         },
         {
             "name": "phore/http-client",

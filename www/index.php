@@ -64,9 +64,9 @@ $app->router->onPost("/v1/push/node", function (Request $request, Database $data
     $cluster = phore_pluck("cluster", $in, "unknown");
     $data = phore_pluck("system", $in, []);
 
-    $points[] = new Point("node_stat", null, ["host" => $hostname, "cluster"=>$cluster], $data, time());
+    $points[] = new Point("node_stat", null, ["host" => $hostname, "cluster"=>$cluster], $data, time() * 1000);
 
-    $database->writePoints($points, Database::PRECISION_SECONDS);
+    $database->writePoints($points, Database::PRECISION_MILLISECONDS);
     return ["success" => true];
 });
 

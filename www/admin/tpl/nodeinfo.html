@@ -1,0 +1,87 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">Nodes</div>
+            <div class="card-body log-container" style="">
+                <template is="ka-tpl" auto>
+                    <script>
+                        function parseRow (rowData) {
+                            let ret = {};
+                            ret.lastSeen = parseInt((Date.parse($scope.response.qtime) - Date.parse(row.time)) / 1000);
+                            ret.crit = ret.lastSeen > 10;
+
+                            ret.fsAvailGB = parseInt(rowData.rs_avail_kb / 1024 / 1024);
+                            ret.fsAvailGB = parseInt(rowData.rs_avail_kb / 1024 / 1024);
+                            return ret;
+                        }
+                        ((self) => {
+                            self.$scope = {"response": {"result": []} };
+                            ka_http_req("/admin/api/nodeinfo").json = (r) => {
+                                console.log(r);
+                                self.$scope.response = r;
+
+                            };
+
+                            self.$scope.parse = (row) => {
+                                let ret = {
+                                    lastSeen: parseInt((Date.parse(self.$scope.response.qtime) - Date.parse(row.time)) / 1000)
+
+                                };
+                                ret.fsAvailGB = parseFloat(row.fs_avail_kb / 1024 / 1024).toFixed(2);
+                                ret.memAvailGB = parseFloat(row.mem_avail_kb / 1024 / 1024).toFixed(2);
+                                return ret;
+                            };
+
+                            self.$scope.formatDate = function(indate) {
+                                let d = new Date(Date.parse(indate));
+                                return d.toUTCString();
+                            }
+
+
+                        })(KASELF);
+                    </script>
+                    <table class="table table-striped">
+                        <thead>
+                            <th scope="col">Cluster</th>
+                            <th>Host</th>
+                            <th style="text-align: center">Last seen</th>
+                            <th style="text-align: center">LoadAvg</th>
+                            <th style="text-align: center">LoadAvg[5m]</th>
+                            <th style="text-align: center">LoadAvg[15m]</th>
+                            <th style="text-align: right">FS Avail(Used%)</th>
+                            <th style="text-align: right">Mem Avail</th>
+                            <th style="text-align: right">Inode</th>
+                        </thead>
+                        <tbody>
+                            <tr *if="response.result.length === 0">
+                                <td colspan="9">Loading data...</td>
+                            </tr>
+                            <tr *for="let row of response.result indexby idx" *foreval="$scope.rowdata = parse(row)" >
+                                <td><b>{{ row.cluster }}</b></td>
+                                <td><b>{{ row.host}}</b></td>
+                                <td style="text-align: center" [classlist.alert-warning]="rowdata.lastSeen > 30">{{ rowdata.lastSeen }}s</td>
+
+                                <td style="text-align: center" [classlist.alert-warning]="row.loadavg > 2">{{ row.loadavg}}</td>
+                                <td style="text-align: center"  [classlist.alert-warning]="row.loadavg > 2">{{ row.loadavg_5m}}</td>
+                                <td style="text-align: center"  [classlist.alert-warning]="row.loadavg > 2">{{ row.loadavg_15m}}</td>
+
+                                <td style="text-align: right" [classlist.alert-warning]="row.fs_use_prct > 80">{{ rowdata.fsAvailGB }}GB ({{ row.fs_use_prct }}%)</td>
+                                <td style="text-align: right" [classlist.alert-warning]="row.memAvailGB < 1">{{ rowdata.memAvailGB }}GB</td>
+                                <td style="text-align: right" [classlist.alert-warning]="row.fs_iuse_prct > 80">{{ row.fs_iuse_prct}}%</td>
+
+
+
+
+                            </tr>
+
+
+                        </tbody>
+
+                    </table>
+                </template>
+
+            </div>
+        </div>
+    </div>
+</div>
+
