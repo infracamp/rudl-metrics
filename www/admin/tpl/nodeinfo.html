@@ -75,7 +75,12 @@
                         </thead>
                         <tbody>
                             <tr *if="response.result.length === 0">
-                                <td colspan="9">Loading data...</td>
+                                <td colspan="9">
+                                    <div class="d-flex align-items-center m-1">
+                                        <strong>Loading...</strong>
+                                        <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+                                    </div>
+                                </td>
                             </tr>
                             <tr *for="let row of response.result indexby idx" *foreval="$scope.rowdata = parse(row)" >
                                 <td><b>{{ row.cluster }}</b></td>

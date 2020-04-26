@@ -29,7 +29,7 @@
                           [classlist.warn]="row.status >= 400"
                           [classlist.rowmark]="idx % 10 < 5"
                           [title]="JSON.stringify(row)">
-                        <b>{{ $scope.formatDate(row.time) }}</b> [{{row.cluster}}] <a href="" onclick="showIpInfo(this.getAttribute('dataip')); return false;" [dataip]="row.remote_addr">{{row.remote_addr}}</a> {{row.remote_user === "" ? "-" : row.remote_user}} {{row.status}}: <b>{{row.http_host}}</b> {{row.request}}
+                        <b>{{ $scope.formatDate(row.time) }}</b> [{{row.cluster}}] <a href="" [on.click]="showIpInfo(row.remote_addr);">{{row.remote_addr}}</a> {{row.remote_user === "" ? "-" : row.remote_user}} {{row.status}}: <b>{{row.http_host}}</b> {{row.request}}
                     </code>
                 </template>
 
@@ -42,21 +42,28 @@
 <script>
     function showIpInfo(ip) {
 
-        ka_http_req("/admin/api/ipinfo?ip=:query", {"query": ip}).json = (r) => {
-            ka_tpl("ipinfo").$scope = {
-                ipinfo: r
+        let modal = ka_tpl("ipinfo");
+        modal.$scope = {ipinfo: null};
 
-            }
-            $("#exampleModal").modal({show: true});
-        };
+        // Open the modal
+        $("#ipmodal").modal();
+
+        ka_http_req("/admin/api/ipinfo?ip=:query", {"query": ip}).json =
+            (r) => modal.$scope.ipinfo = r;
     }
 
 </script>
 
 <template is="ka-tpl" id="ipinfo">
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="false">
+    <div class="modal fade" id="ipmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="false">
         <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
+            <div class="modal-content" *if="ipinfo === null">
+                <div class="d-flex align-items-center m-3">
+                    <strong>Loading...</strong>
+                    <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+                </div>
+            </div>
+            <div class="modal-content" *if="ipinfo !== null">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">IP info <b>{{ ipinfo.ip }}</b> ({{ ipinfo.host }})</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
