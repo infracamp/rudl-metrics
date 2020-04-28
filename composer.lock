@@ -812,12 +812,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phore/phore-http-client.git",
-                "reference": "48ea3c950950522b5343d7320f3d7555658fa51c"
+                "reference": "64874d9af473bfb579770c9506b88b18ed27c7bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phore/phore-http-client/zipball/48ea3c950950522b5343d7320f3d7555658fa51c",
-                "reference": "48ea3c950950522b5343d7320f3d7555658fa51c",
+                "url": "https://api.github.com/repos/phore/phore-http-client/zipball/64874d9af473bfb579770c9506b88b18ed27c7bc",
+                "reference": "64874d9af473bfb579770c9506b88b18ed27c7bc",
                 "shasum": ""
             },
             "require": {
@@ -861,7 +861,7 @@
                 "Keyword1",
                 "Keyword2"
             ],
-            "time": "2019-12-05T14:05:48+00:00"
+            "time": "2020-04-27T20:08:54+00:00"
         },
         {
             "name": "phore/log",
@@ -968,12 +968,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phore/phore-objectstore.git",
-                "reference": "b874c1064ef713799894e3c0e5d8d79ffa0b8c67"
+                "reference": "b65eae900a135e2260da2e8114709842c8d1c6fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phore/phore-objectstore/zipball/b874c1064ef713799894e3c0e5d8d79ffa0b8c67",
-                "reference": "b874c1064ef713799894e3c0e5d8d79ffa0b8c67",
+                "url": "https://api.github.com/repos/phore/phore-objectstore/zipball/b65eae900a135e2260da2e8114709842c8d1c6fc",
+                "reference": "b65eae900a135e2260da2e8114709842c8d1c6fc",
                 "shasum": ""
             },
             "require": {
@@ -998,8 +998,7 @@
             "autoload": {
                 "psr-4": {
                     "Phore\\ObjectStore\\": "src/"
-                },
-                "files": []
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -1012,7 +1011,7 @@
                 }
             ],
             "description": "Object store for local files, google, aws",
-            "time": "2020-04-22T11:18:27+00:00"
+            "time": "2020-04-28T08:30:08+00:00"
         },
         {
             "name": "phore/sock-server",
@@ -1111,12 +1110,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phore/phore-system.git",
-                "reference": "755d5951ff5e9b1a5e84b96d83baad99e8cb5fe4"
+                "reference": "ec797e9de93a33def0748f5fe5a61c53d121bb78"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phore/phore-system/zipball/755d5951ff5e9b1a5e84b96d83baad99e8cb5fe4",
-                "reference": "755d5951ff5e9b1a5e84b96d83baad99e8cb5fe4",
+                "url": "https://api.github.com/repos/phore/phore-system/zipball/ec797e9de93a33def0748f5fe5a61c53d121bb78",
+                "reference": "ec797e9de93a33def0748f5fe5a61c53d121bb78",
                 "shasum": ""
             },
             "require": {
@@ -1147,7 +1146,7 @@
             ],
             "description": "Execute shell commands",
             "homepage": "https://infracamp.org/project/phore",
-            "time": "2020-04-07T09:38:08+00:00"
+            "time": "2020-04-28T09:52:00+00:00"
         },
         {
             "name": "phore/theme-bootstrap",
@@ -1198,12 +1197,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phore/phore-theme-coreui.git",
-                "reference": "b44e0aa88feb877b0e4f9b8cdcc0e16f793268e7"
+                "reference": "5c16a93c64c5c058d754afff9cd772df7e38af30"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phore/phore-theme-coreui/zipball/b44e0aa88feb877b0e4f9b8cdcc0e16f793268e7",
-                "reference": "b44e0aa88feb877b0e4f9b8cdcc0e16f793268e7",
+                "url": "https://api.github.com/repos/phore/phore-theme-coreui/zipball/5c16a93c64c5c058d754afff9cd772df7e38af30",
+                "reference": "5c16a93c64c5c058d754afff9cd772df7e38af30",
                 "shasum": ""
             },
             "require": {
@@ -1232,7 +1231,7 @@
             ],
             "description": "CoreUI theme",
             "homepage": "https://infracamp.org/phore/",
-            "time": "2019-05-24T20:42:58+00:00"
+            "time": "2020-04-26T21:05:24+00:00"
         },
         {
             "name": "phore/vcs",
@@ -1285,19 +1284,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionCommon.git",
-                "reference": "74a67151cce1fe4aa5960636ae510ddf1faefdb3"
+                "reference": "985f414b55eca4296ffc99db960a97b3cc8fbcea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionCommon/zipball/74a67151cce1fe4aa5960636ae510ddf1faefdb3",
-                "reference": "74a67151cce1fe4aa5960636ae510ddf1faefdb3",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionCommon/zipball/985f414b55eca4296ffc99db960a97b3cc8fbcea",
+                "reference": "985f414b55eca4296ffc99db960a97b3cc8fbcea",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~6"
             },
             "type": "library",
             "extra": {
@@ -1329,7 +1325,7 @@
                 "reflection",
                 "static analysis"
             ],
-            "time": "2020-04-10T20:41:10+00:00"
+            "time": "2020-04-27T09:34:19+00:00"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -1390,12 +1386,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/TypeResolver.git",
-                "reference": "d6b5291650d058fe1162a54fee9d923de19bcda2"
+                "reference": "6be94d5733839a52492da96f57c6a3b062a8f97a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/d6b5291650d058fe1162a54fee9d923de19bcda2",
-                "reference": "d6b5291650d058fe1162a54fee9d923de19bcda2",
+                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/6be94d5733839a52492da96f57c6a3b062a8f97a",
+                "reference": "6be94d5733839a52492da96f57c6a3b062a8f97a",
                 "shasum": ""
             },
             "require": {
@@ -1428,7 +1424,7 @@
                 }
             ],
             "description": "A PSR-5 based resolver of Class names, Types and Structural Element Names",
-            "time": "2020-03-06T17:11:40+00:00"
+            "time": "2020-04-27T19:13:53+00:00"
         },
         {
             "name": "phpspec/prophecy",
@@ -1751,12 +1747,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "ac702d70957611fc03763608ee620ec1d0f0fb59"
+                "reference": "5a8f1452cb7028e7c7173e430264c07fbc6fe858"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/ac702d70957611fc03763608ee620ec1d0f0fb59",
-                "reference": "ac702d70957611fc03763608ee620ec1d0f0fb59",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/5a8f1452cb7028e7c7173e430264c07fbc6fe858",
+                "reference": "5a8f1452cb7028e7c7173e430264c07fbc6fe858",
                 "shasum": ""
             },
             "require": {
@@ -1826,7 +1822,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2020-04-24T05:02:47+00:00"
+            "time": "2020-04-27T05:03:54+00:00"
         },
         {
             "name": "psr/container",

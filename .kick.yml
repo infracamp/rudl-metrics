@@ -18,6 +18,7 @@ command:
 
   run:
     - "curl http://localhost/v1/hooks/repo || true"
+    - "D:php -f bin/run_aggregate.php"
     - "php -f bin/udp-syslog-server.php"
 
   test:

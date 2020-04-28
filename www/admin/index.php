@@ -40,7 +40,6 @@ $app->theme->cssUrls[] = "/admin/assets/logstyle.css";
 $app->define("database", function () : Database {
     $client = new Client(CONF_INFLUX_HOST, CONF_INFLUX_PORT, CONF_INFLUX_USER, CONF_INFLUX_PASS);
     $db = $client->selectDB("rudl");
-    $db->create();
     return $db;
 });
 
