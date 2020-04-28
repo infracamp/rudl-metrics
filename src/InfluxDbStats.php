@@ -80,12 +80,12 @@ class InfluxDbStats
             $e->inc("tot.bytesin", (int)$res["request_length"]);
             $e->inc("tot.bytesout", (int)$res["bytes_sent"]);
             $e->inc("tot.req", (int)$res["count"]);
-            $e->inc("tot.req.{$res["status"]}", (int)$res["count"]);
+            $e->inc("tot.req{$res["status"]}", (int)$res["count"]);
 
             $e->inc("cl.{$res["cluster"]}.bytesin", (int) $res["request_length"]);
             $e->inc("cl.{$res["cluster"]}.bytesout", (int)  $res["bytes_sent"]);
             $e->inc("cl.{$res["cluster"]}.req", (int)  $res["count"]);
-            $e->inc("cl.{$res["cluster"]}.req.{$res["status"]}", (int)  $res["count"]);
+            $e->inc("cl.{$res["cluster"]}.req{$res["status"]}", (int)  $res["count"]);
 
         }
         $inserts = [];
