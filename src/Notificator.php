@@ -43,12 +43,12 @@ class Notificator
         if ($p1 > $p24 + 15) {
             if ($state["cf_err"] === false) {
                 $state["cf_err"] = true;
-                $this->sendMsg("[!!ALERT!!] Cloudfront error rate '$p1%' exceeds dynamic threshold rate ($p24 %)by more than 15%");
+                $this->sendMsg("𝗔𝗟𝗘𝗥𝗧 Cloudfront error rate '$p1%' exceeds dynamic threshold rate ($p24 %) by more than 15%");
             }
         } else if ($p1 < $p24) {
             if ($state["cf_err"] === false) {
                 $state["cf_err"] = false;
-                $this->sendMsg("[RESOLVED] Cloudfront error rate '$p1%' dropped below dynamic threshold rate");
+                $this->sendMsg("ＲＥＳＯＬＶＥＤ Cloudfront error rate '$p1%' dropped below dynamic threshold rate");
             }
 
         }
@@ -66,7 +66,8 @@ class Notificator
 
         phore_http_request(CONF_TEAMS_WEBHOOK)
             ->withPostBody([
-                "title"=> "[rudl-metrics] $title",
+                "title"=> "𝗥𝘂𝗱𝗹 𝗠𝗲𝘁𝗿𝗶𝗰𝘀 $title",
+                "themeColor" => "cc0000",
                 "text" => $message
             ])->send();
     }
