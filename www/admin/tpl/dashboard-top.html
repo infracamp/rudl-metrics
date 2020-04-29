@@ -85,7 +85,7 @@
         <div class="card">
             <div class="card-body">
 
-                <div class="text-value-lg" [classlist.]="{'text-success': serviceStatus === 0, 'text-warning': serviceStatus === 1, 'text-danger': serviceStatus === 2}">{{ ["Optimal", "Pre-Warning", "Alert"][serviceStatus] }}</div><small class="text-muted text-uppercase font-weight-bold">Service status</small>
+                <div class="text-value-lg" [classlist.]="{'text-success': serviceStatus === 0, 'text-warning': serviceStatus === 1, 'text-danger': serviceStatus === 2}">{{ ["Optimal", "Warning", "Alert"][serviceStatus] }}</div><small class="text-muted text-uppercase font-weight-bold">Service status</small>
                 <div class="progress progress-xs mt-3 mb-0">
                     <div class="progress-bar bg-gradient-danger" [classlist.]="{'bg-success': serviceStatus === 0, 'bg-warning': serviceStatus === 1, 'bg-danger': serviceStatus === 2}" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>

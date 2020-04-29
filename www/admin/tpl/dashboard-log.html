@@ -27,7 +27,7 @@
                 ka_http_req("/admin/api/query?q[0]=:q0&q[1]=:q1",
                     {
                         "q0": "select * from syslog WHERE time > now()-6h AND (severity = '0' OR severity='1') ORDER BY time DESC LIMIT 8",
-                        "q1": "select * from cloudfront WHERE time > now()-6h AND status != '200' ORDER BY time DESC LIMIT 8"
+                        "q1": "select * from cloudfront WHERE time > now()-6h AND status != '200' AND status != '301' ORDER BY time DESC LIMIT 8"
                     })
                 .json = (r) => {
                     self.$scope.syslog = r.result[0];
@@ -50,10 +50,12 @@
                 </div>
                 <code
                         *for="let row of syslog indexby idx"
-                        [classlist.warn]="row.severity < 5"
+                        style="transition: background-color 900ms; overflow:hidden"
+                        [classlist.bg-warning]=" $scope.formatDate(row.time) == 'now'"
+                        [classlist.warn]="row.severity < 1"
                         [classlist.rowmark]="idx % 2 < 1"
-                        [title]="JSON.stringify(row)" style="overflow: hidden">
-                    <b>{{ $scope.formatDate(row.time) }} [{{row.system}}][{{$scope.severityToName(row.severity)}}]:</b><br>{{row.msg.replace(/\n/g, " ")}}
+                        [title]="JSON.stringify(row)">
+                    <b>[{{row.system}}][{{$scope.severityToName(row.severity)}}] {{ $scope.formatDate(row.time) }}:</b><br>{{row.msg.replace(/\n/g, " ")}}
                 </code>
 
             </div>
@@ -67,10 +69,12 @@
                 </div>
                 <code
                         *for="let row of cf indexby idx"
-                        [classlist.warn]="row.status >= 400"
+                        style="transition: background-color 300ms; overflow:hidden"
+                        [classlist.warn]="row.status >= 500"
                         [classlist.rowmark]="idx % 2 < 1"
-                        [title]="JSON.stringify(row)" style="overflow: hidden">
-                    <b>{{ $scope.formatDate(row.time) }} [{{row.system}}] {{row.remote_addr}} {{row.remote_user === "" ? "-" : row.remote_user}} {{row.status}}:</b> <br>{{row.http_host}} {{row.request}}
+                        [classlist.bg-warning]=" $scope.formatDate(row.time) == 'now'"
+                        [title]="JSON.stringify(row)">
+                    <b>[{{row.system}}] {{row.remote_addr}} {{row.remote_user === "" ? "-" : row.remote_user}} {{row.status}} {{ $scope.formatDate(row.time) }}:</b> <br>{{row.http_host}} {{row.request}}
                 </code>
 
             </div>

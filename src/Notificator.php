@@ -55,7 +55,7 @@ class Notificator
             if ($state["cf_err"] === false) {
                 $state["cf_err"] = true;
                 $state["cf_last"] = time();
-                $this->sendMsg("𝗔𝗟𝗘𝗥𝗧 Cloudfront error rate '$p1%' exceeds dynamic threshold rate ($p24 %) by more than 15%", $logTxt);
+                $this->sendMsg("𝗔𝗟𝗘𝗥𝗧 Cloudfront error rate '$p1%' exceeds dynamic threshold ($p24%) by more than 15%", $logTxt);
             } else if ($state["cf_last"] < time() - 3600) {
                 $state["cf_last"] = time();
                 $this->sendMsg("𝗔𝗟𝗘𝗥𝗧 [Reminder] Cloudfront error rate '$p1%' exceeds dynamic threshold rate ($p24 %) by more than 15%", $logTxt);
