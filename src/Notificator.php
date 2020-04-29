@@ -31,7 +31,7 @@ class Notificator
         $r24 = $this->db->query("select sum(*) from cloudfront_stats_cluster_min WHERE time > now()-24h")->getPoints();
         $r1 = $this->db->query("select sum(*) from cloudfront_stats_cluster_min WHERE time > now()-1h")->getPoints();
 
-        $log = $this->db->query("SELECT * FROM cloudfront WHERE status='500' OR status='404' ORDER by time DESC LIMIT 10")->getPoints();
+        $log = $this->db->query("SELECT * FROM cloudfront WHERE status!='200' AND status!='301' ORDER by time DESC LIMIT 10")->getPoints();
 
 
         $logArr = [];
