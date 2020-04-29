@@ -19,6 +19,7 @@
                 }
                 return ret;
             }
+
             let chartColors = {
                 red: 'rgb(255, 99, 132)',
                 orange: 'rgb(255, 159, 64)',
@@ -28,6 +29,7 @@
                 purple: 'rgb(153, 102, 255)',
                 grey: 'rgb(201, 203, 207)'
             };
+
             var elem = document.getElementById("traffic");
             var config = {
                 type: "line",
@@ -38,8 +40,6 @@
             };
             let datasets = config.data.datasets;
             var chart = new Chart(elem.getContext("2d"), config);
-
-
 
             self.$scope.presets = [
                 {
@@ -70,7 +70,9 @@
                 },
 
             ];
+
             self.$scope.active = self.$scope.presets[0];
+
             self.$scope.refresh = () => {
                 datasets.length = 0;
                 ka_http_req("/admin/api/query?q=:query", {"query": self.$scope.active.query}).withDebug().json = (r) => {
@@ -87,11 +89,9 @@
                     chart.update();
                 };
             };
+
             self.$scope.refresh();
-
             window.setInterval(() => self.$scope.refresh(), 60000);
-
-
         })(KASELF);
 
     </script>
