@@ -22,7 +22,7 @@ class KasimirHttpRequest {
 
     constructor(url, params={}) {
 
-        url = url.replace(/(\{|\:)([a-zA-Z0-9_\-]+)/, (match, p1, p2) => {
+        url = url.replace(/(\{|\:)([a-zA-Z0-9_\-]+)/g, (match, p1, p2) => {
             if ( ! params.hasOwnProperty(p2))
                 throw "parameter '" + p2 + "' missing in url '" + url + "'";
             return encodeURI(params[p2]);
@@ -162,15 +162,35 @@ class KasimirHttpRequest {
         }
         xhttp.onreadystatechange = () => {
             if (xhttp.readyState === 4) {
+
                 if (this.request.onError !== null || parseInt(xhttp.status) >= 400) {
-                    console.warn("Http request failed:", xhttp.response);
+                    let errMsg = `𝗥𝗲𝗾𝘂𝗲𝘀𝘁 𝗳𝗮𝗶𝗹𝗲𝗱 '${xhttp.status} ${xhttp.statusText}':`;
+                    let errData = xhttp.response;
+                    try {
+                        errData = JSON.parse(errData);
+                        errMsg += "\n\n𝗠𝘀𝗴: '" + errData.error.msg + "'\n\n"
+                    } catch (e) {
+                        errMsg += errData;
+                    }
+
+                    console.warn(errMsg, errData);
                     if (this.request.debug)
-                        alert("request failed:" + xhttp.response);
-                    this.request.onError(new KasimirHttpResponse(xhttp.response, xhttp.status, this));
+                        alert(errMsg + "\n𝘴𝘦𝘦 𝘤𝘰𝘯𝘴𝘰𝘭𝘦 𝘧𝘰𝘳 𝘥𝘦𝘵𝘢𝘪𝘭𝘴. (𝘥𝘦𝘣𝘶𝘨 𝘮𝘰𝘥𝘦 𝘰𝘯)");
+                    if (typeof this.request.onError === "function")
+                        this.request.onError(new KasimirHttpResponse(xhttp.response, xhttp.status, this));
                     return;
                 }
-                if (this.request.debug)
-                    console.log("Success:", xhttp.response);
+
+                if (this.request.debug) {
+                    let msg = xhttp.response;
+                    try {
+                        msg = JSON.parse(msg);
+                    } catch (e) {
+                        // cannot parse json - output plain
+                    }
+                    console.debug(`𝗥𝗲𝗾𝘂𝗲𝘀𝘁: ${xhttp.status} ${xhttp.statusText}':\n`, msg);
+                }
+
                 onSuccessFn(new KasimirHttpResponse(xhttp.response, xhttp.status, this));
                 return;
             }

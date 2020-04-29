@@ -53,8 +53,18 @@ $app->router->onGet("/admin/api/query", function (Database $database, QueryParam
     $q = $params->get("q", new \InvalidArgumentException("Missing q parameter"));
     $resp = [
         "qtime" => gmdate("Y-m-d\TH:i:s\.064332\Z"),
-        "result" => $database->query($q)->getPoints()
+        "result" => null
     ];
+
+    if (is_array ($q)) {
+        $resp["result"] = [];
+        foreach ($q as $key => $query) {
+            $resp["result"][$key] = $database->query($query)->getPoints();
+        }
+    } else {
+        $resp["result"] =  $database->query($q)->getPoints();
+    }
+
     return new JsonResponse($resp);
 });
 
@@ -93,6 +103,7 @@ $app->addPage("/admin/", function () {
     $e = \fhtml();
     $e->loadHtml(__DIR__ . "/tpl/dashboard.html");
     $e->loadHtml(__DIR__ . "/tpl/dashboard-traffic.html");
+    $e->loadHtml(__DIR__ . "/tpl/dashboard-log.html");
     return $e;
 
 }, new NaviButtonWithIcon("Dashboard", "fas fa-home nav-icon"));
@@ -156,14 +167,14 @@ $app->addPage("/admin/cloudfront", function() {
     $e = \fhtml();
     $e->loadHtml(__DIR__ . "/tpl/cloudfront.html");
     return $e;
-}, new NaviButtonWithIcon("Cloudfront", "fas fa-database nav-icon"));
+}, new NaviButtonWithIcon("Cloudfront", "fas fa-globe nav-icon"));
 
 
 $app->addPage("/admin/nodeinfo", function() {
     $e = \fhtml();
     $e->loadHtml(__DIR__ . "/tpl/nodeinfo.html");
     return $e;
-}, new NaviButtonWithIcon("Nodes", "fas fa-database nav-icon"));
+}, new NaviButtonWithIcon("Nodes", "fas fa-server nav-icon"));
 
 $app->addPage("/admin/syslog", function (Database $database, Request $request) {
     $q_system = $request->GET->get("system", "");

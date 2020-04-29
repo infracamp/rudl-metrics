@@ -9,9 +9,9 @@
                             self.$scope = {"autoupdate": localStorage.autoupdate };
                         })(KASELF);
                     </script>
-                    <label style="float:right" class="c-switch c-switch-label c-switch-opposite-primary">
-                        <input class="c-switch-input" type="checkbox" [checked]="autoupdate !== 'false'" onchange="localStorage.autoupdate = this.checked">
-                        <span class="c-switch-slider" data-checked="On" data-unchecked="Off"></span>
+                    <label style="float:right" class="switch switch-label switch-primary" title="Switch AutoUpdate on/off">
+                        <input class="switch-input" type="checkbox" [checked]="autoupdate !== 'false'" onchange="localStorage.autoupdate = this.checked">
+                        <span class="switch-slider" data-checked="On" data-unchecked="Off"></span>
                     </label>
                 </template>
             </div>

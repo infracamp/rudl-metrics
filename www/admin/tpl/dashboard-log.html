@@ -1,0 +1,84 @@
+
+<template is="ka-tpl" auto>
+    <script>
+        ((self) => {
+            self.$scope.formatDate = function(indate) {
+                let d = new Date(Date.parse(indate));
+                let diff = (Date.now() - d) / 1000;
+                if (diff > 3600)
+                    return "an hour ago";
+                if (diff > 300)
+                    return parseInt(diff / 60) + " minutes ago";
+                if (diff > 5)
+                    return parseInt(diff ) + " seconds ago";
+                return "now";
+                return d.toUTCString();
+            };
+
+            self.$scope.severityToName = function(indate) {
+                if (indate < 1)
+                    return "alert";
+                if (indate < 5)
+                    return "warn";
+                return "msg";
+            };
+
+            self.$scope.refresh = () => {
+                ka_http_req("/admin/api/query?q[0]=:q0&q[1]=:q1",
+                    {
+                        "q0": "select * from syslog WHERE time > now()-6h AND (severity = '0' OR severity='1') ORDER BY time DESC LIMIT 5",
+                        "q1": "select * from cloudfront WHERE time > now()-6h AND status != '200' ORDER BY time DESC LIMIT 5"
+                    })
+                .json = (r) => {
+                    self.$scope.syslog = r.result[0];
+                    self.$scope.cf = r.result[1]
+                };
+            };
+
+            self.$scope.refresh();
+
+            window.setInterval(() => self.$scope.refresh(), 3000);
+        })(KASELF);
+
+    </script>
+    <div class="card-group mb-4">
+        <div class="card">
+            <div class="card-body log-container" *if="typeof syslog !== 'undefined'">
+                <div class="text-muted text-right mb-6">
+                    Recent Syslog Errors
+                </div>
+                <code
+                        *for="let row of syslog indexby idx"
+                        [classlist.warn]="row.severity < 5"
+                        [classlist.rowmark]="idx % 2 < 1"
+                        [title]="JSON.stringify(row)" style="overflow: hidden">
+                    <b>{{ $scope.formatDate(row.time) }} [{{row.system}}][{{$scope.severityToName(row.severity)}}]:</b><br>{{row.msg.replace(/\n/g, " ")}}
+                </code>
+
+            </div>
+        </div>
+
+
+        <div class="card">
+            <div class="card-body log-container" *if="typeof cf !== 'undefined'">
+                <div class="text-muted text-right mb-6">
+                    Recent Cloudfront Errors
+                </div>
+                <code
+                        *for="let row of cf indexby idx"
+                        [classlist.warn]="row.status >= 400"
+                        [classlist.rowmark]="idx % 2 < 1"
+                        [title]="JSON.stringify(row)" style="overflow: hidden">
+                    <b>{{ $scope.formatDate(row.time) }} [{{row.system}}] {{row.remote_addr}} {{row.remote_user === "" ? "-" : row.remote_user}} {{row.status}}:</b> <br>{{row.http_host}} {{row.request}}
+                </code>
+
+            </div>
+        </div>
+
+    </div>
+</template>
+
+
+
+
+

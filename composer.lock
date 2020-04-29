@@ -968,12 +968,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phore/phore-objectstore.git",
-                "reference": "b65eae900a135e2260da2e8114709842c8d1c6fc"
+                "reference": "471766779f48410a9e95fc31f5f27ae6ae12a0a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phore/phore-objectstore/zipball/b65eae900a135e2260da2e8114709842c8d1c6fc",
-                "reference": "b65eae900a135e2260da2e8114709842c8d1c6fc",
+                "url": "https://api.github.com/repos/phore/phore-objectstore/zipball/471766779f48410a9e95fc31f5f27ae6ae12a0a8",
+                "reference": "471766779f48410a9e95fc31f5f27ae6ae12a0a8",
                 "shasum": ""
             },
             "require": {
@@ -1011,7 +1011,7 @@
                 }
             ],
             "description": "Object store for local files, google, aws",
-            "time": "2020-04-28T08:30:08+00:00"
+            "time": "2020-04-29T09:14:39+00:00"
         },
         {
             "name": "phore/sock-server",
