@@ -31,6 +31,17 @@ class Notificator
         $r24 = $this->db->query("select sum(*) from cloudfront_stats_cluster_min WHERE time > now()-24h")->getPoints();
         $r1 = $this->db->query("select sum(*) from cloudfront_stats_cluster_min WHERE time > now()-1h")->getPoints();
 
+        $log = $this->db->query("SELECT * FROM cloudfront WHERE status='500' OR status='404' ORDER by time DESC LIMIT 10")->getPoints();
+
+
+        $logArr = [];
+        foreach ($log as $row) {
+            $date = date("Y-m-d H:i:s", strtotime($row["time"]));
+            $logArr[] = "<b>{$date} {$row["cluster"]} {$row["status"]}:</b> {$row["remote_user"]} {$row["remote_addr"]} {$row["request"]}";
+        }
+        $logTxt = "<pre>" . implode("<br>", $logArr) ."</pre>>";
+
+
         $p24 = $this->getPercentageErrorRate($r24);
         $p1 = $this->getPercentageErrorRate($r1);
 
@@ -43,8 +54,13 @@ class Notificator
         if ($p1 > $p24 + 15) {
             if ($state["cf_err"] === false) {
                 $state["cf_err"] = true;
-                $this->sendMsg("𝗔𝗟𝗘𝗥𝗧 Cloudfront error rate '$p1%' exceeds dynamic threshold rate ($p24 %) by more than 15%");
+                $state["cf_last"] = time();
+                $this->sendMsg("𝗔𝗟𝗘𝗥𝗧 Cloudfront error rate '$p1%' exceeds dynamic threshold rate ($p24 %) by more than 15%", $logTxt);
+            } else if ($state["cf_last"] < time() - 3600) {
+                $state["cf_last"] = time();
+                $this->sendMsg("𝗔𝗟𝗘𝗥𝗧 [Reminder] Cloudfront error rate '$p1%' exceeds dynamic threshold rate ($p24 %) by more than 15%", $logTxt);
             }
+
         } else if ($p1 < $p24) {
             if ($state["cf_err"] === false) {
                 $state["cf_err"] = false;
