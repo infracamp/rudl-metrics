@@ -9,7 +9,7 @@
                     return "an hour ago";
                 if (diff > 300)
                     return parseInt(diff / 60) + " minutes ago";
-                if (diff > 5)
+                if (diff > 7)
                     return parseInt(diff ) + " seconds ago";
                 return "now";
                 return d.toUTCString();
@@ -26,8 +26,8 @@
             self.$scope.refresh = () => {
                 ka_http_req("/admin/api/query?q[0]=:q0&q[1]=:q1",
                     {
-                        "q0": "select * from syslog WHERE time > now()-6h AND (severity = '0' OR severity='1') ORDER BY time DESC LIMIT 5",
-                        "q1": "select * from cloudfront WHERE time > now()-6h AND status != '200' ORDER BY time DESC LIMIT 5"
+                        "q0": "select * from syslog WHERE time > now()-6h AND (severity = '0' OR severity='1') ORDER BY time DESC LIMIT 8",
+                        "q1": "select * from cloudfront WHERE time > now()-6h AND status != '200' ORDER BY time DESC LIMIT 8"
                     })
                 .json = (r) => {
                     self.$scope.syslog = r.result[0];
@@ -38,6 +38,7 @@
             self.$scope.refresh();
 
             window.setInterval(() => self.$scope.refresh(), 3000);
+            window.setInterval(() => self.render(), 1000);
         })(KASELF);
 
     </script>

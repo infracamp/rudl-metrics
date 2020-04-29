@@ -101,7 +101,7 @@ $app->router->onGet("/admin/api/nodeinfo", function (Database $database) {
 $app->addPage("/admin/", function () {
 
     $e = \fhtml();
-    $e->loadHtml(__DIR__ . "/tpl/dashboard.html");
+    $e->loadHtml(__DIR__ . "/tpl/dashboard-top.html");
     $e->loadHtml(__DIR__ . "/tpl/dashboard-traffic.html");
     $e->loadHtml(__DIR__ . "/tpl/dashboard-log.html");
     return $e;
