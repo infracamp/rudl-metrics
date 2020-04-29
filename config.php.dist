@@ -30,4 +30,8 @@ if (CONF_REPO_URL != "") {
 
 
 define("CONF_GITLAB_TOKEN", "%CONF_GITLAB_TOKEN%");
+
+// Webhook URL to send notifications to ms teams
+define("CONF_TEAMS_WEBHOOK", "%CONF_TEAMS_WEBHOOK?%");
+
 define("DEBUG_MODE", (bool)"%DEBUG_MODE%");
