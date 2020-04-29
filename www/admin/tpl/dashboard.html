@@ -3,11 +3,14 @@
     <script>
         ((self) => {
 
-            ka_http_req("/admin/api/query?q=:query", {"query": "select sum(tot.req) as totreq, sum(tot.req500) as tot500, sum(tot.bytesin) as bytesin, sum(tot.bytesout) as bytesout from cloudfront_stats_cluster_min WHERE time > now()-24h"}).json = (r) => {
-                self.$scope.cfstat = r.result[0];
+            self.$scope.refresh = () => {
+                ka_http_req("/admin/api/query?q=:query", {"query": "select sum(tot.req) as totreq, sum(tot.req500) as tot500, sum(tot.bytesin) as bytesin, sum(tot.bytesout) as bytesout from cloudfront_stats_cluster_min WHERE time > now()-24h"}).json = (r) => {
+                    self.$scope.cfstat = r.result[0];
+                };
             };
+            self.$scope.refresh();
 
-
+            window.setInterval(() => self.$scope.refresh(), 60000);
         })(KASELF);
 
     </script>

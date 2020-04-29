@@ -60,6 +60,14 @@
                         {"label": "Outbound (b)",  "key": "sum_tot.bytesout", "color": chartColors.green}
                     ]
                 },
+                {
+                    name: "Messages",
+                    query: `select sum(*) from syslog_stats_min WHERE time > now()-24h GROUP BY time(5m) fill(0) ORDER BY time DESC `,
+                    sensors:[
+                        {"label": "Notice",  "key": "sum_evt.notice", "color": chartColors.yellow},
+                        {"label": "Alert",  "key": "sum_evt.warn", "color": chartColors.red}
+                    ]
+                },
 
             ];
             self.$scope.active = self.$scope.presets[0];
@@ -80,6 +88,9 @@
                 };
             };
             self.$scope.refresh();
+
+            window.setInterval(() => self.$scope.refresh(), 60000);
+
 
         })(KASELF);
 
