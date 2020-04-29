@@ -92,6 +92,7 @@ $app->addPage("/admin/", function () {
 
     $e = \fhtml();
     $e->loadHtml(__DIR__ . "/tpl/dashboard.html");
+    $e->loadHtml(__DIR__ . "/tpl/dashboard-traffic.html");
     return $e;
 
 }, new NaviButtonWithIcon("Dashboard", "fas fa-home nav-icon"));

@@ -13,4 +13,4 @@ See [example stackfile](doc/stackfile.yml)
 
 ## Usage
 
-
+https://coreui.io/angular/demo/#/dashboard

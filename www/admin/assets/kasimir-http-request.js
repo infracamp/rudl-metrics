@@ -34,6 +34,7 @@ class KasimirHttpRequest {
             body: null,
             headers: {},
             dataType: "text",
+            debug: false,
             onError: null,
             data: null
         };
@@ -70,6 +71,17 @@ class KasimirHttpRequest {
      */
     withMethod(method) {
         this.request.method = method;
+        return this;
+    }
+
+    /**
+     * Switch debug mode on. Errors will trigger
+     * a message and a alert window.
+     *
+     * @return {KasimirHttpRequest}
+     */
+    withDebug() {
+        this.request.debug = true;
         return this;
     }
 
@@ -150,11 +162,15 @@ class KasimirHttpRequest {
         }
         xhttp.onreadystatechange = () => {
             if (xhttp.readyState === 4) {
-                console.log("ok", xhttp);
-                if (this.request.onError !== null && xhttp.status >= 400) {
+                if (this.request.onError !== null || parseInt(xhttp.status) >= 400) {
+                    console.warn("Http request failed:", xhttp.response);
+                    if (this.request.debug)
+                        alert("request failed:" + xhttp.response);
                     this.request.onError(new KasimirHttpResponse(xhttp.response, xhttp.status, this));
                     return;
                 }
+                if (this.request.debug)
+                    console.log("Success:", xhttp.response);
                 onSuccessFn(new KasimirHttpResponse(xhttp.response, xhttp.status, this));
                 return;
             }
