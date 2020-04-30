@@ -55,7 +55,7 @@
                         [classlist.warn]="row.severity < 1"
                         [classlist.rowmark]="idx % 2 < 1"
                         [title]="JSON.stringify(row)">
-                    <b>[{{row.system}}][{{$scope.severityToName(row.severity)}}] {{ $scope.formatDate(row.time) }}:</b><br>{{row.msg.replace(/\n/g, " ")}}
+                    <b>{{ $scope.formatDate(row.time) }}: [{{row.system}}][{{$scope.severityToName(row.severity)}}]:</b><br>{{row.msg.replace(/\n/g, " ")}}
                 </code>
 
             </div>
@@ -74,7 +74,7 @@
                         [classlist.rowmark]="idx % 2 < 1"
                         [classlist.bg-warning]=" $scope.formatDate(row.time) == 'now'"
                         [title]="JSON.stringify(row)">
-                    <b>[{{row.system}}] {{row.remote_addr}} {{row.remote_user === "" ? "-" : row.remote_user}} {{row.status}} {{ $scope.formatDate(row.time) }}:</b> <br>{{row.http_host}} {{row.request}}
+                    <b>{{ $scope.formatDate(row.time) }}: [{{row.system}}] {{row.remote_addr}} {{row.remote_user === "" ? "-" : row.remote_user}} {{row.status}}:</b> <br>{{row.http_host}} {{row.request}}
                 </code>
 
             </div>
