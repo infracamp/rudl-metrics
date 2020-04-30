@@ -97,6 +97,7 @@ $app->router->onGet("/api/dash.config/:name", function ($dashTokenValid, string 
  **/
 
 $app->router->onGet("/", function () {
+    header("Location: /admin");
     return [
         "success" => true,
         "msg" => "rudl-metrics ready " . VERSION_INFO,

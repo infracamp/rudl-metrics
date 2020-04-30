@@ -34,6 +34,10 @@ $app->theme->jsUrls[] = "/admin/assets/kasimir-tpl.js";
 $app->theme->jsUrls[] = "/admin/assets/kasimir-form.js";
 $app->theme->cssUrls[] = "/admin/assets/logstyle.css";
 
+$app->theme->footer[] = [
+    "div @float-right @text-muted" => new RawHtmlNode("Rudl Metrics " . VERSION_INFO . " &copy; 2020 <a href='https://infracamp.org'>infracamp.org</a> contributors")
+];
+
 /**
  ** Configure Dependency Injection
  **/
