@@ -33,6 +33,10 @@
             var elem = document.getElementById("traffic");
             var config = {
                 type: "line",
+                options: {
+                    maintainAspectRatio: false
+                },
+
                 data: {
                     labels: [],
                     datasets: []
@@ -103,6 +107,9 @@
             };
 
             self.$scope.refresh();
+
+
+            window.addEventListener("resize", () => chart.resize());
             window.setInterval(() => self.$scope.refresh(), 60000);
         })(KASELF);
 
@@ -113,7 +120,6 @@
             <div class="row">
                 <div class="col-sm-5">
                     <h4 class="card-title mb-0">{{ active.name }}
-
                     <div class="btn-group">
 
                         <button type="button" class="btn btn-lg dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -129,22 +135,22 @@
                 <div class="col-sm-7 d-none d-md-block">
 
                     <div class="btn-group btn-group-toggle float-right mr-3" data-toggle="buttons">
-                        <label [on.click]="$scope.interval={time: '1m', now: '3h'};$scope.refresh();" class="btn btn-primary">
+                        <label [on.click]="$scope.interval={time: '2m', now: '3h'};$scope.refresh();" class="btn btn-primary">
                             <input type="radio" name="options"> 3 Hours
                         </label>
                         <label [on.click]="$scope.interval={time: '15m', now: '24h'};$scope.refresh();" class="btn btn-primary active">
                             <input type="radio" name="options" checked> Day
                         </label>
-                        <label  [on.click]="$scope.interval={time: '60m', now: '7d'};$scope.refresh();" class="btn btn-primary">
+                        <label  [on.click]="$scope.interval={time: '120m', now: '7d'};$scope.refresh();" class="btn btn-primary">
                             <input type="radio" name="options"> Week
                         </label>
-                        <label [on.click]="$scope.interval={time: '6h', now: '31d'};$scope.refresh();" class="btn btn-primary">
+                        <label [on.click]="$scope.interval={time: '6h', now: '30d'};$scope.refresh();" class="btn btn-primary">
                             <input type="radio" name="options"> Month
                         </label>
                     </div>
                 </div>
             </div>
-            <div class="chart-wrapper" style="height:300px;margin-top:40px;">
+            <div class="chart-wrapper" style="height:250px;margin-top:10px;">
                 <div class="chartjs-size-monitor">
                     <div class="chartjs-size-monitor-expand">
                         <div class=""></div>
@@ -154,28 +160,9 @@
                     </div>
                 </div>
                 <canvas basechart="" class="chart chartjs-render-monitor"
-                        style="display: block; width: 1602px; height: 300px;" width="1602" height="300"
+                        style="display: block;  height: 300px;" width="" height="250"
                         id="traffic"></canvas>
-                <div id="_canvas-1a2b11e837-tooltip" class="chartjs-tooltip center"
-                     style="opacity: 0; left: 55.76px; top: 303.554px;">
-                    <div class="tooltip-header">
-                        <div class="tooltip-header-item">Monday</div>
-                    </div>
-                    <div class="tooltip-body">
-                        <div class="tooltip-body-item"><span class="tooltip-body-item-color"
-                                                             style="background-color: rgb(99, 194, 222);"></span><span
-                                class="tooltip-body-item-label">Current</span><span
-                                class="tooltip-body-item-value">140</span></div>
-                        <div class="tooltip-body-item"><span class="tooltip-body-item-color"
-                                                             style="background-color: rgb(77, 189, 116);"></span><span
-                                class="tooltip-body-item-label">Previous</span><span
-                                class="tooltip-body-item-value">98</span></div>
-                        <div class="tooltip-body-item"><span class="tooltip-body-item-color"
-                                                             style="background-color: rgb(248, 108, 107);"></span><span
-                                class="tooltip-body-item-label">BEP</span><span
-                                class="tooltip-body-item-value">65</span></div>
-                    </div>
-                </div>
+
             </div>
         </div>
         <div class="card-footer" *if="stats !== null">

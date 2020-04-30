@@ -51,10 +51,10 @@
             <div class="card-body">
 
                 <div class="text-value-lg">
-                    {{ parseFloat(cfstat["sum_tot.bytesin"] * 10e-10).toFixed(2) }} GB /
-                    {{ parseFloat(parseInt(cfstat["sum_tot.bytesout"]) * 10e-10).toFixed(2) }} GB
+                    {{ parseFloat(cfstat["sum_tot.bytesin"] * 10e-10).toFixed(2) }} /
+                    {{ parseFloat(parseInt(cfstat["sum_tot.bytesout"]) * 10e-10).toFixed(2) }}<small> GB</small>
                 </div>
-                <small class="text-muted text-uppercase font-weight-bold">Traffic inbound / outbound last 24h</small>
+                <small class="text-muted text-uppercase font-weight-bold">Traffic in/outbound 24h</small>
                 <div class="progress progress-xs mt-3 mb-0">
                     <div class="progress-bar bg-gradient-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
@@ -73,10 +73,10 @@
             <div class="card-body">
 
                 <div class="text-value-lg">
-                    <span  [classlist.]="{'text-success': errRatio24 > errRatio1, 'text-warning': errRatio24 < errRatio1}">{{ parseFloat(errRatio1).toFixed(2) }}%</span>
-                    <small>( {{ parseFloat(errRatio24).toFixed(2) }}% )</small>
+                    <span  [classlist.]="{'text-success': errRatio24 > errRatio1, 'text-warning': errRatio24 < errRatio1}">{{ parseFloat(errRatio1).toFixed(1) }}%</span>
+                    <small>({{ parseFloat(errRatio24).toFixed(1) }}%)</small>
                 </div>
-                <small class="text-muted text-uppercase font-weight-bold">Error ratio (500) 60 min ( 24 h )</small>
+                <small class="text-muted text-uppercase font-weight-bold">Error(500) 60m/1d</small>
                 <div class="progress progress-xs mt-3 mb-0">
                     <div class="progress-bar bg-warning" role="progressbar" [style.width]="(errRatio1) + '%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
