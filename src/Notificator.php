@@ -62,7 +62,7 @@ class Notificator
             }
 
         } else if ($p1 < $p24) {
-            if ($state["cf_err"] === false) {
+            if ($state["cf_err"] !== false) {
                 $state["cf_err"] = false;
                 $this->sendMsg("ＲＥＳＯＬＶＥＤ Cloudfront error rate '$p1%' dropped below dynamic threshold rate");
             }
