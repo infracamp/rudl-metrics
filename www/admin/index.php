@@ -26,7 +26,7 @@ require __DIR__ . "/../../vendor/autoload.php";
 
 set_time_limit(600);
 
-$app = new BasicAuthStatusPageApp("Rudl Metrics", "/admin");
+$app = new BasicAuthStatusPageApp(CONF_BRAND_NAME, "/admin");
 $app->activateExceptionErrorHandlers();
 $app->theme->frameworks["highlightjs"] = true;
 $app->theme->jsUrls[] = "/admin/assets/kasimir-http-request.js";

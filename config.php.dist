@@ -30,6 +30,7 @@ if (CONF_REPO_URL != "") {
 
 
 define("CONF_GITLAB_TOKEN", "%CONF_GITLAB_TOKEN%");
+define("CONF_BRAND_NAME", "%CONF_BRAND_NAME?Rudl Metrics%");
 
 // Webhook URL to send notifications to ms teams
 define("CONF_TEAMS_WEBHOOK", "%CONF_TEAMS_WEBHOOK?%");
