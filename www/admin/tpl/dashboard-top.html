@@ -41,7 +41,7 @@
         <div class="card">
             <div class="card-body">
 
-                <div class="text-value-lg">{{ cfstat["sum_tot.req"] }}</div><small class="text-muted text-uppercase font-weight-bold">Total requests last 24h</small>
+                <div class="text-value-lg">{{ cfstat["sum_tot.req"] }}</div><small class="text-muted text-uppercase font-weight-bold">Total req. last 24h</small>
                 <div class="progress progress-xs mt-3 mb-0">
                     <div class="progress-bar bg-gradient-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
@@ -52,9 +52,9 @@
 
                 <div class="text-value-lg">
                     {{ parseFloat(cfstat["sum_tot.bytesin"] * 10e-10).toFixed(2) }} /
-                    {{ parseFloat(parseInt(cfstat["sum_tot.bytesout"]) * 10e-10).toFixed(2) }}<small> GB</small>
+                    {{ parseFloat(parseInt(cfstat["sum_tot.bytesout"]) * 10e-10).toFixed(2) }}
                 </div>
-                <small class="text-muted text-uppercase font-weight-bold">Traffic in/outbound 24h</small>
+                <small class="text-muted text-uppercase font-weight-bold">Traffic in/out [GB]</small>
                 <div class="progress progress-xs mt-3 mb-0">
                     <div class="progress-bar bg-gradient-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>

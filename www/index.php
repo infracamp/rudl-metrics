@@ -120,12 +120,14 @@ $app->router->on("/v1/hooks/repo", ["POST", "GET"], function () {
 
     $factory = new VcsFactory();
     $factory->setCommitUser("rudl-metrics", "rudl-metrics@infracamp.org");
-    $factory->setAuthSshPrivateKey(phore_file(CONF_SSH_PRIV_KEY_FILE)->get_contents());
+    if (CONF_SSH_PRIV_KEY_FILE !== "")
+        $factory->setAuthSshPrivateKey(phore_file(CONF_SSH_PRIV_KEY_FILE)->get_contents());
+
     $repo = $factory->repository(REPO_PATH, CONF_REPO_URL);
 
     ignore_user_abort(true);
     $repo->pull();
-    return ["success" => true, "repo" => CONF_REPO_URL, "path" => REPO_PATH];
+    return ["success" => true, "repo" => explode("?", CONF_REPO_URL)[0], "path" => REPO_PATH];
 });
 
 

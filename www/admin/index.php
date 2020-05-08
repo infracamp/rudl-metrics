@@ -113,6 +113,12 @@ $app->addPage("/admin/", function () {
 }, new NaviButtonWithIcon("Dashboard", "fas fa-home nav-icon"));
 
 
+$app->addPage("/admin/dashboards", function () {
+    $e = \fhtml();
+    $e->loadHtml(__DIR__ . "/tpl/dashboard-top.html");
+    return $e;
+}, new NaviButtonWithIcon("Dashboard", "fas fa-home nav-icon"));
+
 
 $app->addPage("/admin/query", function (Database $database, Request $request) {
     $query = $request->GET->get("q", "SHOW MEASUREMENTS");

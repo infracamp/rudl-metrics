@@ -9,10 +9,8 @@
 define("DEV_MODE", (bool)"%DEV_MODE%");
 define("VERSION_INFO", "v0.1.%VERSION_NUMBER% (%VERSION_DATE_COMPACT%)");
 
-
-
-
-define("CONF_SSH_PRIV_KEY_FILE", "%CONF_SSH_PRIV_KEY_FILE%");
+// Old format - dedicated variable
+define("CONF_SSH_PRIV_KEY_FILE", "%CONF_SSH_PRIV_KEY_FILE?%");
 define("CONF_REPO_URL", "%CONF_REPO_URL%");
 
 define("CONF_INFLUX_HOST", "%CONF_INFLUX_HOST?influxdb%");
@@ -29,10 +27,10 @@ if (CONF_REPO_URL != "") {
 }
 
 
-define("CONF_GITLAB_TOKEN", "%CONF_GITLAB_TOKEN%");
+define("CONF_GITLAB_TOKEN", "%CONF_GITLAB_TOKEN?%");
 define("CONF_BRAND_NAME", "%CONF_BRAND_NAME?Rudl Metrics%");
 
 // Webhook URL to send notifications to ms teams
 define("CONF_TEAMS_WEBHOOK", "%CONF_TEAMS_WEBHOOK?%");
 
-define("DEBUG_MODE", (bool)"%DEBUG_MODE%");
+define("DEBUG_MODE", (bool)"%DEBUG_MODE?0%");
