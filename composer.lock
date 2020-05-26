@@ -82,7 +82,7 @@
                 "guzzlehttp/psr7": "^1.6.1",
                 "php": "^7.2.5",
                 "psr/http-client": "^1.0",
-                "symfony/polyfill-intl-idn": "^1.11"
+                "symfony/polyfill-intl-idn": "1.17.0"
             },
             "provide": {
                 "psr/http-client-implementation": "1.0"
@@ -190,12 +190,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "c73b502efd02beb2602500aa36793fb405e383ac"
+                "reference": "188cc82398f157483976ccf61bd04ee80afcf29c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/c73b502efd02beb2602500aa36793fb405e383ac",
-                "reference": "c73b502efd02beb2602500aa36793fb405e383ac",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/188cc82398f157483976ccf61bd04ee80afcf29c",
+                "reference": "188cc82398f157483976ccf61bd04ee80afcf29c",
                 "shasum": ""
             },
             "require": {
@@ -253,7 +253,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2020-02-12T23:13:46+00:00"
+            "time": "2020-05-17T20:05:25+00:00"
         },
         {
             "name": "influxdb/influxdb-php",
@@ -454,27 +454,23 @@
         },
         {
             "name": "phar-io/manifest",
-            "version": "dev-master",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phar-io/manifest.git",
-                "reference": "3d94e3b6eb309e921a100a4992f72314299bb03f"
+                "reference": "7761fcacf03b4d4f16e7ccb606d4879ca431fcf4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phar-io/manifest/zipball/3d94e3b6eb309e921a100a4992f72314299bb03f",
-                "reference": "3d94e3b6eb309e921a100a4992f72314299bb03f",
+                "url": "https://api.github.com/repos/phar-io/manifest/zipball/7761fcacf03b4d4f16e7ccb606d4879ca431fcf4",
+                "reference": "7761fcacf03b4d4f16e7ccb606d4879ca431fcf4",
                 "shasum": ""
             },
             "require": {
                 "ext-dom": "*",
                 "ext-phar": "*",
-                "ext-xmlwriter": "*",
                 "phar-io/version": "^2.0",
-                "php": "^7.2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^8.2"
+                "php": "^5.6 || ^7.0"
             },
             "type": "library",
             "extra": {
@@ -509,7 +505,7 @@
                 }
             ],
             "description": "Component for reading phar.io manifest information from a PHP Archive (PHAR)",
-            "time": "2019-12-29T10:29:09+00:00"
+            "time": "2018-07-08T19:23:20+00:00"
         },
         {
             "name": "phar-io/version",
@@ -614,12 +610,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phore/phore-core.git",
-                "reference": "12c1b2dc714a6d1f4ea49356f0010b8d824e66c4"
+                "reference": "4204b73ce06c3ed2e6f702424a1200764d756fc4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phore/phore-core/zipball/12c1b2dc714a6d1f4ea49356f0010b8d824e66c4",
-                "reference": "12c1b2dc714a6d1f4ea49356f0010b8d824e66c4",
+                "url": "https://api.github.com/repos/phore/phore-core/zipball/4204b73ce06c3ed2e6f702424a1200764d756fc4",
+                "reference": "4204b73ce06c3ed2e6f702424a1200764d756fc4",
                 "shasum": ""
             },
             "require": {
@@ -657,7 +653,7 @@
             ],
             "description": "Phore core library",
             "homepage": "https://infracamp.org/project/phore",
-            "time": "2020-04-29T17:32:38+00:00"
+            "time": "2020-05-15T10:10:44+00:00"
         },
         {
             "name": "phore/di-base",
@@ -812,12 +808,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phore/phore-http-client.git",
-                "reference": "64874d9af473bfb579770c9506b88b18ed27c7bc"
+                "reference": "5d506b0bf0c8c7fd2767710e325b55ee7185687e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phore/phore-http-client/zipball/64874d9af473bfb579770c9506b88b18ed27c7bc",
-                "reference": "64874d9af473bfb579770c9506b88b18ed27c7bc",
+                "url": "https://api.github.com/repos/phore/phore-http-client/zipball/5d506b0bf0c8c7fd2767710e325b55ee7185687e",
+                "reference": "5d506b0bf0c8c7fd2767710e325b55ee7185687e",
                 "shasum": ""
             },
             "require": {
@@ -861,7 +857,7 @@
                 "Keyword1",
                 "Keyword2"
             ],
-            "time": "2020-04-27T20:08:54+00:00"
+            "time": "2020-05-14T09:50:11+00:00"
         },
         {
             "name": "phore/log",
@@ -968,12 +964,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phore/phore-objectstore.git",
-                "reference": "7864d26607ba3ef3a4bcc0bc206fada39f6cfdf5"
+                "reference": "a7adea6b8228177ea349f307256c23b42c63317a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phore/phore-objectstore/zipball/7864d26607ba3ef3a4bcc0bc206fada39f6cfdf5",
-                "reference": "7864d26607ba3ef3a4bcc0bc206fada39f6cfdf5",
+                "url": "https://api.github.com/repos/phore/phore-objectstore/zipball/a7adea6b8228177ea349f307256c23b42c63317a",
+                "reference": "a7adea6b8228177ea349f307256c23b42c63317a",
                 "shasum": ""
             },
             "require": {
@@ -1011,7 +1007,7 @@
                 }
             ],
             "description": "Object store for local files, google, aws",
-            "time": "2020-05-02T13:16:45+00:00"
+            "time": "2020-05-14T07:53:14+00:00"
         },
         {
             "name": "phore/sock-server",
@@ -1110,12 +1106,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phore/phore-system.git",
-                "reference": "ec797e9de93a33def0748f5fe5a61c53d121bb78"
+                "reference": "ecc5a518cd4514609e630938f4367a6d4a0b8269"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phore/phore-system/zipball/ec797e9de93a33def0748f5fe5a61c53d121bb78",
-                "reference": "ec797e9de93a33def0748f5fe5a61c53d121bb78",
+                "url": "https://api.github.com/repos/phore/phore-system/zipball/ecc5a518cd4514609e630938f4367a6d4a0b8269",
+                "reference": "ecc5a518cd4514609e630938f4367a6d4a0b8269",
                 "shasum": ""
             },
             "require": {
@@ -1146,7 +1142,7 @@
             ],
             "description": "Execute shell commands",
             "homepage": "https://infracamp.org/project/phore",
-            "time": "2020-04-28T09:52:00+00:00"
+            "time": "2020-05-15T17:16:34+00:00"
         },
         {
             "name": "phore/theme-bootstrap",
@@ -1239,24 +1235,25 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phore/phore-vcs.git",
-                "reference": "df2a3833525b18aa1877fc0b772336a1cd978657"
+                "reference": "c2acb230a81e98370da9bb28808b82f2255c50f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phore/phore-vcs/zipball/df2a3833525b18aa1877fc0b772336a1cd978657",
-                "reference": "df2a3833525b18aa1877fc0b772336a1cd978657",
+                "url": "https://api.github.com/repos/phore/phore-vcs/zipball/c2acb230a81e98370da9bb28808b82f2255c50f6",
+                "reference": "c2acb230a81e98370da9bb28808b82f2255c50f6",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "ext-yaml": "*",
-                "phore/filesystem": "dev-master",
-                "phore/objectstore": "dev-master",
-                "phore/system": "dev-master",
-                "php": ">7.1"
+                "phore/core": "*",
+                "phore/filesystem": "*",
+                "phore/objectstore": "*",
+                "phore/system": "*",
+                "php": ">=7.2"
             },
             "require-dev": {
-                "phore/theme-coreui": "dev-master"
+                "phpunit/phpunit": "^7"
             },
             "type": "library",
             "autoload": {
@@ -1276,7 +1273,7 @@
                 }
             ],
             "description": "Wrapper for git",
-            "time": "2020-02-26T15:24:46+00:00"
+            "time": "2020-05-08T16:06:30+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -1386,12 +1383,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/TypeResolver.git",
-                "reference": "6be94d5733839a52492da96f57c6a3b062a8f97a"
+                "reference": "95d8782070ccd738295bbe4483f8760f998ad64d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/6be94d5733839a52492da96f57c6a3b062a8f97a",
-                "reference": "6be94d5733839a52492da96f57c6a3b062a8f97a",
+                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/95d8782070ccd738295bbe4483f8760f998ad64d",
+                "reference": "95d8782070ccd738295bbe4483f8760f998ad64d",
                 "shasum": ""
             },
             "require": {
@@ -1424,7 +1421,7 @@
                 }
             ],
             "description": "A PSR-5 based resolver of Class names, Types and Structural Element Names",
-            "time": "2020-04-27T19:13:53+00:00"
+            "time": "2020-05-13T13:46:15+00:00"
         },
         {
             "name": "phpspec/prophecy",
@@ -1747,12 +1744,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "94821def76750d335505c384d05fcb3394130615"
+                "reference": "4dc5717d74120d27d7dc370b8e7d1e67dd4783f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/94821def76750d335505c384d05fcb3394130615",
-                "reference": "94821def76750d335505c384d05fcb3394130615",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/4dc5717d74120d27d7dc370b8e7d1e67dd4783f5",
+                "reference": "4dc5717d74120d27d7dc370b8e7d1e67dd4783f5",
                 "shasum": ""
             },
             "require": {
@@ -1822,7 +1819,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2020-05-05T05:16:12+00:00"
+            "time": "2020-05-22T14:08:06+00:00"
         },
         {
             "name": "psr/container",
@@ -2680,12 +2677,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
-                "reference": "1aab00e39cebaef4d8652497f46c15c1b7e45294"
+                "reference": "e94c8b1bbe2bc77507a1056cdb06451c75b427f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/1aab00e39cebaef4d8652497f46c15c1b7e45294",
-                "reference": "1aab00e39cebaef4d8652497f46c15c1b7e45294",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/e94c8b1bbe2bc77507a1056cdb06451c75b427f9",
+                "reference": "e94c8b1bbe2bc77507a1056cdb06451c75b427f9",
                 "shasum": ""
             },
             "require": {
@@ -2697,7 +2694,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.16-dev"
+                    "dev-master": "1.17-dev"
                 }
             },
             "autoload": {
@@ -2730,20 +2727,20 @@
                 "polyfill",
                 "portable"
             ],
-            "time": "2020-05-08T16:50:20+00:00"
+            "time": "2020-05-12T16:14:59+00:00"
         },
         {
             "name": "symfony/polyfill-intl-idn",
-            "version": "dev-master",
+            "version": "v1.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-idn.git",
-                "reference": "ab0af41deab94ec8dceb3d1fb408bdd038eba4dc"
+                "reference": "3bff59ea7047e925be6b7f2059d60af31bb46d6a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/ab0af41deab94ec8dceb3d1fb408bdd038eba4dc",
-                "reference": "ab0af41deab94ec8dceb3d1fb408bdd038eba4dc",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/3bff59ea7047e925be6b7f2059d60af31bb46d6a",
+                "reference": "3bff59ea7047e925be6b7f2059d60af31bb46d6a",
                 "shasum": ""
             },
             "require": {
@@ -2757,7 +2754,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.16-dev"
+                    "dev-master": "1.17-dev"
                 }
             },
             "autoload": {
@@ -2792,7 +2789,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2020-05-08T16:50:20+00:00"
+            "time": "2020-05-12T16:47:27+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -2800,12 +2797,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "a54881ec0ab3b2005c406aed0023c062879031e7"
+                "reference": "fa79b11539418b02fc5e1897267673ba2c19419c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/a54881ec0ab3b2005c406aed0023c062879031e7",
-                "reference": "a54881ec0ab3b2005c406aed0023c062879031e7",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/fa79b11539418b02fc5e1897267673ba2c19419c",
+                "reference": "fa79b11539418b02fc5e1897267673ba2c19419c",
                 "shasum": ""
             },
             "require": {
@@ -2817,7 +2814,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.16-dev"
+                    "dev-master": "1.17-dev"
                 }
             },
             "autoload": {
@@ -2851,7 +2848,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2020-05-08T16:50:20+00:00"
+            "time": "2020-05-12T16:47:27+00:00"
         },
         {
             "name": "symfony/polyfill-php72",
@@ -2859,12 +2856,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php72.git",
-                "reference": "42fda6d7380e5c940d7f68341ccae89d5ab9963b"
+                "reference": "f048e612a3905f34931127360bdd2def19a5e582"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/42fda6d7380e5c940d7f68341ccae89d5ab9963b",
-                "reference": "42fda6d7380e5c940d7f68341ccae89d5ab9963b",
+                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/f048e612a3905f34931127360bdd2def19a5e582",
+                "reference": "f048e612a3905f34931127360bdd2def19a5e582",
                 "shasum": ""
             },
             "require": {
@@ -2873,7 +2870,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.16-dev"
+                    "dev-master": "1.17-dev"
                 }
             },
             "autoload": {
@@ -2906,7 +2903,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2020-05-08T17:28:34+00:00"
+            "time": "2020-05-12T16:47:27+00:00"
         },
         {
             "name": "text/template",

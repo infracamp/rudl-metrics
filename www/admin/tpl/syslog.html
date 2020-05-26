@@ -1,0 +1,89 @@
+<div class="row">
+    <div class="col-12">
+        <template is="ka-tpl" auto>
+
+            <script>
+                ((self) => {
+                    self.$scope = {"sql": "", "response": {"result": []}};
+
+                    self.$scope.logLevelMap = {
+                        0: "emgy",
+                        1: "alert",
+                        2: "crit",
+                        3: "err",
+                        4: "warn",
+                        5: "notice",
+                        6: "info",
+                        7: "debug"
+                    }
+
+                    self.update = function(noclear) {
+                        if (noclear !== true)
+                            self.$scope.response.result.length = 0;
+                        let opts = KaRoute.options;
+                        let sqlWhere = ["1=1"];
+                        if ( ! ka_empty(opts.system))
+                            sqlWhere.push("system='" + opts.system + "'");
+                        if ( ! ka_empty(opts.hostname))
+                            sqlWhere.push("hostname='" + opts.hostname + "'");
+                        if ( ! ka_empty(opts.severity))
+                            sqlWhere.push("severity<" + opts.severity + "");
+                        if ( ! ka_empty(opts.msg))
+                            sqlWhere.push("msg=~/" + opts.msg + "/");
+                        if ( ! ka_empty(opts.time))
+                            sqlWhere.push("time < '" + opts.time + "'");
+                        let sql = `SELECT * FROM syslog WHERE ${sqlWhere.join(" AND ")} ORDER BY time DESC LIMIT 1000`;
+                        self.$scope.sql = sql;
+
+                        ka_http_req("/admin/api/query?q=:query", {"query": sql}).json = (r) => {
+                            console.log(r);
+                            self.$scope.response = r;
+                        };
+                    }
+
+                    KaRoute.onOptionChange("syslog", self.update);
+                    self.update();
+
+                    let interval = window.setInterval(e => {
+                        if (localStorage.autoupdate !== 'true') return;
+                        self.update(true)
+                    }, 30000);
+
+                    self.$scope.formatDate = function(indate) {
+                        let d = new Date(Date.parse(indate));
+                        return d.toUTCString();
+                    }
+
+                })(KASELF);
+            </script>
+            <div class="card">
+                <div class="card-header" id="syslogHeader">
+                    {{ sql }}
+                    <label style="float:right" class="switch switch-label switch-primary" title="Switch AutoUpdate on/off">
+                        <input class="switch-input" type="checkbox" [checked]="localStorage.autoupdate !== 'false'" onchange="localStorage.autoupdate = this.checked">
+                        <span class="switch-slider" data-checked="On" data-unchecked="Off"></span>
+                    </label>
+                </div>
+                <div class="card-body log-container" style="">
+
+
+                    <code
+                          *for="let row of response.result indexby idx"
+                          [classlist.warn]="row.severity <= 4"
+                          [classlist.rowmark]="idx % 10 < 5"
+                          [title]="$scope.formatDate(row.time) + ': ' + row.msg">
+                        <b>{{ $scope.formatDate(row.time) }}</b>
+                        <a href="" [on.click]="KaRoute.options.hostname=row.hostname">{{row.hostname}}</a>
+                        <a href="" [on.click]="KaRoute.options.system=row.system">{{row.system}}</a>
+                        {{ row.facility }}
+                        [{{ $scope.logLevelMap[row.severity]}}]: {{ row.msg.replace(/\n/g, '') }}
+                    </code>
+
+
+                </div>
+            </div>
+        </template>
+    </div>
+</div>
+
+

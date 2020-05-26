@@ -29,9 +29,7 @@ set_time_limit(600);
 $app = new BasicAuthStatusPageApp(CONF_BRAND_NAME, "/admin");
 $app->activateExceptionErrorHandlers();
 $app->theme->frameworks["highlightjs"] = true;
-$app->theme->jsUrls[] = "/admin/assets/kasimir-http-request.js";
-$app->theme->jsUrls[] = "/admin/assets/kasimir-tpl.js";
-$app->theme->jsUrls[] = "/admin/assets/kasimir-form.js";
+$app->theme->jsUrls[] = "/admin/assets/kasimir.full.js";
 $app->theme->cssUrls[] = "/admin/assets/logstyle.css";
 
 $app->theme->footer[] = [
@@ -112,13 +110,13 @@ $app->addPage("/admin/", function () {
 
 }, new NaviButtonWithIcon("Dashboard", "fas fa-home nav-icon"));
 
-
+/*
 $app->addPage("/admin/dashboards", function () {
     $e = \fhtml();
     $e->loadHtml(__DIR__ . "/tpl/dashboard-top.html");
     return $e;
 }, new NaviButtonWithIcon("Dashboard", "fas fa-home nav-icon"));
-
+*/
 
 $app->addPage("/admin/query", function (Database $database, Request $request) {
     $query = $request->GET->get("q", "SHOW MEASUREMENTS");
@@ -186,96 +184,16 @@ $app->addPage("/admin/nodeinfo", function() {
     return $e;
 }, new NaviButtonWithIcon("Nodes", "fas fa-server nav-icon"));
 
-$app->addPage("/admin/syslog", function (Database $database, Request $request) {
-    $q_system = $request->GET->get("system", "");
-    $q_severity = $request->GET->get("severity", "");
-    $q_hostname = $request->GET->get("hostname", "");
-    $q_msg = $request->GET->get("msg", "");
 
-    $whereStmts = ["1=1"];
-    if ($q_system != "")
-        $whereStmts[] = "system='" . addslashes($q_system) . "'";
-    if ($q_hostname != "")
-        $whereStmts[] = "hostname='" . addslashes($q_hostname) . "'";
-    if ($q_severity != "")
-        $whereStmts[] = "severity<" . addslashes((int)$q_severity) . "";
-    if ($q_msg != "")
-        $whereStmts[] = "msg =~ /" . addcslashes($q_msg, "/'") . "/";
-
-    $query = "SELECT * FROM syslog WHERE " . implode (" AND ", $whereStmts) . " ORDER BY time DESC LIMIT 2500";
-    $queryResults = $database->query($query)->getPoints();
-
-    $rowdata = [];
-    foreach ($queryResults as $i => $queryResult) {
-        $color = "darkslategrey";
-        if ($queryResult["severity"] < 5) {
-            $color = "darkgoldenrod";
-        }
-        if ($queryResult["severity"] < 1) {
-            $color = "darkred";
-        }
-
-        $date = strtotime($queryResult["time"]);
-        $date = date("M d H:i:s", $date);
-        $bg = "";
-        if ($i % 10 < 5)
-            $bg = "WhiteSmoke";
-
-        $rowdata[] = fhtml(
-            ["code @style=display:block;color:$color;background-color:$bg @title=:title" =>
-                [
-                    "b" => [
-                        "{$date} ",
-                        ["a @href=:hostLink" => "{$queryResult["hostname"]}"], " ",
-                        ["a @href=:systemLink" => "{$queryResult["system"]}"], " ",
-                        "{$queryResult["facility"]} [" . PhoreLogger::LOG_LEVEL_MAP[$queryResult["severity"]] . "]: "
-                    ],
-                    "{$queryResult["msg"]}"
-                ],
-            ],
-            [
-                "title" => $queryResult["time"] . ": " . $queryResult["msg"],
-                "systemLink" => "?system=" . urlencode($queryResult["system"]),
-                "hostLink" => "?hostname=" . urlencode($queryResult["hostname"])
-            ]
-        );
-    }
-
-
-
-    $e = \fhtml();
-    $r = $e["div @row"];
-    $c1 = $r["div @col-12"];
-    $c1[] = pt()->card(
-        "Syslog browser",
-        [
-            "form @action=/admin/syslog @method=get @class=form-inline" => [
-                "div @class=form-group" => [
-                    ["label @class=mr-1" => "System"],
-                    fhtml("input @type=text @class=col-1 form-control @name=system @value=?", [(string)$q_system]),
-                    ["label @class=mr-1 ml-2" => "Hostname"],
-                    fhtml("input @type=text @class=col-1 form-control @name=hostname @value=?", [(string)$q_hostname]),
-                    ["label @class=mr-1 ml-2" => "Severity"],
-                    fhtml("input @type=text @class=col-1 form-control @name=severity @value=?", [(string)$q_severity]),
-                    ["label @class=mr-1 ml-2" => "Filter"],
-                    fhtml("input @type=text @class=col-2 form-control @name=msg @value=?", [(string)$q_msg]),
-                    "button @class=ml-2 btn btn-primary @type=submit" => "Apply filter"
-                ]
-            ]
-        ]
-    );
-
-
-    $c1[] = pt()->card(
-        "Result of query: $query",
-        [
-            "div @style=overflow-y:scroll;white-space:nowrap;" => $rowdata
-        ]
-    );
-
+$app->addPage("/admin/syslog", function () {
+    $e = fhtml();
+    $e->loadHtml(__DIR__ . "/tpl/syslog-head.html");
+    $e->loadHtml(__DIR__ . "/tpl/syslog.html");
     return $e;
-
 }, new NaviButtonWithIcon("Syslog", "fas fa-list nav-icon"));
+
+
+
 
 
 $app->serve();
