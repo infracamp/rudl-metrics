@@ -167,7 +167,6 @@ $app->addPage("/admin/query", function (Database $database, Request $request) {
     );
 
     return $e;
-
 }, new NaviButtonWithIcon("Query", "fas fa-database nav-icon"));
 
 

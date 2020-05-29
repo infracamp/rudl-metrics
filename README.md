@@ -3,17 +3,14 @@
 
 ## Installation
 
-### Run the docker image
+### Examples
 
-### Run docker stack
-
-See [example stackfile](doc/stackfile.yml)
-
+- [example stackfile](doc/stackfile.yml)
+- [Example nginx.conf for cloudfront logging](doc/nginx-logging.conf)
 
 
 ## Usage
 
-https://coreui.io/angular/demo/#/dashboard
 ## Config options
 
 The configuration of the authentication can be done directly in the url params:
