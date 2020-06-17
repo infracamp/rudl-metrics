@@ -172,6 +172,7 @@ $app->addPage("/admin/query", function (Database $database, Request $request) {
 
 $app->addPage("/admin/cloudfront", function() {
     $e = \fhtml();
+    $e->loadHtml(__DIR__ . "/tpl/cloudfront-head.html");
     $e->loadHtml(__DIR__ . "/tpl/cloudfront.html");
     return $e;
 }, new NaviButtonWithIcon("Cloudfront", "fas fa-globe nav-icon"));

@@ -1,18 +1,19 @@
 <div class="row">
     <div class="col-12">
-        <div class="card">
-            <div class="card-header">Cloudfront</div>
-            <div class="card-body log-container" style="">
-                <template is="ka-tpl" auto>
+        <template is="ka-tpl" auto>
+            <div class="card">
+                <div class="card-header">Cloudfront
+                    <label style="float:right" class="switch switch-label switch-primary" title="Switch AutoUpdate on/off">
+                        <input class="switch-input" type="checkbox" [checked]="localStorage.autoupdate !== 'false'" onchange="localStorage.autoupdate = this.checked">
+                        <span class="switch-slider" data-checked="On" data-unchecked="Off"></span>
+                    </label>
+                </div>
+                <div class="card-body log-container" style="">
+
                     <script>
                         ((self) => {
                             self.$scope = {"response": {"result": []}};
-                            ka_http_req("/admin/api/query?q=:query", {"query": "select * from cloudfront order by time desc limit 50"}).json = (r) => {
-                                self.$scope.response = r;
-                            };
-                            ka_http_req("/admin/api/query?q=:query", {"query": "select * from cloudfront order by time desc limit 2500"}).json = (r) => {
-                                self.$scope.response = r;
-                            };
+
                             self.$scope.formatDate = function(indate) {
 
                                 let d = new Date(Date.parse(indate));
@@ -20,7 +21,37 @@
                             }
 
 
+                            self.update = function(noclear) {
+                                if (noclear !== true)
+                                    self.$scope.response.result.length = 0;
+                                let opts = KaRoute.options;
+                                let sqlWhere = ["1=1"];
+                                if ( ! ka_empty(opts.cluster))
+                                    sqlWhere.push("cluster='" + opts.cluster + "'");
+                                if ( ! ka_empty(opts.http_host))
+                                    sqlWhere.push("http_host='" + opts.http_host + "'");
+                                if ( ! ka_empty(opts.status))
+                                    sqlWhere.push("status='" + opts.status + "'");
+                                if ( ! ka_empty(opts.msg))
+                                    sqlWhere.push("request=~/" + opts.msg + "/");
+                                if ( ! ka_empty(opts.time))
+                                    sqlWhere.push("time < '" + opts.time + "'");
+                                let sql = `SELECT time,cluster,status,remote_addr,remote_user,http_host,request FROM cloudfront WHERE ${sqlWhere.join(" AND ")} ORDER BY time DESC LIMIT 1000`;
+                                self.$scope.sql = sql;
 
+                                ka_http_req("/admin/api/query?q=:query", {"query": sql}).json = (r) => {
+                                    console.log(r);
+                                    self.$scope.response = r;
+                                };
+                            }
+
+                            KaRoute.onOptionChange("cloudfront", self.update);
+                            self.update();
+
+                            let interval = window.setInterval(e => {
+                                if (localStorage.autoupdate !== 'true') return;
+                                self.update(true)
+                            }, 30000);
                         })(KASELF);
                     </script>
 
@@ -31,10 +62,11 @@
                           [title]="JSON.stringify(row)">
                         <b>{{ $scope.formatDate(row.time) }}</b> [{{row.cluster}}] <a href="" [on.click]="showIpInfo(row.remote_addr);">{{row.remote_addr}}</a> {{row.remote_user === "" ? "-" : row.remote_user}} {{row.status}}: <b>{{row.http_host}}</b> {{row.request}}
                     </code>
-                </template>
 
+
+                </div>
             </div>
-        </div>
+        </template>
     </div>
 </div>
 

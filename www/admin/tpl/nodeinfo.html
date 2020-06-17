@@ -66,9 +66,7 @@
                             <th scope="col">Cluster</th>
                             <th>Host</th>
                             <th style="text-align: center">Last seen</th>
-                            <th style="text-align: center">LoadAvg</th>
-                            <th style="text-align: center">LoadAvg[5m]</th>
-                            <th style="text-align: center">LoadAvg[15m]</th>
+                            <th style="text-align: center">LoadAvg <i>[1m/5m/15m]</i></th>
                             <th style="text-align: right">FS Avail(Used%)</th>
                             <th style="text-align: right">Mem Avail</th>
                             <th style="text-align: right">Inode</th>
@@ -87,9 +85,11 @@
                                 <td><b>{{ row.host}}</b></td>
                                 <td style="text-align: center" [classlist.alert-warning]="rowdata.lastSeen > 30">{{ rowdata.lastSeen }}s</td>
 
-                                <td style="text-align: center" [classlist.alert-warning]="row.loadavg > 2">{{ row.loadavg}}</td>
-                                <td style="text-align: center"  [classlist.alert-warning]="row.loadavg > 2">{{ row.loadavg_5m}}</td>
-                                <td style="text-align: center"  [classlist.alert-warning]="row.loadavg > 2">{{ row.loadavg_15m}}</td>
+                                <td style="text-align: center"  [classlist.alert-warning]="row.loadavg > 2">
+                                    <b style="width: 50px; display: inline-block; text-align: center" class="text-success" [classlist.text-danger]="row.loadavg > 2">{{ row.loadavg}}</b> /
+                                    <b style="width: 50px; display: inline-block; text-align: center" class="text-success" [classlist.text-danger]="row.loadavg_5m > 2">{{ row.loadavg_5m}}</b> /
+                                    <b style="width: 50px; display: inline-block; text-align: center" class="text-success" [classlist.text-danger]="row.loadavg_15m > 2">{{ row.loadavg_15m}}</b>
+                                </td>
 
                                 <td style="text-align: right" [classlist.alert-warning]="row.fs_use_prct > 80">{{ rowdata.fsAvailGB }}GB ({{ row.fs_use_prct }}%)</td>
                                 <td style="text-align: right" [classlist.alert-warning]="row.memAvailGB < 1">{{ rowdata.memAvailGB }}GB</td>

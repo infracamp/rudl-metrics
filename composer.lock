@@ -12,16 +12,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/instantiator.git",
-                "reference": "6a1471ddbf2f448b35f3a8e390c903435e6dd5de"
+                "reference": "3e7a22aed197e9333cc929e7f6b4300bdae91fcc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/6a1471ddbf2f448b35f3a8e390c903435e6dd5de",
-                "reference": "6a1471ddbf2f448b35f3a8e390c903435e6dd5de",
+                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/3e7a22aed197e9333cc929e7f6b4300bdae91fcc",
+                "reference": "3e7a22aed197e9333cc929e7f6b4300bdae91fcc",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1"
+                "php": "^7.1 || ^8.0"
             },
             "require-dev": {
                 "doctrine/coding-standard": "^6.0",
@@ -60,7 +60,7 @@
                 "constructor",
                 "instantiate"
             ],
-            "time": "2019-12-23T19:18:31+00:00"
+            "time": "2020-06-15T18:51:04+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -81,8 +81,7 @@
                 "guzzlehttp/promises": "^1.0",
                 "guzzlehttp/psr7": "^1.6.1",
                 "php": "^7.2.5",
-                "psr/http-client": "^1.0",
-                "symfony/polyfill-intl-idn": "1.17.0"
+                "psr/http-client": "^1.0"
             },
             "provide": {
                 "psr/http-client-implementation": "1.0"
@@ -261,12 +260,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/influxdata/influxdb-php.git",
-                "reference": "2407057e5f70620b38bc9ad99188f0438a1ead75"
+                "reference": "2d48339386c633fc42d1ae3d989e17ce6658dc7c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/influxdata/influxdb-php/zipball/2407057e5f70620b38bc9ad99188f0438a1ead75",
-                "reference": "2407057e5f70620b38bc9ad99188f0438a1ead75",
+                "url": "https://api.github.com/repos/influxdata/influxdb-php/zipball/2d48339386c633fc42d1ae3d989e17ce6658dc7c",
+                "reference": "2d48339386c633fc42d1ae3d989e17ce6658dc7c",
                 "shasum": ""
             },
             "require": {
@@ -314,7 +313,7 @@
                 "influxdb library",
                 "time series"
             ],
-            "time": "2019-10-07T22:02:12+00:00"
+            "time": "2020-06-10T15:34:54+00:00"
         },
         {
             "name": "microsoft/azure-storage-blob",
@@ -610,12 +609,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phore/phore-core.git",
-                "reference": "4204b73ce06c3ed2e6f702424a1200764d756fc4"
+                "reference": "052f22306eb62a9f857b7c6de8263e643e30e222"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phore/phore-core/zipball/4204b73ce06c3ed2e6f702424a1200764d756fc4",
-                "reference": "4204b73ce06c3ed2e6f702424a1200764d756fc4",
+                "url": "https://api.github.com/repos/phore/phore-core/zipball/052f22306eb62a9f857b7c6de8263e643e30e222",
+                "reference": "052f22306eb62a9f857b7c6de8263e643e30e222",
                 "shasum": ""
             },
             "require": {
@@ -653,7 +652,7 @@
             ],
             "description": "Phore core library",
             "homepage": "https://infracamp.org/project/phore",
-            "time": "2020-05-15T10:10:44+00:00"
+            "time": "2020-06-17T15:20:33+00:00"
         },
         {
             "name": "phore/di-base",
@@ -712,12 +711,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phore/phore-filesystem.git",
-                "reference": "c44071b4cff1d86a050bef493aa0b677103e786c"
+                "reference": "fbf9ac46d203a3be221fd1f776b7c92d109c906e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phore/phore-filesystem/zipball/c44071b4cff1d86a050bef493aa0b677103e786c",
-                "reference": "c44071b4cff1d86a050bef493aa0b677103e786c",
+                "url": "https://api.github.com/repos/phore/phore-filesystem/zipball/fbf9ac46d203a3be221fd1f776b7c92d109c906e",
+                "reference": "fbf9ac46d203a3be221fd1f776b7c92d109c906e",
                 "shasum": ""
             },
             "require": {
@@ -751,7 +750,7 @@
             ],
             "description": "Acces files layer",
             "homepage": "http://infracamp.org/project/phore",
-            "time": "2020-05-07T13:58:29+00:00"
+            "time": "2020-06-03T19:34:50+00:00"
         },
         {
             "name": "phore/html",
@@ -1235,12 +1234,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phore/phore-vcs.git",
-                "reference": "c2acb230a81e98370da9bb28808b82f2255c50f6"
+                "reference": "e0a460839455beb940c700afe41debca415fcb8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phore/phore-vcs/zipball/c2acb230a81e98370da9bb28808b82f2255c50f6",
-                "reference": "c2acb230a81e98370da9bb28808b82f2255c50f6",
+                "url": "https://api.github.com/repos/phore/phore-vcs/zipball/e0a460839455beb940c700afe41debca415fcb8c",
+                "reference": "e0a460839455beb940c700afe41debca415fcb8c",
                 "shasum": ""
             },
             "require": {
@@ -1253,7 +1252,7 @@
                 "php": ">=7.2"
             },
             "require-dev": {
-                "phpunit/phpunit": "^7"
+                "phpunit/phpunit": "*"
             },
             "type": "library",
             "autoload": {
@@ -1273,7 +1272,7 @@
                 }
             ],
             "description": "Wrapper for git",
-            "time": "2020-05-08T16:06:30+00:00"
+            "time": "2020-06-17T15:48:46+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -1744,12 +1743,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "4dc5717d74120d27d7dc370b8e7d1e67dd4783f5"
+                "reference": "8eaf8535ac38e0962ce5cfc1dfeaf67c6ba6a648"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/4dc5717d74120d27d7dc370b8e7d1e67dd4783f5",
-                "reference": "4dc5717d74120d27d7dc370b8e7d1e67dd4783f5",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/8eaf8535ac38e0962ce5cfc1dfeaf67c6ba6a648",
+                "reference": "8eaf8535ac38e0962ce5cfc1dfeaf67c6ba6a648",
                 "shasum": ""
             },
             "require": {
@@ -1819,7 +1818,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2020-05-22T14:08:06+00:00"
+            "time": "2020-06-17T10:28:33+00:00"
         },
         {
             "name": "psr/container",
@@ -2677,12 +2676,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
-                "reference": "e94c8b1bbe2bc77507a1056cdb06451c75b427f9"
+                "reference": "2edd75b8b35d62fd3eeabba73b26b8f1f60ce13d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/e94c8b1bbe2bc77507a1056cdb06451c75b427f9",
-                "reference": "e94c8b1bbe2bc77507a1056cdb06451c75b427f9",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/2edd75b8b35d62fd3eeabba73b26b8f1f60ce13d",
+                "reference": "2edd75b8b35d62fd3eeabba73b26b8f1f60ce13d",
                 "shasum": ""
             },
             "require": {
@@ -2695,6 +2694,10 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "1.17-dev"
+                },
+                "thanks": {
+                    "name": "symfony/polyfill",
+                    "url": "https://github.com/symfony/polyfill"
                 }
             },
             "autoload": {
@@ -2727,7 +2730,7 @@
                 "polyfill",
                 "portable"
             ],
-            "time": "2020-05-12T16:14:59+00:00"
+            "time": "2020-06-06T08:46:27+00:00"
         },
         {
             "name": "symfony/polyfill-intl-idn",
@@ -2797,12 +2800,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "fa79b11539418b02fc5e1897267673ba2c19419c"
+                "reference": "7110338d81ce1cbc3e273136e4574663627037a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/fa79b11539418b02fc5e1897267673ba2c19419c",
-                "reference": "fa79b11539418b02fc5e1897267673ba2c19419c",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/7110338d81ce1cbc3e273136e4574663627037a7",
+                "reference": "7110338d81ce1cbc3e273136e4574663627037a7",
                 "shasum": ""
             },
             "require": {
@@ -2815,6 +2818,10 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "1.17-dev"
+                },
+                "thanks": {
+                    "name": "symfony/polyfill",
+                    "url": "https://github.com/symfony/polyfill"
                 }
             },
             "autoload": {
@@ -2848,7 +2855,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2020-05-12T16:47:27+00:00"
+            "time": "2020-06-06T08:46:27+00:00"
         },
         {
             "name": "symfony/polyfill-php72",
@@ -2856,12 +2863,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php72.git",
-                "reference": "f048e612a3905f34931127360bdd2def19a5e582"
+                "reference": "3d9c70ff1b9f6bb618f9954b2f7f760220c2b38a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/f048e612a3905f34931127360bdd2def19a5e582",
-                "reference": "f048e612a3905f34931127360bdd2def19a5e582",
+                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/3d9c70ff1b9f6bb618f9954b2f7f760220c2b38a",
+                "reference": "3d9c70ff1b9f6bb618f9954b2f7f760220c2b38a",
                 "shasum": ""
             },
             "require": {
@@ -2871,6 +2878,10 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "1.17-dev"
+                },
+                "thanks": {
+                    "name": "symfony/polyfill",
+                    "url": "https://github.com/symfony/polyfill"
                 }
             },
             "autoload": {
@@ -2903,7 +2914,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2020-05-12T16:47:27+00:00"
+            "time": "2020-06-06T08:46:27+00:00"
         },
         {
             "name": "text/template",
@@ -2911,12 +2922,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dermatthes/text-template.git",
-                "reference": "dfdadb067cc645e3b4cc8e5bbf56d8648f11fd57"
+                "reference": "fd77c2aeb9c749426c7f6b5f7ab93c8de90a7cbc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dermatthes/text-template/zipball/dfdadb067cc645e3b4cc8e5bbf56d8648f11fd57",
-                "reference": "dfdadb067cc645e3b4cc8e5bbf56d8648f11fd57",
+                "url": "https://api.github.com/repos/dermatthes/text-template/zipball/fd77c2aeb9c749426c7f6b5f7ab93c8de90a7cbc",
+                "reference": "fd77c2aeb9c749426c7f6b5f7ab93c8de90a7cbc",
                 "shasum": ""
             },
             "require": {
@@ -2958,7 +2969,7 @@
                 "text",
                 "twig"
             ],
-            "time": "2019-12-10T18:02:28+00:00"
+            "time": "2020-06-02T22:43:47+00:00"
         },
         {
             "name": "theseer/tokenizer",
@@ -3002,16 +3013,16 @@
         },
         {
             "name": "webmozart/assert",
-            "version": "1.8.0",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmozart/assert.git",
-                "reference": "ab2cb0b3b559010b75981b1bdce728da3ee90ad6"
+                "reference": "9dc4f203e36f2b486149058bade43c851dd97451"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/ab2cb0b3b559010b75981b1bdce728da3ee90ad6",
-                "reference": "ab2cb0b3b559010b75981b1bdce728da3ee90ad6",
+                "url": "https://api.github.com/repos/webmozart/assert/zipball/9dc4f203e36f2b486149058bade43c851dd97451",
+                "reference": "9dc4f203e36f2b486149058bade43c851dd97451",
                 "shasum": ""
             },
             "require": {
@@ -3019,6 +3030,7 @@
                 "symfony/polyfill-ctype": "^1.8"
             },
             "conflict": {
+                "phpstan/phpstan": "<0.12.20",
                 "vimeo/psalm": "<3.9.1"
             },
             "require-dev": {
@@ -3046,7 +3058,7 @@
                 "check",
                 "validate"
             ],
-            "time": "2020-04-18T12:12:48+00:00"
+            "time": "2020-06-16T10:16:42+00:00"
         }
     ],
     "packages-dev": [],
