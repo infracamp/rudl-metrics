@@ -2,8 +2,13 @@
     <div class="col-12">
         <template is="ka-tpl" auto>
             <div class="card">
-                <div class="card-header">Cloudfront
-                    <label style="float:right" class="switch switch-label switch-primary" title="Switch AutoUpdate on/off">
+                <div class="card-header">
+                    <h4 class="card-title float-left mb-0 mt-1">
+                        <i class="fas fa-globe nav-icon nav-icon text-primary"></i>
+                        Cloudfront
+                        <small style="font-size: 12px" class="text-muted"><code>{{ sql }}</code></small>
+                    </h4>
+                    <label style="float:right" class="switch switch-label switch-primary float-right mb-0 mt-1" title="Switch AutoUpdate on/off">
                         <input class="switch-input" type="checkbox" [checked]="localStorage.autoupdate !== 'false'" onchange="localStorage.autoupdate = this.checked">
                         <span class="switch-slider" data-checked="On" data-unchecked="Off"></span>
                     </label>
@@ -36,7 +41,7 @@
                                     sqlWhere.push("request=~/" + opts.msg + "/");
                                 if ( ! ka_empty(opts.time))
                                     sqlWhere.push("time < '" + opts.time + "'");
-                                let sql = `SELECT time,cluster,status,remote_addr,remote_user,http_host,request FROM cloudfront WHERE ${sqlWhere.join(" AND ")} ORDER BY time DESC LIMIT 1000`;
+                                let sql = `SELECT time,cluster,status,remote_addr,remote_user,http_host,request FROM cloudfront WHERE ${sqlWhere.join(" AND ")} ORDER BY time DESC LIMIT 700`;
                                 self.$scope.sql = sql;
 
                                 ka_http_req("/admin/api/query?q=:query", {"query": sql}).json = (r) => {

@@ -58,8 +58,12 @@
             </script>
             <div class="card">
                 <div class="card-header" id="syslogHeader">
-                    {{ sql }}
-                    <label style="float:right" class="switch switch-label switch-primary" title="Switch AutoUpdate on/off">
+                    <h4 class="card-title float-left mb-0 mt-1">
+                        <i class="fas fa-list nav-icon nav-icon text-primary"></i>
+                        Syslog
+                        <small style="font-size: 12px" class="text-muted"><code>{{ sql }}</code></small>
+                    </h4>
+                    <label  class="switch switch-label switch-primary float-right mt-1 mb-0" title="Switch AutoUpdate on/off">
                         <input class="switch-input" type="checkbox" [checked]="localStorage.autoupdate !== 'false'" onchange="localStorage.autoupdate = this.checked">
                         <span class="switch-slider" data-checked="On" data-unchecked="Off"></span>
                     </label>

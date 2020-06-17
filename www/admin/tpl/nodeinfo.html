@@ -1,7 +1,11 @@
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <div class="card-header">Nodes
+            <div class="card-header">
+                <h4 class="card-title float-left mb-0 mt-1">
+                    <i class="fas fa-server nav-icon nav-icon text-primary"></i>
+                    Nodes
+                </h4>
 
                 <template is="ka-tpl" auto>
                     <script>
@@ -9,7 +13,7 @@
                             self.$scope = {"autoupdate": localStorage.autoupdate };
                         })(KASELF);
                     </script>
-                    <label style="float:right" class="switch switch-label switch-primary" title="Switch AutoUpdate on/off">
+                    <label class="switch switch-label switch-primary float-right mb-0 mt-1" title="Switch AutoUpdate on/off">
                         <input class="switch-input" type="checkbox" [checked]="autoupdate !== 'false'" onchange="localStorage.autoupdate = this.checked">
                         <span class="switch-slider" data-checked="On" data-unchecked="Off"></span>
                     </label>

@@ -178,19 +178,20 @@ $app->addPage("/admin/cloudfront", function() {
 }, new NaviButtonWithIcon("Cloudfront", "fas fa-globe nav-icon"));
 
 
-$app->addPage("/admin/nodeinfo", function() {
-    $e = \fhtml();
-    $e->loadHtml(__DIR__ . "/tpl/nodeinfo.html");
-    return $e;
-}, new NaviButtonWithIcon("Nodes", "fas fa-server nav-icon"));
-
-
 $app->addPage("/admin/syslog", function () {
     $e = fhtml();
     $e->loadHtml(__DIR__ . "/tpl/syslog-head.html");
     $e->loadHtml(__DIR__ . "/tpl/syslog.html");
     return $e;
 }, new NaviButtonWithIcon("Syslog", "fas fa-list nav-icon"));
+
+
+$app->addPage("/admin/nodeinfo", function() {
+    $e = \fhtml();
+    $e->loadHtml(__DIR__ . "/tpl/nodeinfo.html");
+    return $e;
+}, new NaviButtonWithIcon("Nodes", "fas fa-server nav-icon"));
+
 
 
 
