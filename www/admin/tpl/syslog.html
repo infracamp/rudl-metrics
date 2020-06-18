@@ -31,7 +31,7 @@
                         if ( ! ka_empty(opts.msg))
                             sqlWhere.push("msg=~/" + opts.msg + "/");
                         if ( ! ka_empty(opts.time))
-                            sqlWhere.push("time < '" + opts.time + "'");
+                            sqlWhere.push("time <= '" + opts.time + "'");
                         let sql = `SELECT * FROM syslog WHERE ${sqlWhere.join(" AND ")} ORDER BY time DESC LIMIT 1000`;
                         self.$scope.sql = sql;
 
@@ -54,7 +54,7 @@
                         return d.toUTCString();
                     }
 
-                })(KASELF);
+                })(KaTpl.self);
             </script>
             <div class="card">
                 <div class="card-header" id="syslogHeader">

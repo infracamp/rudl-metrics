@@ -29,6 +29,8 @@ set_time_limit(600);
 $app = new BasicAuthStatusPageApp(CONF_BRAND_NAME, "/admin");
 $app->activateExceptionErrorHandlers();
 $app->theme->frameworks["highlightjs"] = true;
+$app->theme->frameworks["daterangepicker"] = true;
+
 $app->theme->jsUrls[] = "/admin/assets/kasimir.full.js";
 $app->theme->cssUrls[] = "/admin/assets/logstyle.css";
 

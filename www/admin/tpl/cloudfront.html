@@ -35,12 +35,14 @@
                                     sqlWhere.push("cluster='" + opts.cluster + "'");
                                 if ( ! ka_empty(opts.http_host))
                                     sqlWhere.push("http_host='" + opts.http_host + "'");
+                                if ( ! ka_empty(opts.remote_user))
+                                    sqlWhere.push("remote_user='" + opts.remote_user + "'");
                                 if ( ! ka_empty(opts.status))
                                     sqlWhere.push("status='" + opts.status + "'");
                                 if ( ! ka_empty(opts.msg))
                                     sqlWhere.push("request=~/" + opts.msg + "/");
                                 if ( ! ka_empty(opts.time))
-                                    sqlWhere.push("time < '" + opts.time + "'");
+                                    sqlWhere.push("time <= '" + opts.time + "'");
                                 let sql = `SELECT time,cluster,status,remote_addr,remote_user,http_host,request FROM cloudfront WHERE ${sqlWhere.join(" AND ")} ORDER BY time DESC LIMIT 700`;
                                 self.$scope.sql = sql;
 
@@ -57,7 +59,7 @@
                                 if (localStorage.autoupdate !== 'true') return;
                                 self.update(true)
                             }, 30000);
-                        })(KASELF);
+                        })(KaTpl.self);
                     </script>
 
                     <code

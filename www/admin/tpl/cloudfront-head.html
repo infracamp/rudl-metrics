@@ -1,10 +1,24 @@
 <div class="row">
     <div class="col-12">
         <div class="card">
-
             <div class="card-body" style="">
                 <template is="ka-tpl" auto>
+                    <script>
+                        (async (self) => {
 
+                            let dateTime = await self.waitRef("datetime");
+
+                            $(dateTime).daterangepicker({
+                                "singleDatePicker": true,
+                                "showWeekNumbers": true,
+                                "timePicker": true, "autoUpdateInput": false,
+                                "timePicker24Hour": true,
+                                "maxDate": (new Date(Date.now() + 90000000)).toLocaleDateString()
+                            }, function (start) {
+                                dateTime.value = start._d.toISOString();
+                            });
+                        })(KaTpl.self);
+                    </script>
 
                     <form is="ka-form" id="cloudlogForm" onsubmit="KaRoute.options = this.$data">
                         <div class="row">
@@ -22,6 +36,12 @@
                             </div>
                             <div class="col">
                                 <div class="form-group">
+                                    <label>Auth User:</label>
+                                    <input type="text" class="form-control" name="remote_user">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
                                     <label>Http Status:</label>
                                     <input type="text" class="form-control" name="status">
                                 </div>
@@ -34,8 +54,8 @@
                             </div>
                             <div class="col">
                                 <div class="form-group">
-                                    <label>Date/Time:</label>
-                                    <input type="datetime-local" class="form-control" name="time">
+                                    <label>Start Date/Time:</label>
+                                    <input *ref="datetime" type="text" class="form-control" name="time">
                                 </div>
                             </div>
                             <div class="col">

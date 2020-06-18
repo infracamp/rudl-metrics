@@ -33,8 +33,8 @@
                             </div>
                             <div class="col">
                                 <div class="form-group">
-                                    <label>Date/Time:</label>
-                                    <input type="datetime-local" class="form-control" name="time">
+                                    <label>Start Date/Time:</label>
+                                    <input *ref="datetime" type="datetime-local" class="form-control" name="time">
                                 </div>
                             </div>
                             <div class="col">
@@ -48,15 +48,29 @@
 
                     </form>
                     <script>
-                        ((self) => {
+                        (async (self) => {
+
 
                             KaRoute.onOptionChange("form", options => {
                                 let form = ka_form("syslogForm2");
                                 console.log("formChange", {...options});
                                 form.$data = options;
                             })
-                            //form.$data = {system: "buh"}
-                        })(KASELF);
+
+
+                            let dateTime = await self.waitRef("datetime");
+
+                            $(dateTime).daterangepicker({
+                                "singleDatePicker": true,
+                                "showWeekNumbers": true,
+                                "timePicker": true, "autoUpdateInput": false,
+                                "timePicker24Hour": true,
+                                "maxDate": (new Date(Date.now() + 90000000)).toLocaleDateString()
+                            }, function (start) {
+                                dateTime.value = start._d.toISOString();
+                            });
+
+                        })(KaTpl.self);
                     </script>
                 </template>
 
