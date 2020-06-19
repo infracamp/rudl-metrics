@@ -67,7 +67,7 @@
                           [classlist.warn]="row.status >= 400"
                           [classlist.rowmark]="idx % 10 < 5"
                           [title]="JSON.stringify(row)">
-                        <b>{{ $scope.formatDate(row.time) }}</b> [{{row.cluster}}] <a href="" [on.click]="showIpInfo(row.remote_addr);">{{row.remote_addr}}</a> {{row.remote_user === "" ? "-" : row.remote_user}} {{row.status}}: <b>{{row.http_host}}</b> {{row.request}}
+                        <b><a class="text-reset" [href]="`/admin/syslog#time=${row.time}`">{{ $scope.formatDate(row.time) }}</a></b> [{{row.cluster}}] <a href="" [on.click]="showIpInfo(row.remote_addr);">{{row.remote_addr}}</a> {{row.remote_user === "" ? "-" : row.remote_user}} {{row.status}}: <b>{{row.http_host}}</b> {{row.request}}
                     </code>
 
 

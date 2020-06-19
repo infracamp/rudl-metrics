@@ -6,6 +6,15 @@
                     <script>
                         (async (self) => {
 
+
+                            let form1 = await self.waitRef("form1");
+                            let update = (options) => {
+                                let form = ka_form(form1);
+                                form.$data = options;
+                            };
+                            KaRoute.onOptionChange("form", update);
+                            update(KaRoute.options);
+
                             let dateTime = await self.waitRef("datetime");
 
                             $(dateTime).daterangepicker({
@@ -20,7 +29,7 @@
                         })(KaTpl.self);
                     </script>
 
-                    <form is="ka-form" id="cloudlogForm" onsubmit="KaRoute.options = this.$data">
+                    <form is="ka-form" *ref="form1" id="cloudlogForm" onsubmit="KaRoute.options = this.$data">
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">

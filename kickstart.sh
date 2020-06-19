@@ -431,6 +431,22 @@ _ci_build() {
 DOCKER_OPT_PARAMS=$KICKSTART_DOCKER_RUN_OPTS;
 
 
+# Load .env before evaluating -e command line options
+if [ -e "$PROGPATH/.env" ]; then
+    echo "Adding docker environment from $PROGPATH/.env (Development only)"
+    DOCKER_OPT_PARAMS="$DOCKER_OPT_PARAMS --env-file $PROGPATH/.env";
+elif [ -e "$PROGPATH/.env.dist" ] && [ "$#" == "0" ]; then
+    echo "An '.env' file is not existing but a '.env.dist' was found."
+    echo ""
+    echo "This normally indicates that you have to create a developers .env manually"
+    echo "in order to start the project."
+    echo ""
+    read -r -p "Hit (enter) to continue without .env file or CTRL-C to exit." choice
+fi
+
+
+
+
 
 run_container() {
     echo -e $COLOR_GREEN"Loading container '$FROM_IMAGE'..."
@@ -674,11 +690,7 @@ then
     DOCKER_OPT_PARAMS="$DOCKER_OPT_PARAMS -v $bashHistoryFile:/home/user/.bash_history";
 fi
 
-if [ -e "$PROGPATH/.env" ]
-then
-    echo "Adding docker environment from $PROGPATH/.env (Development only)"
-    DOCKER_OPT_PARAMS="$DOCKER_OPT_PARAMS --env-file $PROGPATH/.env";
-fi
+
 
 secretsPath="$HOME/.kickstart/secrets/$CONTAINER_NAME"
 echo "Scanning for secrets in $secretsPath";
@@ -690,6 +702,16 @@ then
         DOCKER_OPT_PARAMS="$DOCKER_OPT_PARAMS -v '$secretsPath/$_cur_secret_name:/run/secrets/$_cur_secret_name' "
     done;
 fi;
+
+
+echo "Scanning env for KICKSECRET_*";
+for secret in $(env | grep ^KICKSECRET | sed 's/KICKSECRET_\([a-zA-Z0-9_]\+\).*/\1/'); do
+    secretName="KICKSECRET_$secret"
+    secretFile="/tmp/.kicksecret.$secretName"
+    echo ${!secretName} > $secretFile
+    echo "+ adding secret from env: $secretName > /run/secrets/$secret";
+    DOCKER_OPT_PARAMS="$DOCKER_OPT_PARAMS -v '$secretFile:/run/secrets/$secret' "
+done;
 
 
 # Ports to be exposed

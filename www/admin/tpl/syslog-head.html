@@ -5,7 +5,7 @@
                 <template is="ka-tpl" auto>
 
 
-                    <form is="ka-form" id="syslogForm2" onsubmit="KaRoute.options = this.$data">
+                    <form is="ka-form" *ref="form1" onsubmit="KaRoute.options = this.$data">
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
@@ -50,16 +50,16 @@
                     <script>
                         (async (self) => {
 
-
-                            KaRoute.onOptionChange("form", options => {
-                                let form = ka_form("syslogForm2");
-                                console.log("formChange", {...options});
+                            let form1 = await self.waitRef("form1");
+                            let update = (options) => {
+                                let form = ka_form(form1);
                                 form.$data = options;
-                            })
+                            };
 
+                            KaRoute.onOptionChange("form", update);
+                            update(KaRoute.options);
 
                             let dateTime = await self.waitRef("datetime");
-
                             $(dateTime).daterangepicker({
                                 "singleDatePicker": true,
                                 "showWeekNumbers": true,
