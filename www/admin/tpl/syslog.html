@@ -76,7 +76,7 @@
                           [classlist.warn]="row.severity <= 4"
                           [classlist.rowmark]="idx % 10 < 5"
                           [title]="$scope.formatDate(row.time) + ': ' + row.msg">
-                        <b>{{ $scope.formatDate(row.time) }}</b>
+                        <b><a class="text-reset" [href]="`#time=${row.time}`" title="See all syslog starting here...">{{ $scope.formatDate(row.time) }}</a></b>
                         <a href="" [on.click]="KaRoute.options.hostname=row.hostname">{{row.hostname}}</a>
                         <a href="" [on.click]="KaRoute.options.system=row.system">{{row.system}}</a>
                         {{ row.facility }}

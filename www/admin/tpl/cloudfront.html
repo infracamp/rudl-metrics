@@ -43,7 +43,7 @@
                                     sqlWhere.push("request=~/" + opts.msg + "/");
                                 if ( ! ka_empty(opts.time))
                                     sqlWhere.push("time <= '" + opts.time + "'");
-                                let sql = `SELECT time,cluster,status,remote_addr,remote_user,http_host,request FROM cloudfront WHERE ${sqlWhere.join(" AND ")} ORDER BY time DESC LIMIT 700`;
+                                let sql = `SELECT time,cluster,status,remote_addr,remote_user,http_host,request,request_time,request_length,bytes_sent FROM cloudfront WHERE ${sqlWhere.join(" AND ")} ORDER BY time DESC LIMIT 700`;
                                 self.$scope.sql = sql;
 
                                 ka_http_req("/admin/api/query?q=:query", {"query": sql}).json = (r) => {
@@ -67,7 +67,9 @@
                           [classlist.warn]="row.status >= 400"
                           [classlist.rowmark]="idx % 10 < 5"
                           [title]="JSON.stringify(row)">
-                        <b><a class="text-reset" [href]="`/admin/syslog#time=${row.time}`">{{ $scope.formatDate(row.time) }}</a></b> [{{row.cluster}}] <a href="" [on.click]="showIpInfo(row.remote_addr);">{{row.remote_addr}}</a> {{row.remote_user === "" ? "-" : row.remote_user}} {{row.status}}: <b>{{row.http_host}}</b> {{row.request}}
+                        <b><a title="jump to syslog..." class="text-reset" [href]="`/admin/syslog#time=${row.time}`">{{ $scope.formatDate(row.time) }}</a></b> [{{row.cluster}}] <a href="" [on.click]="showIpInfo(row.remote_addr);">{{row.remote_addr}}</a> {{row.remote_user === "" ? "-" : row.remote_user}} {{row.status}}: <b>{{row.http_host}}</b>
+                        {{row.request}}
+                        <small>[{{row.request_time}}s in:{{row.request_length}} out: {{row.bytes_sent}}]</small>
                     </code>
 
 
