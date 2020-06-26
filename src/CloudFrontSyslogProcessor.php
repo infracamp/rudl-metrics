@@ -70,12 +70,14 @@ class CloudFrontSyslogProcessor extends AbstractSyslogProcessor {
 
             $status = (int)$msg["status"];
 
-            if ($status <= 399) {
-                $tags["type"] = "ok";
+            if ($status <= 299) {
+                $tags["type"] = "success";
+            } else if ($status <= 399) {
+                $tags["type"] = "redir";
             } else if ($status <= 499) {
-                $tags["type"] = "e_usr";
+                $tags["type"] = "clnt_e";
             } else {
-                $tags["type"] = "e_srv";
+                $tags["type"] = "srv_e";
             }
 
             unset ($msg["cluster"], $msg["service"], $msg["http_host"], $msg["request_method"],$msg["server_protocol"]);
