@@ -48,6 +48,20 @@ class SyslogProcessor extends AbstractSyslogProcessor {
                 "severity" => (int)$curMessage["severity"],
                 "clientIp" => (string)$curMessage["clientIp"],
             ];
+
+            $severity = (int)$curMessage["severity"];
+
+            if ($severity <= 3) {
+                $tags["type"] = "err";
+            } else if ($severity == 4) {
+                $tags["type"] = "warn";
+            } else if ($severity <= 6) {
+                $tags["type"] = "info";
+            } else {
+                $tags["type"] = "debug";
+            }
+
+
             $points[] = new Point("syslog",null,$tags, ["msg" => (string)$msg], (int)($curMessage["timestamp"] * 1000000));
         }
         phore_log()->notice("Sending " . count ($points) . " Points to syslog measurement.");

@@ -67,6 +67,17 @@ class CloudFrontSyslogProcessor extends AbstractSyslogProcessor {
                 "status" => $msg["status"],
                 "remote_addr" => $msg["remote_addr"]
             ];
+
+            $status = (int)$msg["status"];
+
+            if ($status <= 399) {
+                $tags["type"] = "OK";
+            } else if ($status <= 499) {
+                $tags["type"] = "USRFAIL";
+            } else {
+                $tags["type"] = "SRVFAIL";
+            }
+
             unset ($msg["cluster"], $msg["service"], $msg["http_host"], $msg["request_method"],$msg["server_protocol"]);
             unset ($msg["status"], $msg["remote_addr"]);
 
