@@ -47,10 +47,14 @@
                                 $scope.sql = sql;
 
                                 ka_http_req("/admin/api/query?q=:query", {"query": sql}).json = (r) => {
-                                    $scope.response.result = r.result.slice(0,30);
-                                    window.setTimeout(()=>{
-                                        $scope.response.result = r.result;
-                                    }, 200);
+                                    if (noclear === true) {
+                                        self.$scope.response.result = r.result;
+                                    } else {
+                                        $scope.response.result = r.result.slice(0, 30);
+                                        window.setTimeout(() => {
+                                            $scope.response.result = r.result;
+                                        }, 200);
+                                    }
                                 };
                             }
 
