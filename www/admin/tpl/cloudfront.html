@@ -17,18 +17,18 @@
 
                     <script>
                         ((self) => {
-                            self.$scope = {"response": {"result": []}};
+                            $scope = self.scopeInit({"response": {"result": []}});
 
-                            self.$scope.formatDate = function(indate) {
+                            $scope.formatDate = function(indate) {
 
                                 let d = new Date(Date.parse(indate));
                                 return d.toUTCString();
                             }
 
 
-                            self.update = function(noclear) {
+                            $scope.update = function(noclear) {
                                 if (noclear !== true)
-                                    self.$scope.response.result.length = 0;
+                                    $scope.response.result.length = 0;
                                 let opts = KaRoute.options;
                                 let sqlWhere = ["1=1"];
                                 if ( ! ka_empty(opts.cluster))
@@ -44,20 +44,22 @@
                                 if ( ! ka_empty(opts.time))
                                     sqlWhere.push("time <= '" + opts.time + "'");
                                 let sql = `SELECT time,cluster,status,remote_addr,remote_user,http_host,request,request_time,request_length,bytes_sent FROM cloudfront WHERE ${sqlWhere.join(" AND ")} ORDER BY time DESC LIMIT 700`;
-                                self.$scope.sql = sql;
+                                $scope.sql = sql;
 
                                 ka_http_req("/admin/api/query?q=:query", {"query": sql}).json = (r) => {
-                                    console.log(r);
-                                    self.$scope.response = r;
+                                    $scope.response.result = r.result.slice(0,30);
+                                    window.setTimeout(()=>{
+                                        $scope.response.result = r.result;
+                                    }, 200);
                                 };
                             }
 
-                            KaRoute.onOptionChange("cloudfront", self.update);
-                            self.update();
+                            KaRoute.onOptionChange("cloudfront", $scope.update);
+                            $scope.update();
 
                             let interval = window.setInterval(e => {
                                 if (localStorage.autoupdate !== 'true') return;
-                                self.update(true)
+                                $scope.update(true)
                             }, 30000);
                         })(KaTpl.self);
                     </script>

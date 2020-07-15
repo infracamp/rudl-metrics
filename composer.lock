@@ -68,12 +68,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "df36d8dae3979cf927d5bbbed6f0427f39aadfec"
+                "reference": "dd23412b4a6d45f11f0ea116a2108920f1a97ac8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/df36d8dae3979cf927d5bbbed6f0427f39aadfec",
-                "reference": "df36d8dae3979cf927d5bbbed6f0427f39aadfec",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/dd23412b4a6d45f11f0ea116a2108920f1a97ac8",
+                "reference": "dd23412b4a6d45f11f0ea116a2108920f1a97ac8",
                 "shasum": ""
             },
             "require": {
@@ -130,7 +130,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2019-10-30T11:22:04+00:00"
+            "time": "2019-12-03T09:24:32+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -409,16 +409,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "a491d65139e2411c75704e871dd02bdddf5a4bdc"
+                "reference": "969b211f9a51aa1f6c01d1d2aef56d3bd91598e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/a491d65139e2411c75704e871dd02bdddf5a4bdc",
-                "reference": "a491d65139e2411c75704e871dd02bdddf5a4bdc",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/969b211f9a51aa1f6c01d1d2aef56d3bd91598e5",
+                "reference": "969b211f9a51aa1f6c01d1d2aef56d3bd91598e5",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1"
+                "php": "^7.1 || ^8.0"
             },
             "replace": {
                 "myclabs/deep-copy": "self.version"
@@ -449,7 +449,7 @@
                 "object",
                 "object graph"
             ],
-            "time": "2020-03-12T21:49:07+00:00"
+            "time": "2020-06-29T13:22:24+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -609,12 +609,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phore/phore-core.git",
-                "reference": "052f22306eb62a9f857b7c6de8263e643e30e222"
+                "reference": "de198c28c009de6cf851a8bedc6901852c2c2a94"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phore/phore-core/zipball/052f22306eb62a9f857b7c6de8263e643e30e222",
-                "reference": "052f22306eb62a9f857b7c6de8263e643e30e222",
+                "url": "https://api.github.com/repos/phore/phore-core/zipball/de198c28c009de6cf851a8bedc6901852c2c2a94",
+                "reference": "de198c28c009de6cf851a8bedc6901852c2c2a94",
                 "shasum": ""
             },
             "require": {
@@ -652,7 +652,7 @@
             ],
             "description": "Phore core library",
             "homepage": "https://infracamp.org/project/phore",
-            "time": "2020-06-17T15:20:33+00:00"
+            "time": "2020-06-30T14:21:55+00:00"
         },
         {
             "name": "phore/di-base",
@@ -913,12 +913,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phore/phore-micro-app.git",
-                "reference": "5b15041300f2156a674fb6311a5883db11131688"
+                "reference": "e836fcde4c8db600efe0fa4a2d32c12659053ef3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phore/phore-micro-app/zipball/5b15041300f2156a674fb6311a5883db11131688",
-                "reference": "5b15041300f2156a674fb6311a5883db11131688",
+                "url": "https://api.github.com/repos/phore/phore-micro-app/zipball/e836fcde4c8db600efe0fa4a2d32c12659053ef3",
+                "reference": "e836fcde4c8db600efe0fa4a2d32c12659053ef3",
                 "shasum": ""
             },
             "require": {
@@ -955,7 +955,7 @@
             ],
             "description": "Micro framework for rest api webservices",
             "homepage": "https://infracamp.org/phore/",
-            "time": "2020-04-22T20:13:59+00:00"
+            "time": "2020-06-25T14:28:18+00:00"
         },
         {
             "name": "phore/objectstore",
@@ -1234,12 +1234,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phore/phore-vcs.git",
-                "reference": "dc1028173768f92d945918aebcd61777d1d66ddd"
+                "reference": "655c8eb589c62192c34900024be4c5a757ec8d52"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phore/phore-vcs/zipball/dc1028173768f92d945918aebcd61777d1d66ddd",
-                "reference": "dc1028173768f92d945918aebcd61777d1d66ddd",
+                "url": "https://api.github.com/repos/phore/phore-vcs/zipball/655c8eb589c62192c34900024be4c5a757ec8d52",
+                "reference": "655c8eb589c62192c34900024be4c5a757ec8d52",
                 "shasum": ""
             },
             "require": {
@@ -1272,7 +1272,7 @@
                 }
             ],
             "description": "Wrapper for git",
-            "time": "2020-06-18T00:27:35+00:00"
+            "time": "2020-06-26T11:23:41+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -1329,24 +1329,23 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-                "reference": "790426f28bfcbfc1a6f1d59ee8c986edfa45395c"
+                "reference": "eb3320ef010709f339f118dde1645e197c4961ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/790426f28bfcbfc1a6f1d59ee8c986edfa45395c",
-                "reference": "790426f28bfcbfc1a6f1d59ee8c986edfa45395c",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/eb3320ef010709f339f118dde1645e197c4961ec",
+                "reference": "eb3320ef010709f339f118dde1645e197c4961ec",
                 "shasum": ""
             },
             "require": {
-                "ext-filter": "^7.1",
-                "php": "^7.2",
-                "phpdocumentor/reflection-common": "^2.0",
-                "phpdocumentor/type-resolver": "^1.0",
-                "webmozart/assert": "^1"
+                "ext-filter": "*",
+                "php": "^7.2 || ^8.0",
+                "phpdocumentor/reflection-common": "^2.2",
+                "phpdocumentor/type-resolver": "^1.3",
+                "webmozart/assert": "^1.9.1"
             },
             "require-dev": {
-                "doctrine/instantiator": "^1",
-                "mockery/mockery": "^1"
+                "mockery/mockery": "~1.3.2"
             },
             "type": "library",
             "extra": {
@@ -1374,7 +1373,7 @@
                 }
             ],
             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
-            "time": "2020-06-19T18:58:43+00:00"
+            "time": "2020-07-09T12:42:26+00:00"
         },
         {
             "name": "phpdocumentor/type-resolver",
@@ -1428,29 +1427,29 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "451c3cd1418cf640de218914901e51b064abb093"
+                "reference": "298fcb562dbada018dae064539d5c9c69cf37fc2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/451c3cd1418cf640de218914901e51b064abb093",
-                "reference": "451c3cd1418cf640de218914901e51b064abb093",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/298fcb562dbada018dae064539d5c9c69cf37fc2",
+                "reference": "298fcb562dbada018dae064539d5c9c69cf37fc2",
                 "shasum": ""
             },
             "require": {
-                "doctrine/instantiator": "^1.0.2",
-                "php": "^5.3|^7.0",
-                "phpdocumentor/reflection-docblock": "^2.0|^3.0.2|^4.0|^5.0",
-                "sebastian/comparator": "^1.2.3|^2.0|^3.0|^4.0",
-                "sebastian/recursion-context": "^1.0|^2.0|^3.0|^4.0"
+                "doctrine/instantiator": "^1.2",
+                "php": "^7.2",
+                "phpdocumentor/reflection-docblock": "^5.0",
+                "sebastian/comparator": "^3.0 || ^4.0",
+                "sebastian/recursion-context": "^3.0 || ^4.0"
             },
             "require-dev": {
-                "phpspec/phpspec": "^2.5 || ^3.2",
-                "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.5 || ^7.1"
+                "phpspec/phpspec": "^6.0",
+                "phpunit/phpunit": "^8.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.10.x-dev"
+                    "dev-master": "1.11.x-dev"
                 }
             },
             "autoload": {
@@ -1483,7 +1482,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2020-03-05T15:02:03+00:00"
+            "time": "2020-07-14T15:04:22+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -1743,35 +1742,35 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "4f3b99a9b7bb630c7d1e31f31e9636cd7f309ea0"
+                "reference": "a3588fce9590110d0d8dc2c767f2fa6e9c70769b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/4f3b99a9b7bb630c7d1e31f31e9636cd7f309ea0",
-                "reference": "4f3b99a9b7bb630c7d1e31f31e9636cd7f309ea0",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a3588fce9590110d0d8dc2c767f2fa6e9c70769b",
+                "reference": "a3588fce9590110d0d8dc2c767f2fa6e9c70769b",
                 "shasum": ""
             },
             "require": {
-                "doctrine/instantiator": "^1.2.0",
+                "doctrine/instantiator": "^1.3.1",
                 "ext-dom": "*",
                 "ext-json": "*",
                 "ext-libxml": "*",
                 "ext-mbstring": "*",
                 "ext-xml": "*",
                 "ext-xmlwriter": "*",
-                "myclabs/deep-copy": "^1.9.1",
+                "myclabs/deep-copy": "^1.10.0",
                 "phar-io/manifest": "^1.0.3",
                 "phar-io/version": "^2.0.1",
                 "php": "^7.2",
-                "phpspec/prophecy": "^1.8.1",
-                "phpunit/php-code-coverage": "^7.0.7",
+                "phpspec/prophecy": "^1.10.3",
+                "phpunit/php-code-coverage": "^7.0.10",
                 "phpunit/php-file-iterator": "^2.0.2",
                 "phpunit/php-text-template": "^1.2.1",
                 "phpunit/php-timer": "^2.1.2",
                 "sebastian/comparator": "^3.0.2",
                 "sebastian/diff": "^3.0.2",
-                "sebastian/environment": "^4.2.2",
-                "sebastian/exporter": "^3.1.1",
+                "sebastian/environment": "^4.2.3",
+                "sebastian/exporter": "^3.1.2",
                 "sebastian/global-state": "^3.0.0",
                 "sebastian/object-enumerator": "^3.0.3",
                 "sebastian/resource-operations": "^2.0.1",
@@ -1818,7 +1817,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2020-06-24T09:46:09+00:00"
+            "time": "2020-07-04T05:07:06+00:00"
         },
         {
             "name": "psr/container",
@@ -1875,16 +1874,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-client.git",
-                "reference": "fd5d37ae5a76ee3c5301a762faf66bf9519132ef"
+                "reference": "2dfb5f6c5eff0e91e20e913f8c5452ed95b86621"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-client/zipball/fd5d37ae5a76ee3c5301a762faf66bf9519132ef",
-                "reference": "fd5d37ae5a76ee3c5301a762faf66bf9519132ef",
+                "url": "https://api.github.com/repos/php-fig/http-client/zipball/2dfb5f6c5eff0e91e20e913f8c5452ed95b86621",
+                "reference": "2dfb5f6c5eff0e91e20e913f8c5452ed95b86621",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.0",
+                "php": "^7.0 || ^8.0",
                 "psr/http-message": "^1.0"
             },
             "type": "library",
@@ -1916,7 +1915,7 @@
                 "psr",
                 "psr-18"
             ],
-            "time": "2019-09-04T06:46:09+00:00"
+            "time": "2020-06-29T06:28:15+00:00"
         },
         {
             "name": "psr/http-message",
@@ -2789,23 +2788,23 @@
         },
         {
             "name": "theseer/tokenizer",
-            "version": "1.1.3",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/theseer/tokenizer.git",
-                "reference": "11336f6f84e16a720dae9d8e6ed5019efa85a0f9"
+                "reference": "75a63c33a8577608444246075ea0af0d052e452a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/theseer/tokenizer/zipball/11336f6f84e16a720dae9d8e6ed5019efa85a0f9",
-                "reference": "11336f6f84e16a720dae9d8e6ed5019efa85a0f9",
+                "url": "https://api.github.com/repos/theseer/tokenizer/zipball/75a63c33a8577608444246075ea0af0d052e452a",
+                "reference": "75a63c33a8577608444246075ea0af0d052e452a",
                 "shasum": ""
             },
             "require": {
                 "ext-dom": "*",
                 "ext-tokenizer": "*",
                 "ext-xmlwriter": "*",
-                "php": "^7.0"
+                "php": "^7.2 || ^8.0"
             },
             "type": "library",
             "autoload": {
@@ -2825,24 +2824,24 @@
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
-            "time": "2019-06-13T22:48:21+00:00"
+            "time": "2020-07-12T23:59:07+00:00"
         },
         {
             "name": "webmozart/assert",
-            "version": "1.9.0",
+            "version": "1.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmozart/assert.git",
-                "reference": "9dc4f203e36f2b486149058bade43c851dd97451"
+                "reference": "bafc69caeb4d49c39fd0779086c03a3738cbb389"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/9dc4f203e36f2b486149058bade43c851dd97451",
-                "reference": "9dc4f203e36f2b486149058bade43c851dd97451",
+                "url": "https://api.github.com/repos/webmozart/assert/zipball/bafc69caeb4d49c39fd0779086c03a3738cbb389",
+                "reference": "bafc69caeb4d49c39fd0779086c03a3738cbb389",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.3.3 || ^7.0",
+                "php": "^5.3.3 || ^7.0 || ^8.0",
                 "symfony/polyfill-ctype": "^1.8"
             },
             "conflict": {
@@ -2874,7 +2873,7 @@
                 "check",
                 "validate"
             ],
-            "time": "2020-06-16T10:16:42+00:00"
+            "time": "2020-07-08T17:02:28+00:00"
         }
     ],
     "packages-dev": [],
