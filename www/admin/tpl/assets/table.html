@@ -4,7 +4,7 @@
             <div class="card-header">
                 <h4 class="card-title float-left mb-0 mt-1">
                     <i class="fas fa-server nav-icon nav-icon text-primary"></i>
-                    Nodes
+                    Assets
                 </h4>
 
                 <template is="ka-tpl" auto>
@@ -40,6 +40,15 @@
                                                             desc: {
                                                                 "$last": "$desc"
                                                             },
+                                                            system: {
+                                                                "$last": "$@system"
+                                                            },
+                                                            customer: {
+                                                                "$last": "$customer"
+                                                            },
+                                                            manufacturer: {
+                                                                "$last": "$manufacturer"
+                                                            },
                                                             ts: {
                                                                 "$max": "$@ts"
                                                             }
@@ -50,20 +59,6 @@
                                                             ts: -1
                                                         }
                                                     }
-
-                                                    /*
-                                                    {
-                                                        "$project": {
-                                                            "@ts": {
-                                                                $filter: {
-                                                                    input: "@ts",
-                                                                    as: "ts",
-                                                                    cond: { $gt: ["$$ts", 100]}
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                    */
                                                 ],
                                                 options: {}
                                             }).json = (r) => $scope.assets = r;
@@ -84,7 +79,10 @@
                     <table class="table table-striped">
                         <thead>
                         <th scope="col">TMID</th>
+                        <th>Customer</th>
+                        <th>Manufacturer</th>
                         <th>Desc</th>
+                        <th>System</th>
                         <th style="text-align: center">Last seen</th>
 
                         </thead>
@@ -99,12 +97,13 @@
                         </tr>
                         <tr *for="let row of assets indexby idx">
                             <td><b>{{ row._id.tmid }}</b></td>
+                            <td><b>{{ row.customer }}</b></td>
+                            <td><b>{{ row.manufacturer }}</b></td>
                             <td><b>{{ row.desc}}</b></td>
+                            <td><b>{{ row.system }}</b></td>
                             <td style="text-align: center">{{ row.ts }}s</td>
-
                         </tr>
                         </tbody>
-
                     </table>
                 </template>
 
