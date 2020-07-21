@@ -101,7 +101,7 @@
                             <td><b>{{ row.manufacturer }}</b></td>
                             <td><b>{{ row.desc}}</b></td>
                             <td><b>{{ row.system }}</b></td>
-                            <td style="text-align: center">{{ row.ts }}s</td>
+                            <td style="text-align: center">{{ parseInt( ((Date.now() / 1000) - row.ts) / 60 ) }}min</td>
                         </tr>
                         </tbody>
                     </table>
