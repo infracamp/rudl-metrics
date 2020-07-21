@@ -72,7 +72,7 @@
                             window.setInterval(() => {
                                 if (localStorage.autoupdate !== 'false')
                                     $scope.$fn.update();
-                            }, 15000);
+                            }, 60000);
 
                         })(KaTpl.self);
                     </script>
@@ -97,11 +97,11 @@
                         </tr>
                         <tr *for="let row of assets indexby idx">
                             <td><b>{{ row._id.tmid }}</b></td>
-                            <td><b>{{ row.customer }}</b></td>
-                            <td><b>{{ row.manufacturer }}</b></td>
-                            <td><b>{{ row.desc}}</b></td>
-                            <td><b>{{ row.system }}</b></td>
-                            <td style="text-align: center">{{ parseInt( ((Date.now() / 1000) - row.ts) / 60 ) }}min</td>
+                            <td>{{ row.customer }}</td>
+                            <td>{{ row.manufacturer }}</td>
+                            <td>{{ row.desc}}</td>
+                            <td>{{ row.system }}</td>
+                            <td style="text-align: center"><b>{{ parseInt( ((Date.now() / 1000) - row.ts) / 60 ) }}min</b></td>
                         </tr>
                         </tbody>
                     </table>
