@@ -10,11 +10,14 @@ namespace Tadis;
 
 use InfluxDB\Client;
 use InfluxDB\Database;
+use MongoDB\Driver\Cursor;
+use Phore\Di\Caller\PhoreBaseDiCaller;
 use Phore\Html\Elements\RawHtmlNode;
 use Phore\Log\PhoreLogger;
 use Phore\MicroApp\Response\JsonResponse;
 use Phore\MicroApp\Type\QueryParams;
 use Phore\MicroApp\Type\Request;
+use Phore\MicroApp\Type\RouteParams;
 use Phore\StatusPage\BasicAuthStatusPageApp;
 use Phore\StatusPage\PageHandler\NaviButton;
 use Phore\StatusPage\PageHandler\NaviButtonWithIcon;
@@ -38,14 +41,13 @@ $app->theme->footer[] = [
     "div @float-right @text-muted" => new RawHtmlNode("Rudl Metrics " . VERSION_INFO . " &copy; 2020 <a href='https://infracamp.org'>infracamp.org</a> contributors")
 ];
 
+
+
 /**
  ** Configure Dependency Injection
  **/
-$app->define("database", function () : Database {
-    $client = new Client(CONF_INFLUX_HOST, CONF_INFLUX_PORT, CONF_INFLUX_USER, CONF_INFLUX_PASS);
-    $db = $client->selectDB("rudl");
-    return $db;
-});
+require __DIR__ . "/../di.inc.php";
+
 
 $config = phore_file(CONFIG_PATH . "/config.yaml")->get_yaml();
 foreach ($config["admin_users"] as $curUser) {
@@ -71,6 +73,29 @@ $app->router->onGet("/admin/api/query", function (Database $database, QueryParam
 
     return new JsonResponse($resp);
 });
+
+
+$app->router->onPost("/admin/api/doc/query/:topic", function (\MongoDB\Client $mongoClient, RouteParams $routeParams, Request $request) {
+    $body = $request->getJsonBody();
+    $topic = $routeParams->get("topic", "default");
+
+    $cmd = phore_pluck("cmd", $body);
+
+    if ( ! in_array($cmd, ["distinct", "find", "aggregate"]))
+        throw new \InvalidArgumentException("Invalid mongo command '$cmd'. Allowed: distinct, find,.");
+
+    $collection = $mongoClient->selectCollection("rudl", $topic);
+
+    $caller = new PhoreBaseDiCaller();
+    $ret = $caller->__invoke([$collection, $cmd], $body);
+
+    if ($ret instanceof Cursor)
+        $ret = $ret->toArray();
+
+
+    return new JsonResponse($ret);
+});
+
 
 $app->router->onGet("/admin/api/ipinfo", function (Database $database, QueryParams $params) {
     $ip = $params->get("ip", new \InvalidArgumentException("Missing query parameter ip"));
@@ -194,6 +219,14 @@ $app->addPage("/admin/nodeinfo", function() {
     return $e;
 }, new NaviButtonWithIcon("Nodes", "fas fa-server nav-icon"));
 
+
+
+$app->addPage("/admin/assetOverview", function () {
+    $e = \fhtml();
+    $e->loadHtml(__DIR__ . "/tpl/assets/overview.html");
+    $e->loadHtml(__DIR__ . "/tpl/assets/table.html");
+    return $e;
+}, new NaviButtonWithIcon("Assets", "fas fa-server nav-icon"));
 
 
 

@@ -26,7 +26,8 @@
     "phore/status-page": "dev-master",
     "phore/sock-server": "dev-master",
     "phore/vcs": "dev-master",
-    "phore/log": "dev-master"
+    "phore/log": "dev-master",
+    "mongodb/mongodb": "1.2.0"
 
   }
 }

@@ -1,0 +1,115 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title float-left mb-0 mt-1">
+                    <i class="fas fa-server nav-icon nav-icon text-primary"></i>
+                    Nodes
+                </h4>
+
+                <template is="ka-tpl" auto>
+                    <script>
+                        ((self) => {
+                            self.$scope = {"autoupdate": localStorage.autoupdate };
+                        })(KASELF);
+                    </script>
+                    <label class="switch switch-label switch-primary float-right mb-0 mt-1" title="Switch AutoUpdate on/off">
+                        <input class="switch-input" type="checkbox" [checked]="autoupdate !== 'false'" onchange="localStorage.autoupdate = this.checked">
+                        <span class="switch-slider" data-checked="On" data-unchecked="Off"></span>
+                    </label>
+                </template>
+            </div>
+            <div class="card-body log-container" style="">
+                <template is="ka-tpl" auto>
+                    <script>
+
+                        ((self) => {
+                            let $scope = self.scopeInit({
+                                "assets": [],
+                                "$fn": {
+                                    "update": () => {
+                                        ka_http_req("/admin/api/doc/query/default")
+                                            .withBody({
+                                                cmd: "aggregate",
+                                                pipeline: [
+                                                    {
+                                                        "$group": {
+                                                            _id: {
+                                                                "tmid": "$@tmid",
+                                                            },
+                                                            desc: {
+                                                                "$last": "$desc"
+                                                            },
+                                                            ts: {
+                                                                "$max": "$@ts"
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "$sort": {
+                                                            ts: -1
+                                                        }
+                                                    }
+
+                                                    /*
+                                                    {
+                                                        "$project": {
+                                                            "@ts": {
+                                                                $filter: {
+                                                                    input: "@ts",
+                                                                    as: "ts",
+                                                                    cond: { $gt: ["$$ts", 100]}
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    */
+                                                ],
+                                                options: {}
+                                            }).json = (r) => $scope.assets = r;
+
+                                    }
+                                }
+
+                            });
+
+                            $scope.$fn.update();
+                            window.setInterval(() => {
+                                if (localStorage.autoupdate !== 'false')
+                                    $scope.$fn.update();
+                            }, 15000);
+
+                        })(KaTpl.self);
+                    </script>
+                    <table class="table table-striped">
+                        <thead>
+                        <th scope="col">TMID</th>
+                        <th>Desc</th>
+                        <th style="text-align: center">Last seen</th>
+
+                        </thead>
+                        <tbody>
+                        <tr *if="assets.length === 0">
+                            <td colspan="9">
+                                <div class="d-flex align-items-center m-1">
+                                    <strong>Loading...</strong>
+                                    <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr *for="let row of assets indexby idx">
+                            <td><b>{{ row._id.tmid }}</b></td>
+                            <td><b>{{ row.desc}}</b></td>
+                            <td style="text-align: center">{{ row.ts }}s</td>
+
+                        </tr>
+                        </tbody>
+
+                    </table>
+                </template>
+
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,108 @@
+
+<template is="ka-tpl" debug auto>
+    <script>
+        ((self) => {
+            let req = ka_http_req("/admin/api/doc/query/default");
+
+
+
+            let $scope = self.scopeInit({
+
+                stats: {
+                    distinct_assets: [],
+                    distinct_assets_5d: []
+                },
+
+                $fn: {
+                    "statQuery": (q, name) => {
+                        req.withBody(q).json = (r) => {
+                            $scope.stats[name] = r;
+                        }
+                    },
+
+                    "refresh": () => {
+                        $scope.$fn.statQuery({
+                            cmd: "distinct",
+                            fieldName: "@tmid",
+                            filter: {
+
+                            },
+                            options: {}
+                        }, "distinct_assets");
+
+                        $scope.$fn.statQuery({
+                            cmd: "distinct",
+                            fieldName: "@tmid",
+                            filter: {
+                                input: "@ts",
+                                cond: {
+                                    "$gte": ["$$num", (Date.now() / 1000 - 86400 * 5)]
+                                }
+                            },
+                            options: {}
+                        }, "distinct_assets_5d");
+                    }
+                }
+
+            });
+
+            $scope.$fn.refresh();
+        })(KaTpl.self);
+
+    </script>
+    <div class="card-group mb-4">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="text-value-lg">{{ stats.distinct_assets.length }} / {{ stats.distinct_assets_5d.length }}</div><small class="text-muted text-uppercase font-weight-bold">Total assets / 5d</small>
+                <div class="progress progress-xs mt-3 mb-0">
+                    <div class="progress-bar bg-gradient-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+
+                <div class="text-value-lg">
+
+                </div>
+                <small class="text-muted text-uppercase font-weight-bold">Traffic in/out [GB]</small>
+                <div class="progress progress-xs mt-3 mb-0">
+                    <div class="progress-bar bg-gradient-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="text-value-lg"></div>
+                <div class="text-value-lg"></div><small class="text-muted text-uppercase font-weight-bold">Active nodes</small>
+                <div class="progress progress-xs mt-3 mb-0">
+                    <div class="progress-bar bg-gradient-warning" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+
+                <div class="text-value-lg">
+                    <span  ></span>
+                    <small>(%)</small>
+                </div>
+                <small class="text-muted text-uppercase font-weight-bold">Error(500) 60m/1d</small>
+                <div class="progress progress-xs mt-3 mb-0">
+                    <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+
+                <div class="text-value-lg"></div><small class="text-muted text-uppercase font-weight-bold">Service status</small>
+                <div class="progress progress-xs mt-3 mb-0">
+                    <div class="progress-bar bg-gradient-danger" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+

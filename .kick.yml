@@ -24,3 +24,6 @@ command:
   test:
     - "phpunit"
 
+
+  test_doc_push:
+    - curl -X POST --data '{"@tmid":"abc2","@system":"def","@ts":123456789000,"desc":"sys1"}' http://localhost/v1/push/doc/default

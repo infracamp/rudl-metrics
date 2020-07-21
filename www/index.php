@@ -10,7 +10,9 @@ use InfluxDB\Point;
 use Phore\MicroApp\App;
 use Phore\MicroApp\Handler\JsonExceptionHandler;
 use Phore\MicroApp\Handler\JsonResponseHandler;
+use Phore\MicroApp\Response\JsonResponse;
 use Phore\MicroApp\Type\Request;
+use Phore\MicroApp\Type\RouteParams;
 use Phore\VCS\VcsFactory;
 
 require __DIR__ . "/../vendor/autoload.php";
@@ -32,13 +34,10 @@ $app->acl->addRule(\aclRule()->route("/*")->ALLOW());
  ** Configure Dependency Injection
  **/
 
-$app->define("database", function () {
-    $client = new Client(CONF_INFLUX_HOST, CONF_INFLUX_PORT, CONF_INFLUX_USER, CONF_INFLUX_PASS);
-    $db = $client->selectDB("rudl");
-    if ( ! $db->exists())
-        $db->create(new Database\RetentionPolicy("removeafter48h", "12h", 1, true));
-    return $db;
-});
+
+
+require __DIR__ . "/di.inc.php";
+
 
 $app->define("dashTokenValid", function (Request $request) : bool {
     $config = phore_file(CONFIG_PATH . "/config.yaml")->get_yaml();
@@ -55,6 +54,25 @@ $app->define("dashTokenValid", function (Request $request) : bool {
     throw new \Exception("Token invalid. Access denied! Specify valid ?token=");
 
 });
+
+
+$app->router->onPost("/v1/push/doc/:topic", function(Request $request, \MongoDB\Client $mongoClient, RouteParams $routeParams) {
+    $data = $request->getJsonBody();
+
+    $collection = $mongoClient->selectCollection("rudl", $routeParams->get("topic"));
+
+    $indexes = [];
+    foreach ($data as $key => $val) {
+        if (startsWith($key, "@"))
+            $indexes[] = ['key' => [$key => 1]];
+    }
+    $collection->createIndexes($indexes);
+
+    $collection->insertOne($data);
+
+    return new JsonResponse(["success" => true, "msg" => "stored in mongodb"]);
+});
+
 
 $app->router->onPost("/v1/push/node", function (Request $request, Database $database) {
     $points = [];
